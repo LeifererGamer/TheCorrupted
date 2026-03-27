@@ -71,8 +71,7 @@ namespace TheCorrupted.src.Core.Models.Cards.Uncommon
         }
         protected override void OnUpgrade()
         {
-            base.DynamicVars.Block.UpgradeValueBy(2m);
-            base.DynamicVars.Cards.UpgradeValueBy(1);
+            base.DynamicVars["Doomed"].UpgradeValueBy(4);
         }
 
     }

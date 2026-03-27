@@ -28,7 +28,7 @@
   "HELLFIRE_BREATHING.title": "Hellfire Breathing",
   "HELLFIRE_BREATHING.description": "Whenever you draw a [jitter][purple]Curse[/purple][/jitter] card, deal [purple]{HellfireBreathingPower:diff()}[/purple] damage to ALL enemies.",
   "HELLS_GATE_OPEN.title": "Hell's Gate Open",
-  "HELLS_GATE_OPEN.description": "At the start of your turn, add 1 random [jitter][purple]Curse[/purple][/jitter] card into your [gold]Hand[/gold]F.",
+  "HELLS_GATE_OPEN.description": "At the start of your turn, add 1 random [jitter][purple]Curse[/purple][/jitter] card into your [gold]Hand[/gold].",
   "SAVED_BY_CORRUPTION.title": "Saved by Corruption",
   "SAVED_BY_CORRUPTION.description": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is drawn or [gold]Exhausted[/gold], gain {SavedByCorruptionPower:diff()} [gold]Block[/gold].",
   "ENERGY_CIRCULATION.title": "Mana Circulation",
