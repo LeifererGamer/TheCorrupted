@@ -1,0 +1,9 @@
+{
+  "BASELIB-RITUAL.title": "Ritual",
+  "BASELIB-RITUAL.description": "You need to [gold]Exhaust[/gold] a card from your [gold]Hand[/gold]. If the [gold]exhausted[/gold] card is a [jitter][purple]Curse[/purple][/jitter] the effects of this card resolve.",
+  "BASELIB-DOOMED.title": "Doomed",
+  "BASELIB-DOOMED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Add {Doomed} [jitter][pink]Doom[/pink][/jitter] to yourself.",
+  "BASELIB-CORRUPTED.title": "Cursed",
+  "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Deck[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself."
+
+}

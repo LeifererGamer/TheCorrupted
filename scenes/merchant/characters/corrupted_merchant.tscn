@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1o0sdn255167"]
+
+[ext_resource type="Script" uid="uid://dmh020vlvmgp7" path="res://src/Core/Nodes/Screens/Shops/SNMerchantCharacter.cs" id="1_tpyeq"]
+[ext_resource type="Texture2D" uid="uid://fiannf2sw7ad" path="res://animations/merchant/corrupted/corrupted_shop.png" id="2_o0cad"]
+
+[node name="CorruptedMerchant" type="Node2D"]
+script = ExtResource("1_tpyeq")
+
+[node name="SpineSprite" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SpineSprite"]
+offset_left = -230.0
+offset_top = -478.0
+offset_right = 219.0
+offset_bottom = 78.0
+texture = ExtResource("2_o0cad")

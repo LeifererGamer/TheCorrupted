@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <!-- Paths -->
+    <STS2GamePath>D:\SteamLibrary\steamapps\common\Slay the Spire 2</STS2GamePath>
+    <GodotExePath>D:\Program Files (x86)\Megadot\MegaDot_v4.5.1-stable_mono_win64.exe</GodotExePath>
+    
+    <!-- Mod Metadata -->
+    <ModName>Corrupted</ModName>
+    <ModDisplayName>Corrupted</ModDisplayName>
+    <ModAuthor>LeifererGamer</ModAuthor>
+    <ModVersion>1.0.0</ModVersion>
+  </PropertyGroup>
+</Project>

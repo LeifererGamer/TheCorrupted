@@ -1,0 +1,16 @@
+{
+  "CORRUPTED.aromaPrinciple": "[sine][purple]Through corruption, I find power...[/purple][/sine]",
+  "CORRUPTED.banter.alive.endTurnPing": "[sine]Faster or i will corrupt you![/sine]",
+  "CORRUPTED.banter.dead.endTurnPing": "...",
+  "CORRUPTED.cardsModifierDescription": "Corrupted cards will now appear in rewards and shops.",
+  "CORRUPTED.cardsModifierTitle": "Corrupted Cards",
+  "CORRUPTED.description": "A corrupted soul who has come to Evaluate the Spire.\nMaster of corroption.",
+  "CORRUPTED.eventDeathPrevention": "I must survive. I can't let the corruption overcome me.",
+  "CORRUPTED.goldMonologue": "[sine]Do you sell some good... corruption?.[/sine]",
+  "CORRUPTED.possessiveAdjective": "his",
+  "CORRUPTED.pronounObject": "his",
+  "CORRUPTED.pronounPossessive": "his",
+  "CORRUPTED.pronounSubject": "he",
+  "CORRUPTED.title": "The Corrupted",
+  "CORRUPTED.titleObject": "The Corrupted"
+}
