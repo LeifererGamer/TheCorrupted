@@ -1,0 +1,16 @@
+{
+  "CORRUPTED.aromaPrinciple": "[sine][purple]于腐化之中，我觅得力量……[/purple][/sine]",
+  "CORRUPTED.banter.alive.endTurnPing": "[sine]快点，不然我就腐化你！[/sine]",
+  "CORRUPTED.banter.dead.endTurnPing": "……",
+  "CORRUPTED.cardsModifierDescription": "腐化牌现在会出现在奖励和商店中。",
+  "CORRUPTED.cardsModifierTitle": "腐化牌",
+  "CORRUPTED.description": "一个前来审视尖塔的腐化灵魂。\n腐化之主。",
+  "CORRUPTED.eventDeathPrevention": "我必须活下去。我不能让腐化将我吞没。",
+  "CORRUPTED.goldMonologue": "[sine]你这儿卖不卖些上好的……腐化？[/sine]",
+  "CORRUPTED.possessiveAdjective": "他的",
+  "CORRUPTED.pronounObject": "他",
+  "CORRUPTED.pronounPossessive": "他的",
+  "CORRUPTED.pronounSubject": "他",
+  "CORRUPTED.title": "腐化者",
+  "CORRUPTED.titleObject": "腐化者"
+}
