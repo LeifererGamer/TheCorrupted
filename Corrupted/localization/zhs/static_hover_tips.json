@@ -1,0 +1,8 @@
+{
+  "BASELIB-RITUAL.title": "仪式",
+  "BASELIB-RITUAL.description": "你需要从你的[gold]手牌[/gold]中[gold]消耗[/gold]一张牌。若被[gold]消耗[/gold]的牌是[jitter][purple]诅咒[/purple][/jitter]牌，则会结算此牌的效果。",
+  "BASELIB-DOOMED.title": "临厄",
+  "BASELIB-DOOMED.description": "若此牌在你的回合结束时被弃掉，则会以较弱的形式免费打出。对自己施加 {Doomed} 层[jitter][pink]厄兆[/pink][/jitter]。",
+  "BASELIB-CORRUPTED.title": "腐化",
+  "BASELIB-CORRUPTED.description": "若此牌在你的回合结束时被弃掉，则会以较弱的形式免费打出。将 {Corrupted} 张随机[jitter][purple]诅咒[/purple][/jitter]洗入你的[gold]牌库[/gold]，并使自己获得 {Corrupted} 层对[gold]技能[/gold]生效的[gold]脆弱[/gold]或对[gold]攻击[/gold]生效的[gold]虚弱[/gold]。"
+}
