@@ -31,6 +31,9 @@ Requirements:
 
 Requires BaseLib 0.1.6, found here: https://github.com/Alchyr/BaseLib-StS2.
 
+Thanks to:
+Shuyou114 for ZHN translation
+
 Additional Information:
 
 On my github you can find all the files for the mod. https://github.com/LeifererGamer/TheCorrupted.
