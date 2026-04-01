@@ -32,7 +32,7 @@ Requirements:
 Requires BaseLib 0.1.6, found here: https://github.com/Alchyr/BaseLib-StS2.
 
 Thanks to:
-Shuyou114 for ZHN translation
+Shuyou114 for ZHS translation
 
 Additional Information:
 
