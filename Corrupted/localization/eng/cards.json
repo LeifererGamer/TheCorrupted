@@ -104,5 +104,13 @@
   "CORRUPTED_MULTIPLICATION.title": "Corrupted Multiplication",
   "CORRUPTED_MULTIPLICATION.description": "Whenever you draw this card, add a copy of it into your hand.\nGain {Block:diff()} [gold]Block[/gold] and add a [jitter][purple]Corruption[/purple][/jitter] card into your hand.",
   "CLOAK_OF_CORRUPTION.title": "Cloak of Corruption",
-  "CLOAK_OF_CORRUPTION.description": "Gain {Block:diff()} [gold]Block[/gold].\nIf you have any [jitter][purple]Curse[/purple][/jitter] card in your hand, gain {Energy:energyIcons()}."
+  "CLOAK_OF_CORRUPTION.description": "Gain {Block:diff()} [gold]Block[/gold].\nIf you have any [jitter][purple]Curse[/purple][/jitter] card in your hand, gain {Energy:energyIcons()}.",
+  "THECORRUPTED-SUMMON_ARMY.title": "Summon Army",
+  "THECORRUPTED-SUMMON_ARMY.description": "[gold]Summon Army {Army:diff()}[/gold]",
+  "COMMAND_ARMY.title": "Command Army",
+  "COMMAND_ARMY.description": "Deal {ExtraDamage:diff()} damage for each HP of your [gold]Corrupted Army[/gold].{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+  "THECORRUPTED-RITUAL_OF_SUMMONING.title": "Ritual of Summoning",
+  "THECORRUPTED-RITUAL_OF_SUMMONING.description": "[gold]Ritual:[/gold]\n[gold]Summon Army {Army:diff()}[/gold].",
+  "THECORRUPTED-DOOMED_ARMY.title": "Doomed Army",
+  "THECORRUPTED-DOOMED_ARMY.description": "[gold]Summon Army {Army:diff()}[/gold]\n[gold]Doomed {Doomed:diff()}[/gold]([gold]Summon Army {DamageDiff:diff()}[/gold])."
 }

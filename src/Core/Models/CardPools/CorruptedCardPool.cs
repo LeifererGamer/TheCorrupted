@@ -80,6 +80,9 @@ namespace TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<CorruptedEnergy>(),
                 ModelDb.Card<CorruptedMultiplication>(),
                 ModelDb.Card<CloakOfCorruption>(),
+                ModelDb.Card<SummonArmy>(),
+                ModelDb.Card<RitualOfSummoning>(),
+                ModelDb.Card<DoomedArmy>(),
             ];
         }
 

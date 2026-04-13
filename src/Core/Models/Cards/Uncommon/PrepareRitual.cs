@@ -18,7 +18,6 @@ namespace TheCorrupted.src.Core.Models.Cards.Uncommon
 {
     internal class PrepareRitual() : CardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         public override IEnumerable<CardKeyword> CanonicalKeywords =>

@@ -1,56 +1,50 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
-using Godot;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.src.Core.Models.Cards.Token;
+using TheCorrupted.src.Core.Models.Commands;
 using TheCorrupted.src.Core.Models.Extensions;
-using TheCorrupted.src.Core.Models.Powers;
 
-namespace TheCorrupted.src.Core.Models.Cards.Uncommon
+namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-
-internal class DoubleShield() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+    internal class RitualOfSummoning() : CardModel(0, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
+
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
+
+        protected override IEnumerable<DynamicVar> CanonicalVars => [
+            new RitualVar(1),
+            new ArmyVar(3),
+        ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
-        protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new BlockVar(10m, ValueProp.Move),
-            new RitualVar(1),
-        ];
-
-
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
             await Ritual.PerformRitual(choiceContext, cardPlay, base.Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<BlockNextTurnPower>(base.Owner.Creature, amount, base.Owner.Creature, this);
+                await CorruptedArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].BaseValue, this);
             });
+           
         }
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Block.UpgradeValueBy(4m);
+            base.DynamicVars["Army"].UpgradeValueBy(2m);
         }
 
     }
-
 }

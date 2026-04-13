@@ -17,11 +17,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class EnergyStrike() : CardModel(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
+    internal class EnergyStrike() : DoomedCardModel(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -42,43 +43,31 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            if (cardPlay.IsAutoPlay)
-            {
-                await DamageCmd.Attack(base.DynamicVars.ElementAt(1).Value.BaseValue).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
-                 .WithHitFx("vfx/vfx_attack_slash")
-                 .Execute(choiceContext);
-                await PowerCmd.Apply<EnergyNextTurnPower>(base.Owner.Creature, base.DynamicVars.Energy.IntValue, base.Owner.Creature, this);
-            }
-            else
-            {
-                await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-                await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue + 1, base.Owner);
-            }
-        }
-
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-            if (side != base.Owner.Creature.Side)
-            {
-                return;
-            }
-            if (this.Pile.Type.Equals(PileType.Hand))
-            {
-                IEnumerable<Creature> creatures = [base.Owner.Creature];
-                await CardCmd.AutoPlay(choiceContext, this, null);
-                await PowerCmd.Apply<DoomPower>(creatures, CanonicalVars.First().BaseValue, base.Owner.Creature, this);
-            }
-        }
 
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
             DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+        }
+
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars["DamageDiff"].BaseValue : base.DynamicVars.Damage.BaseValue;
+
+            await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
+                 .WithHitFx("vfx/vfx_attack_slash")
+                 .Execute(choiceContext);
+           
+        }
+
+        protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue + 1, base.Owner);
+        }
+
+        protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            await PowerCmd.Apply<EnergyNextTurnPower>(base.Owner.Creature, base.DynamicVars.Energy.IntValue, base.Owner.Creature, this);
         }
     }
 }

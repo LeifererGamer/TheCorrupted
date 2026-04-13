@@ -19,12 +19,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.src.Core.Models.Cards.Common;
 using TheCorrupted.src.Core.Models.Extensions;
 using TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class DoomBarrier() : CardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+    internal class DoomBarrier() : DoomedCardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
@@ -55,25 +56,17 @@ namespace TheCorrupted.src.Core.Models.Cards.Uncommon
             }
         }
 
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-            if (side != base.Owner.Creature.Side)
-            {
-                return;
-            }
-            if (this.Pile.Type.Equals(PileType.Hand))
-            {
-                IEnumerable<Creature> creatures = [base.Owner.Creature];
-                await PowerCmd.Apply<DoomPower>(creatures, DynamicVars["Doomed"].BaseValue, base.Owner.Creature, this);
-                await CardCmd.AutoPlay(choiceContext, this, null);
-                
-            }
-        }
         protected override void OnUpgrade()
         {
             base.DynamicVars["Doomed"].UpgradeValueBy(4);
         }
 
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars.CalculatedBlock.Calculate(cardPlay.Target) / 2 : base.DynamicVars.CalculatedBlock.Calculate(cardPlay.Target);
+
+            await CreatureCmd.GainBlock(base.Owner.Creature, amount, base.DynamicVars.CalculatedBlock.Props, cardPlay);
+        }
     }
 
 }

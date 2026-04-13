@@ -26,7 +26,7 @@ namespace TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
 
-internal class CorruptedArmor() : CardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
@@ -46,42 +46,23 @@ internal class CorruptedArmor() : CardModel(2, CardType.Skill, CardRarity.Uncomm
             new BlockVar(20m, ValueProp.Move),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            if (cardPlay.IsAutoPlay)
-            {
-                await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars["DamageDiff"].BaseValue, ValueProp.Move, cardPlay);
-            }
-            else
-            {
-                await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-                IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(base.Owner, ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(base.Owner.UnlockState, base.CombatState.RunState.CardMultiplayerConstraint), 2, base.CombatState.RunState.Rng.CombatCardGeneration);
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            }
-
-
-        }
-      
-
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-            if (side != base.Owner.Creature.Side)
-            {
-                return;
-            }
-            if (this.Pile.Type.Equals(PileType.Hand))
-            {
-                await CardCmd.AutoPlay(choiceContext, this, null);
-                await PowerCmd.Apply<FrailPower>(base.Owner.Creature, base.DynamicVars["Corrupted"].BaseValue, base.Owner.Creature, this);
-                IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(base.Owner, ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(base.Owner.UnlockState, base.CombatState.RunState.CardMultiplayerConstraint), base.DynamicVars["Corrupted"].IntValue, base.CombatState.RunState.Rng.CombatCardGeneration);
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            }
-        }
-
         protected override void OnUpgrade()
         {
             DynamicVars.Block.UpgradeValueBy(5m);
             DynamicVars["DamageDiff"].UpgradeValueBy(4m);
+        }
+
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars["DamageDiff"].BaseValue : base.DynamicVars.Block.BaseValue;
+
+            await CreatureCmd.GainBlock(base.Owner.Creature, amount, base.DynamicVars.CalculatedBlock.Props, cardPlay);
+        }
+
+        protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(base.Owner, ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(base.Owner.UnlockState, base.CombatState.RunState.CardMultiplayerConstraint), 2, base.CombatState.RunState.Rng.CombatCardGeneration);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
         }
     }
 }

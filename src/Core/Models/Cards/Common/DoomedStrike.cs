@@ -14,12 +14,13 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.src.Core.Models.Commands;
 using TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.src.Core.Models.Cards.Common
 {
     [Pool(typeof(CorruptedCardPool))]
-    internal class DoomedStrike() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
+    internal class DoomedStrike() : DoomedCardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -38,7 +39,7 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             if (cardPlay.IsAutoPlay)
             {
-                await DamageCmd.Attack(base.DynamicVars.ElementAt(1).Value.BaseValue).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
+                await DamageCmd.Attack(base.DynamicVars["DamageDiff"].BaseValue).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
                  .WithHitFx("vfx/vfx_attack_slash")
                  .Execute(choiceContext);
             }
@@ -50,25 +51,20 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
             }
         }
 
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-            if (side != base.Owner.Creature.Side)
-            {
-                return;
-            }
-            if (this.Pile.Type.Equals(PileType.Hand))
-            {
-                IEnumerable<Creature> creatures = [base.Owner.Creature];
-                await CardCmd.AutoPlay(choiceContext, this, null);
-                await PowerCmd.Apply<DoomPower>(creatures, CanonicalVars.First().BaseValue, base.Owner.Creature, this);
-            }
-        }
-
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
             DynamicVars.First().Value.UpgradeValueBy(2); //DoomedVar
             DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+        }
+
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars["DamageDiff"].BaseValue : base.DynamicVars.Damage.BaseValue;
+
+            await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
+                 .WithHitFx("vfx/vfx_attack_slash")
+                 .Execute(choiceContext);
         }
     }
 }

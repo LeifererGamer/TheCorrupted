@@ -36,21 +36,10 @@ internal class RitualOfGreaterDefence() : CardModel(1, CardType.Skill, CardRarit
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-            CardModel cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: base.Owner, filter: null, source: this)).FirstOrDefault();
-            if (cardModel != null)
+            await Ritual.PerformRitual(choiceContext, cardPlay, base.Owner, this, async (card) =>
             {
-
-                await CardCmd.Exhaust(choiceContext, cardModel);
-                await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-                if (cardModel.Type.Equals(CardType.Curse) || cardModel.Type.Equals(CardType.Status) && base.Owner.Creature.HasPower<StatusQuoPower>())
-                {
-                    await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-                }
-
-            }
-
-
-
+                await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
+            });
         }
 
         protected override void OnUpgrade()

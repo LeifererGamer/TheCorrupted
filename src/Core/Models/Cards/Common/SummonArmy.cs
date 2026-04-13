@@ -1,7 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,45 +15,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.src.Core.Models.Cards.Curse;
+using TheCorrupted.src.Core.Models.Cards.Token;
+using TheCorrupted.src.Core.Models.Commands;
 using TheCorrupted.src.Core.Models.Extensions;
-using TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class SmokeScreen() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+    internal class SummonArmy() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [
-            HoverTipFactory.FromPower<WeakPower>()
-        ];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new BlockVar(5m, ValueProp.Move),
-            new PowerVar<WeakPower>(2m),
-            new RitualVar(1),
+            new ArmyVar(5),
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-            await Ritual.PerformRitual(choiceContext, cardPlay, base.Owner, this, async (card) =>
-            {
-                await PowerCmd.Apply<WeakPower>(base.CombatState.HittableEnemies, base.DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
-            });
+            await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+            await CorruptedArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].BaseValue, this);
         }
 
         protected override void OnUpgrade()
         {
-            base.DynamicVars.Block.UpgradeValueBy(2m);
-            base.DynamicVars["WeakPower"].UpgradeValueBy(1m);
+            base.DynamicVars["Army"].UpgradeValueBy(2m);
         }
 
     }
-
 }

@@ -35,16 +35,10 @@ internal class ForbiddenAlchemy() : CardModel(2, CardType.Skill, CardRarity.Unco
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            CardModel cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: Owner, filter: null, source: this)).FirstOrDefault();
-            if (cardModel != null)
+            await Ritual.PerformRitual(choiceContext, cardPlay, base.Owner, this, async (card) =>
             {
-                await CardCmd.Exhaust(choiceContext, cardModel);
-                await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-                if (cardModel.Type.Equals(CardType.Curse) || cardModel.Type.Equals(CardType.Status) && Owner.Creature.HasPower<StatusQuoPower>())
-                {
-                    await PotionCmd.TryToProcure(PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(), Owner);
-                }
-            }
+                await PotionCmd.TryToProcure(PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(), Owner);
+            });
         }
 
         protected override void OnUpgrade()

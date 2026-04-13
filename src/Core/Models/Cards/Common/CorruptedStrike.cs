@@ -26,7 +26,7 @@ using TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class CorruptedStrike() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
+    internal class CorruptedStrike() : CorruptedCardModel<WeakPower>(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -44,45 +44,20 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
             new DamageVar(8m, ValueProp.Move),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            if (cardPlay.IsAutoPlay)
-            {
-                await DamageCmd.Attack(base.DynamicVars["DamageDiff"].BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                 .WithHitFx("vfx/vfx_attack_slash")
-                 .Execute(choiceContext);
-            }
-            else
-            {
-                await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                    .WithHitFx("vfx/vfx_attack_slash")
-                    .Execute(choiceContext);
-            }
-        }
-
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-            if (side != base.Owner.Creature.Side)
-            {
-                return;
-            }
-            if (this.Pile.Type.Equals(PileType.Hand))
-            {
-                await CardCmd.AutoPlay(choiceContext, this, null);
-                await PowerCmd.Apply<WeakPower>(base.Owner.Creature, base.DynamicVars["Corrupted"].BaseValue, base.Owner.Creature, this);
-                IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(base.Owner, ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(base.Owner.UnlockState, base.CombatState.RunState.CardMultiplayerConstraint), base.DynamicVars["Corrupted"].IntValue, base.CombatState.RunState.Rng.CombatCardGeneration);
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            }
-        }
-
-
-
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
             DynamicVars.First().Value.UpgradeValueBy(1); //CursedVar
             DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+        }
+
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars["DamageDiff"].BaseValue : base.DynamicVars.Damage.BaseValue;
+
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
         }
     }
 

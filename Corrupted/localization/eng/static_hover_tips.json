@@ -3,7 +3,9 @@
   "BASELIB-RITUAL.description": "You need to [gold]Exhaust[/gold] a card from your [gold]Hand[/gold]. If the [gold]exhausted[/gold] card is a [jitter][purple]Curse[/purple][/jitter] the effects of this card resolve.",
   "BASELIB-DOOMED.title": "Doomed",
   "BASELIB-DOOMED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Add {Doomed} [jitter][pink]Doom[/pink][/jitter] to yourself.",
-  "BASELIB-CORRUPTED.title": "Cursed",
-  "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Deck[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself."
+  "BASELIB-CORRUPTED.title": "Corrupted",
+  "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Deck[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself.",
+  "BASELIB-ARMY.title": "Summon Army",
+  "BASELIB-ARMY.description": "Summon a [gold]Corrupted Army[/gold] with [blue]{Army}[/blue] HP.\nIf already summoned, raise their Max HP by [blue]{Army}[/blue] for this combat.\nThe first time you [gold]Summon Army[/gold] each combat, add [gold]Command Army[/gold] into your [gold]Hand[/gold]."
 
 }
