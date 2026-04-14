@@ -9,10 +9,6 @@
   "CORRUPTION_CORRUPTED.description": "",
   "THECORRUPTED-DEFENSIVE_RITUAL.title": "Defensive Ritual",
   "THECORRUPTED-DEFENSIVE_RITUAL.description": "[gold]Ritual:[/gold]\nGain {Block:diff()} [gold]Block[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
-  "CORRUPTING_STRIKE_COMMON.title": "Corrupting Strike",
-  "CORRUPTING_STRIKE_COMMON.description": "Deal {Damage:diff()} damage.\nGain {Block:diff()} [gold]Block[/gold].\nAdd 1 [jitter][purple]Corruption[/purple][/jitter] into your [gold]Hand[/gold].",
-  "THECORRUPTED-DEFENSIVE_RITUAL_COMMON.title": "Defensive Ritual",
-  "THECORRUPTED-DEFENSIVE_RITUAL_COMMON.description": "[gold]Ritual:[/gold]\nGain {Block:diff()} [gold]Block[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "DOOMSDAY_STRIKE.title": "Doomsday Strike",
   "DOOMSDAY_STRIKE.description": "Deal 1 damage for each stack of [jitter][pink]Doom[/pink][/jitter] on you.{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
   "DOOMSDAY_DOOR.title": "Doomsday Door",
@@ -112,5 +108,14 @@
   "THECORRUPTED-RITUAL_OF_SUMMONING.title": "Ritual of Summoning",
   "THECORRUPTED-RITUAL_OF_SUMMONING.description": "[gold]Ritual:[/gold]\n[gold]Summon Army {Army:diff()}[/gold].",
   "THECORRUPTED-DOOMED_ARMY.title": "Doomed Army",
-  "THECORRUPTED-DOOMED_ARMY.description": "[gold]Summon Army {Army:diff()}[/gold]\n[gold]Doomed {Doomed:diff()}[/gold]([gold]Summon Army {DamageDiff:diff()}[/gold])."
+  "THECORRUPTED-DOOMED_ARMY.description": "[gold]Summon Army {Army:diff()}[/gold]\n[gold]Doomed {Doomed:diff()}[/gold]([gold]Summon Army {DamageDiff:diff()}[/gold]).",
+  "THECORRUPTED-CLEANSING_RITUAL.title": "Cleansing Ritual",
+  "THECORRUPTED-CLEANSING_RITUAL.description": "[gold]Ritual:[/gold]\n[gold]Cleansing {Cleansing:diff()}[/gold].",
+  "THECORRUPTED-DELAYED_SUMMONING.title": "Delayed Summoning",
+  "THECORRUPTED-DELAYED_SUMMONING.description": "Next turn, [gold]Summon Army {Army:diff()}[/gold] and gain {Energy:energyIcons()}.",
+  "DOOMING_STRIKE.title": "Dooming Strike",
+  "DOOMING_STRIKE.description": "Deal {Damage:diff()} damage.\nApply [jitter][pink]Doom[/pink][/jitter] to yourself, equal to the half of damage dealt.",
+  "SOUL_SPLITTER.title": "Soul Splitter",
+  "SOUL_SPLITTER.description": "Deal {Damage:diff()} damage.\n[gold]Summon Army {Army:diff()}[/gold]"
+
 }

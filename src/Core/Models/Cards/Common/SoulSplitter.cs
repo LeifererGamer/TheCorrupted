@@ -1,12 +1,11 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Abstracts;
+using BaseLib.Cards.Variables;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 using System;
 using System.Collections.Generic;
@@ -14,37 +13,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
-using TheCorrupted.src.Core.Models.Cards.Curse;
+using TheCorrupted.src.Core.Models.Cards.Token;
+using TheCorrupted.src.Core.Models.Commands;
 
-
-namespace TheCorrupted.src.Core.Models.Cards.Basic
+namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-    public sealed class CorruptingStrikeCommon() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    internal class SoulSplitter() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
-        public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CorruptionCorrupted>()];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new DamageVar(7m, ValueProp.Move),
+            new ArmyVar(3),
             new BlockVar(5m, ValueProp.Move)
         ];
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_flying_slash")
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
-            await CorruptionCorrupted.CreateInHand(Owner, CombatState);
+            await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+            await CorruptedArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].BaseValue, this);
         }
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Block.UpgradeValueBy(3m);
-            DynamicVars.Damage.UpgradeValueBy(3m);
+            base.DynamicVars.Damage.UpgradeValueBy(3m);
+            base.DynamicVars["Army"].UpgradeValueBy(2m);
         }
     }
 }
+

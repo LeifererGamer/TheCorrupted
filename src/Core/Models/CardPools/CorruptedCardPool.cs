@@ -47,8 +47,6 @@ namespace TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<CorruptedForm>(),
                 ModelDb.Card<HellfireShockwave>(),
                 ModelDb.Card<CorruptedMace>(),
-                ModelDb.Card<CorruptingStrikeCommon>(),
-                ModelDb.Card<DefensiveRitualCommon>(),
                 ModelDb.Card<HellfirePact>(),
                 ModelDb.Card<CorruptedBlade>(),
                 ModelDb.Card<DemonSword>(),
@@ -83,6 +81,10 @@ namespace TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<SummonArmy>(),
                 ModelDb.Card<RitualOfSummoning>(),
                 ModelDb.Card<DoomedArmy>(),
+                ModelDb.Card<CleansingRitual>(),
+                ModelDb.Card<DelayedSummoning>(),
+                ModelDb.Card<DoomingStrike>(),
+                ModelDb.Card<SoulSplitter>(),
             ];
         }
 
