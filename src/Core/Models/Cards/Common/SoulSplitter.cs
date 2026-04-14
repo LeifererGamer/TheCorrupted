@@ -1,5 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -15,10 +16,12 @@ using System.Threading.Tasks;
 using TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.src.Core.Models.Cards.Token;
 using TheCorrupted.src.Core.Models.Commands;
+using TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class SoulSplitter() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
+
+internal class SoulSplitter() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -26,8 +29,10 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new ArmyVar(3),
-            new BlockVar(5m, ValueProp.Move)
+            new DamageVar(5m, ValueProp.Move)
         ];
+
+        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {

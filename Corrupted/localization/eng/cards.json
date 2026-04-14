@@ -115,7 +115,7 @@
   "THECORRUPTED-DELAYED_SUMMONING.description": "Next turn, [gold]Summon Army {Army:diff()}[/gold] and gain {Energy:energyIcons()}.",
   "DOOMING_STRIKE.title": "Dooming Strike",
   "DOOMING_STRIKE.description": "Deal {Damage:diff()} damage.\nApply [jitter][pink]Doom[/pink][/jitter] to yourself, equal to the half of damage dealt.",
-  "SOUL_SPLITTER.title": "Soul Splitter",
-  "SOUL_SPLITTER.description": "Deal {Damage:diff()} damage.\n[gold]Summon Army {Army:diff()}[/gold]"
+  "THECORRUPTED-SOUL_SPLITTER.title": "Soul Splitter",
+  "THECORRUPTED-SOUL_SPLITTER.description": "Deal {Damage:diff()} damage.\n[gold]Summon Army {Army:diff()}[/gold]."
 
 }
