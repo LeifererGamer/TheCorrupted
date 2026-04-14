@@ -33,7 +33,6 @@ namespace TheCorrupted.src.Core.Models.CardPools
         {
             return
             [
-                ModelDb.Card<DefensiveRitualCommon>(),
                 ModelDb.Card<CorruptionToAshes>(),
                 ModelDb.Card<HellfireBarrier>(),
                 ModelDb.Card<DoubleShield>(),
@@ -43,6 +42,7 @@ namespace TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<HellfireCardWall>(),
                 ModelDb.Card<RitualOfStrength>(),
                 ModelDb.Card<SmokeScreen>(),
+                ModelDb.Card<CleansingRitual>(),
             ];
         }
 
