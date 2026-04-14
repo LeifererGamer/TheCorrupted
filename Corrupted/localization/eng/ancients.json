@@ -1,7 +1,8 @@
 {
-  "THE_ARCHITECT.talk.CORRUPTED.0-0.next": "Continue",
-  "THE_ARCHITECT.talk.CORRUPTED.0-0.char": "I sense a cursed presence...",
-  "THE_ARCHITECT.talk.CORRUPTED.0-1.ancient": "Ah, the Cursed arrives. Cursed, but restless.",
+  "THE_ARCHITECT.talk.CORRUPTED.0-0r.char": "I sense a cursed presence...",
+  "THE_ARCHITECT.talk.CORRUPTED.0-0r.next": "Continue",
+  "THE_ARCHITECT.talk.CORRUPTED.0-1r.ancient": "Ah, the Corrupted arrives. Corrupted, but restless.",
+  "THE_ARCHITECT.talk.CORRUPTED.0-attack": "Both",
 
   "THE_ARCHITECT.talk.CORRUPTED.1-0.next": "Continue",
   "THE_ARCHITECT.talk.CORRUPTED.1-0.char": "[sine]I am ready for what comes.[/sine]",

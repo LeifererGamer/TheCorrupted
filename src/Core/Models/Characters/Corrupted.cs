@@ -23,7 +23,8 @@ using TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.src.Core.Models.Characters;
 
-    public sealed class Corrupted : CharacterModel
+
+public sealed class Corrupted : CharacterModel
     {
         public const string energyColorName = "corrupted";
 
