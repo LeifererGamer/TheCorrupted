@@ -42,14 +42,14 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(2),
-            new DamageDiffVar(10m),
-            new BlockVar(20m, ValueProp.Move),
+            new DamageDiffVar(7m),
+            new BlockVar(14m, ValueProp.Move),
         ];
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Block.UpgradeValueBy(5m);
-            DynamicVars["DamageDiff"].UpgradeValueBy(4m);
+            DynamicVars.Block.UpgradeValueBy(6m);
+            DynamicVars["DamageDiff"].UpgradeValueBy(3m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

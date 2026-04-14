@@ -25,5 +25,8 @@
   "CORRUPTED_FORM_POWER.smartDescription": "Whenever you draw a [jitter][purple]Curse[/purple][/jitter], gain {Amount} [red]Strength[/red].",
   "HELLFIRE_PACT_POWER.title": "Hellfire Pact",
   "HELLFIRE_PACT_POWER.description": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, draw 1 card.",
-  "HELLFIRE_PACT_POWER.smartDescription": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, draw 1 card."
+  "HELLFIRE_PACT_POWER.smartDescription": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, draw 1 card.",
+  "THECORRUPTED-SUMMON_ARMY_NEXT_TURN_POWER.description": "At the start of your next turn, [gold]Summon Army 4[/gold].",
+  "THECORRUPTED-SUMMON_ARMY_NEXT_TURN_POWER.smartDescription": "At the start of your next turn, [gold]Summon Army {Amount}[/gold].",
+  "THECORRUPTED-SUMMON_ARMY_NEXT_TURN_POWER.title": "Summon Army Next Turn"
 }

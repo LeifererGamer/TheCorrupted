@@ -18,10 +18,11 @@ using TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    public sealed class DoomsdayStrike() : CardModel(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public sealed class DoomsdayStrike() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
+        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0m),
@@ -39,7 +40,7 @@ namespace TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override void OnUpgrade()
         {
-            base.EnergyCost.UpgradeBy(-1);
+            base.DynamicVars["ExtraDamage"].UpgradeValueBy(1m);
         }
     }
 }
