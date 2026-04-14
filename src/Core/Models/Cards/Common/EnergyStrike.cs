@@ -1,6 +1,7 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -47,14 +48,14 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+            DynamicVars["DamageDiff"].UpgradeValueBy(1m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             decimal amount = cardPlay.IsAutoPlay ? base.DynamicVars["DamageDiff"].BaseValue : base.DynamicVars.Damage.BaseValue;
 
-            await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
+            await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)
                  .WithHitFx("vfx/vfx_attack_slash")
                  .Execute(choiceContext);
            
@@ -62,7 +63,9 @@ namespace TheCorrupted.src.Core.Models.Cards.Common
 
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue + 1, base.Owner);
+            CardPile hand = PileType.Hand.GetPile(base.Owner);
+            if (hand.Cards.Where(card => card.Type == CardType.Curse).ToList().Count > 0)
+                await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue + 1, base.Owner);
         }
 
         protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)

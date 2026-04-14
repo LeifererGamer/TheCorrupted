@@ -24,6 +24,8 @@ namespace TheCorrupted.src.Core.Models.Cards.Basic
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
+        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
+
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CorruptionCorrupted>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
