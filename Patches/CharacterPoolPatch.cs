@@ -3,8 +3,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 
 using System.Reflection;
-
-using TheCorrupted.src.Core.Models.Characters;
+using TheCorrupted.TheCorrupted.src.Core.Models.Characters;
 
 namespace TheCorrupted.Patches
 {

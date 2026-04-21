@@ -28,24 +28,42 @@
 	<ItemGroup>
 		<Reference Include="Sts2">
 			<HintPath>D:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
-			<Private>False</Private>
 		</Reference>
 		<Reference Include="0Harmony">
 			<HintPath>$(GameDataDir)\0Harmony.dll</HintPath>
-			<Private>False</Private>
 		</Reference>
 		<Reference Include="GodotSharp">
 			<HintPath>$(GameDataDir)\GodotSharp.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 
-		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.3" PrivateAssets="All" />
+		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.7" PrivateAssets="All" />
 		<PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
 		<AdditionalFiles Include="Corrupted/localization/**/*.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="src\Core\Models\Extensions\StringExtensions.cs.uid" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\ancients.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\cards.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\characters.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\monsters.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\powers.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\relics.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\eng\static_hover_tips.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\ancients.zhs.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\cards.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\characters.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\powers.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\relics.json" />
+	  <AdditionalFiles Include="TheCorrupted\localization\zhs\static_hover_tips.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="TheCorrupted\src\Core\Models\Extensions\StringExtensions.cs.uid" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Corrupted\" />
 	</ItemGroup>
 
 	<!-- Create Godot folder structure -->
@@ -167,7 +185,7 @@ dotnet/embed_build_outputs=false
 	<Target Name="PostBuild" AfterTargets="Build">
 		<MakeDir Directories="$(ModsOutputDir)" />
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsOutputDir)" />
-		<Copy SourceFiles="Corrupted.json" DestinationFolder="$(ModsOutputDir)" Condition="Exists('Corrupted.json')" />
+		<Copy SourceFiles="TheCorrupted.json" DestinationFolder="$(ModsOutputDir)" Condition="Exists('TheCorrupted.json')" />
 		<Exec Command="&quot;$(GodotExePath)&quot; --headless --path &quot;$(GodotProject)&quot; --export-pack &quot;Windows Desktop&quot; &quot;$(ModsOutputDir)\$(ModName).pck&quot;" ContinueOnError="true" />
 	</Target>
 </Project>

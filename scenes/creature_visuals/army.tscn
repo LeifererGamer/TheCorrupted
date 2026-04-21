@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmmkghry6r5ga"]
+
+[ext_resource type="Texture2D" uid="uid://qrrwjtk5p72t" path="res://animations/monsters/army/army.png" id="1_emlhq"]
+[ext_resource type="Script" uid="uid://bhrkamq1j6u3t" path="res://src/Core/Nodes/Combat/SNCreatureVisuals.cs" id="1_jasup"]
+
+[node name="Osty" type="Node2D"]
+script = ExtResource("1_jasup")
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.99999994, -104.99999)
+scale = Vector2(0.5799572, 0.60430336)
+texture = ExtResource("1_emlhq")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -204.0
+offset_right = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-15, -109)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -218)

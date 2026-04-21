@@ -1,23 +1,28 @@
-﻿using Godot.Bridge;
+﻿using Godot;
+using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
-using MegaCrit.Sts2.Core.Models;
 using System.Reflection;
+using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
-[ModInitializer("Initialize")]
-public class ModEntry
+namespace TheCorrupted;
+
+[ModInitializer(nameof(Initialize))]
+public partial class ModEntry : Node // Make this partial and inherit from Node
 {
+    public const string ModId = "TheCorrupted";
+
+    public static Logger Logger { get; } = new(ModId, LogType.Generic);
+
     public static void Initialize()
     {
-        var harmony = new Harmony("cursed.patch");
-        Log.Info("Cursed");
-
+        Harmony harmony = new(ModId);
         var assembly = Assembly.GetExecutingAssembly();
+
+        // This is the magic line. It will NOW find your character because it is "partial"!
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
 
-        //ProgressSaveManagerCustomCharPatch.Apply(harmony);
         harmony.PatchAll();
     }
 }
-

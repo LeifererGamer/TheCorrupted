@@ -2,7 +2,8 @@
 using MegaCrit.Sts2.Core.Entities.Ancients;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
-using TheCorrupted.src.Core.Models.Characters;
+using TheCorrupted.TheCorrupted.src.Core.Models.Characters;
+
 internal static class CorruptedDialogueHelper
 {
     public static void AddCorruptedDialogues(AncientDialogueSet dialogueSet, List<AncientDialogue> dialogues)

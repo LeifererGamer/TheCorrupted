@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
-using TheCorrupted.src.Core.Models.RelicPools;
+using TheCorrupted.TheCorrupted.src.Core.Models.RelicPools;
 
 namespace TheCorrupted.Patches
 {
