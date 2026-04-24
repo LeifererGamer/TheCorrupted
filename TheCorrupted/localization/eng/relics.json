@@ -1,5 +1,5 @@
 {
-  "CORRUPTED_BLADE.description": "At the start of each combat, shuffle 1 [jitter][purple]Corruption[/purple][/jitter] into your draw pile.",
-  "CORRUPTED_BLADE.flavor": "A blade cursed by something evil.",
-  "CORRUPTED_BLADE.title": "Cursed Blade"
+  "CORRUPTED_BLADE_RELIC.description": "At the start of each combat, shuffle 1 [jitter][purple]Corruption[/purple][/jitter] into your draw pile.",
+  "CORRUPTED_BLADE_RELIC.flavor": "A blade cursed by something evil.",
+  "CORRUPTED_BLADE_RELIC.title": "Cursed Blade"
 }

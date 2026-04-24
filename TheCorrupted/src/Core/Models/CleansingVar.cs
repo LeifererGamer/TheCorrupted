@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models
-{
+namespace BaseLib.Cards.Variables;
+
     internal class CleansingVar : DynamicVar
     {
         public const string Key = "Cleansing";
-        public CleansingVar(decimal baseValue) : base(Key, baseValue)
+        public CleansingVar(decimal baseValue = 0m) : base(Key, baseValue)
         {
             this.WithTooltip();
         }
     }
-}

@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models
+namespace BaseLib.Cards.Variables;
+
+public class DamageDiffVar : DynamicVar
 {
-    public class DamageDiffVar : DynamicVar
+    public const string Key = "DamageDiff";
+    public DamageDiffVar(decimal baseValue) : base(Key, baseValue)
     {
-        public const string Key = "DamageDiff";
-        public DamageDiffVar(decimal baseValue) : base(Key, baseValue)
-        {
-        }
     }
 }

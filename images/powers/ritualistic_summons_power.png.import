@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://curhu6l4ichf1"
-path="res://.godot/imported/summon_army_next_turn_power.png-af8c65ecec0c4fe498f8b557f17118fa.ctex"
+uid="uid://bvbcvptmati2u"
+path="res://.godot/imported/ritualistic_summons_power.png-8450a927f1def37143b5b6e6811d6a63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/powers/summon_army_next_turn_power.png"
-dest_files=["res://.godot/imported/summon_army_next_turn_power.png-af8c65ecec0c4fe498f8b557f17118fa.ctex"]
+source_file="res://images/powers/ritualistic_summons_power.png"
+dest_files=["res://.godot/imported/ritualistic_summons_power.png-8450a927f1def37143b5b6e6811d6a63.ctex"]
 
 [params]
 

@@ -8,4 +8,9 @@ public static class StringExtensions
         return Path.Join("images", "packed", "card_portraits", "corrupted", path);
     }
 
+    public static string CardImagePathCurses(this string path)
+    {
+        return Path.Join("images", "packed", "card_portraits", "curse", path);
+    }
+
 }

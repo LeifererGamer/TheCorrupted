@@ -19,7 +19,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 {
-    public sealed class CorruptedBlade : RelicModel
+    public sealed class CorruptedBladeRelic : RelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Starter;
 

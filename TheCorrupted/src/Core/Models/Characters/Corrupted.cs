@@ -57,7 +57,7 @@ public sealed class Corrupted : CharacterModel
         ModelDb.Card<CorruptingStrike>()
         ];
 
-        public override IReadOnlyList<RelicModel> StartingRelics =>[ModelDb.Relic<CorruptedBlade>()];
+        public override IReadOnlyList<RelicModel> StartingRelics =>[ModelDb.Relic<CorruptedBladeRelic>()];
         protected override string CharacterSelectIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted.png");
 
         protected override string CharacterSelectLockedIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted_locked.png");

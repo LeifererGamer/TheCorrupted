@@ -1,4 +1,5 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,7 +10,6 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
-using TheCorrupted.TheCorrupted.src.Core.Models.Cards;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 

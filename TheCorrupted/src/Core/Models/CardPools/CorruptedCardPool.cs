@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Unlocks;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Ancient;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common;
+using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
 
@@ -85,6 +86,26 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<DelayedSummoning>(),
                 ModelDb.Card<DoomingStrike>(),
                 ModelDb.Card<SoulSplitter>(),
+                ModelDb.Card<DoomingArmy>(),
+                ModelDb.Card<SongOfDamnation>(),
+                ModelDb.Card<UnstableEnergy>(),
+                ModelDb.Card<SpreadTheCorruption>(),
+                ModelDb.Card<CleansingStrike>(),
+                ModelDb.Card<ArmyEmpowerment>(),
+                ModelDb.Card<RitualAftermath>(),
+                ModelDb.Card<ArmyOfDoom>(),
+                ModelDb.Card<DoomedSoulStrike>(),
+                ModelDb.Card<ReadyYourArmy>(),
+                ModelDb.Card<Doomsday>(),
+                ModelDb.Card<ShareYourStrength>(),
+                ModelDb.Card<GroupSummoning>(),
+                ModelDb.Card<DoomsdaySummon>(),
+                ModelDb.Card<CorruptedReckoning>(),
+                ModelDb.Card<Trample>(),
+                ModelDb.Card<DoomingCorruption>(),
+                ModelDb.Card<CorruptedGem>(),
+                ModelDb.Card<RitualisticSummons>(),
+                ModelDb.Card<CleanseWithRituals>(),
             ];
         }
 

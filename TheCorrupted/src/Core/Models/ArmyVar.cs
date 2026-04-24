@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models
-{
+namespace BaseLib.Cards.Variables;
+
     internal class ArmyVar : DynamicVar
     {
         public const string Key = "Army";
-        public ArmyVar(decimal baseValue) : base(Key, baseValue)
+        public ArmyVar(decimal baseValue = 0m) : base(Key, baseValue)
         {
             this.WithTooltip();
         }
     }
-}
+

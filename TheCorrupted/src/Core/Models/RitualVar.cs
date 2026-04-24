@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models
+namespace BaseLib.Cards.Variables;
+
+public class RitualVar : DynamicVar
 {
-    public class RitualVar : DynamicVar
+    public const string Key = "Ritual";
+    public RitualVar(decimal baseValue = 0m) : base(Key, baseValue)
     {
-        public const string Key = "Ritual";
-        public RitualVar(decimal baseValue) : base(Key, baseValue)
-        {
-            this.WithTooltip();
-        }
+        this.WithTooltip();
     }
 }

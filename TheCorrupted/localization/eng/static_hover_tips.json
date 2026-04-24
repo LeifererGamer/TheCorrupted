@@ -6,7 +6,7 @@
   "BASELIB-CORRUPTED.title": "Corrupted",
   "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Deck[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself.",
   "BASELIB-ARMY.title": "Summon Army",
-  "BASELIB-ARMY.description": "Summon a [gold]Corrupted Army[/gold] with [blue]{Army}[/blue] HP.\nIf already summoned, raise their Max HP by [blue]{Army}[/blue] for this combat.\nThe first time you [gold]Summon Army[/gold] each combat, add [gold]Command Army[/gold] into your [gold]Hand[/gold].",
+  "BASELIB-ARMY.description": "Summon a [gold]Corrupted Army[/gold] with [blue]X[/blue] HP.\nIf already summoned, raise their Max HP by [blue]X[/blue] for this combat.\nThe first time you [gold]Summon Army[/gold] each combat, add [gold]Command Army[/gold] into your [gold]Hand[/gold].",
   "BASELIB-CLEANSING.title": "Cleansing",
-  "BASELIB-CLEANSING.description": "Remove up to {Cleansing} [jitter][pink]Doom[/pink][/jitter] from yourself."
+  "BASELIB-CLEANSING.description": "Remove up to X [jitter][pink]Doom[/pink][/jitter] from yourself."
 }

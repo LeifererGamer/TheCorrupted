@@ -1,4 +1,5 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,7 +11,6 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
-using TheCorrupted.TheCorrupted.src.Core.Models.Cards;
 using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
@@ -31,23 +31,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            if (cardPlay.IsAutoPlay)
-            {
-                await DamageCmd.Attack(DynamicVars["DamageDiff"].BaseValue).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
-                 .WithHitFx("vfx/vfx_attack_slash")
-                 .Execute(choiceContext);
-            }
-            else
-            {
-                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-            }
-        }
 
         protected override void OnUpgrade()
         {

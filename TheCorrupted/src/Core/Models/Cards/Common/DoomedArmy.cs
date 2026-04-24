@@ -10,14 +10,8 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
-using TheCorrupted.TheCorrupted.src.Core.Models.Cards;
+using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token;
 using TheCorrupted.TheCorrupted.src.Core.Models.Commands;
 using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
@@ -27,7 +21,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DoomPower>()];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.FromPower<DoomPower>(),
+            HoverTipFactory.FromCard<CommandArmy>()
+        ];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DoomedVar(3),

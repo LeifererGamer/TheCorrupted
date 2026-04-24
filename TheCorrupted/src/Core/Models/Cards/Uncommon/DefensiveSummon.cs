@@ -31,8 +31,8 @@ internal class DefensiveSummon() : CardModel(1, CardType.Skill, CardRarity.Uncom
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new ArmyVar(3),
-            new BlockVar(5m, ValueProp.Move)
+            new ArmyVar(5),
+            new BlockVar(7m, ValueProp.Move)
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();

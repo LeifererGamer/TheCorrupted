@@ -19,7 +19,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.RelicPools
         {
             return
             [
-                ModelDb.Relic<CorruptedBlade>(),
+                ModelDb.Relic<CorruptedBladeRelic>(),
             ];
         }
 

@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models
+namespace BaseLib.Cards.Variables;
+
+public class DoomedVar : DynamicVar
 {
-    public class DoomedVar : DynamicVar
+    public const string Key = "Doomed";
+    public DoomedVar(decimal baseValue) : base(Key, baseValue)
     {
-        public const string Key = "Doomed";
-        public DoomedVar(decimal baseValue) : base(Key, baseValue)
-        {
-            this.WithTooltip();
-        }
+        this.WithTooltip();
     }
 }

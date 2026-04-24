@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c85w2h7xcmmf1"
-path="res://.godot/imported/corrupted_blade.png-e7884bd8a57785937bd3bae8c0fbf870.ctex"
+uid="uid://bc2tg80ewep11"
+path="res://.godot/imported/corrupted_gem.png-357e43d188651c4347724121fafc3599.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/relics/corrupted_blade.png"
-dest_files=["res://.godot/imported/corrupted_blade.png-e7884bd8a57785937bd3bae8c0fbf870.ctex"]
+source_file="res://images/packed/card_portraits/corrupted/corrupted_gem.png"
+dest_files=["res://.godot/imported/corrupted_gem.png-357e43d188651c4347724121fafc3599.ctex"]
 
 [params]
 

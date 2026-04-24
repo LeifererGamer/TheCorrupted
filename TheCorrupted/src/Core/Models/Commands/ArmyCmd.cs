@@ -7,24 +7,18 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.TestSupport;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token;
-using TheCorrupted.TheCorrupted.src.Core.Models.Monsters;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
 {
     public static class ArmyCmd
     {
+
         public static async Task<SummonResult> Summon(PlayerChoiceContext choiceContext, Player summoner, decimal amount, AbstractModel? source)
         {
             Player summoner2 = summoner;
@@ -40,7 +34,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
                 SfxCmd.Play("event:/sfx/characters/necrobinder/necrobinder_summon");
             }
 
-            Creature army = combatState.Allies.FirstOrDefault((c) => c.PetOwner == summoner2);
+            Creature osty = combatState.Allies.FirstOrDefault((Creature c) => c.Monster is Osty && c.PetOwner == summoner2);
             if (summoner2.IsOstyAlive)
             {
                 await CreatureCmd.GainMaxHp(summoner2.Osty, amount);
@@ -48,50 +42,51 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
             else
             {
                 await GiveCommandArmy(summoner2, source);
-                bool isReviving = army != null;
+                bool isReviving = osty != null;
                 if (isReviving)
                 {
-                    if (army.IsAlive)
+                    if (osty.IsAlive)
                     {
                         throw new InvalidOperationException("We shouldn't make it here if Osty is still alive!");
                     }
 
-                    summoner2.PlayerCombatState.AddPetInternal(army);
+                    summoner2.PlayerCombatState.AddPetInternal(osty);
                 }
                 else
                 {
-                    army = await PlayerCmd.AddPet<Army>(summoner2);
-                    NCreature ostyNode = NCombatRoom.Instance?.GetCreatureNode(army);
-                    if (ostyNode != null)
+                    osty = await PlayerCmd.AddPet<Osty>(summoner2);
+                    NCreature ostyNode = NCombatRoom.Instance?.GetCreatureNode(osty);
+                    if (ostyNode != null && source is CardModel)
                     {
                         ostyNode.Modulate = Colors.Transparent;
                         Tween tween = ostyNode.CreateTween();
-                        tween.TweenProperty(ostyNode, "modulate:a", 1, 0.34999999403953552).From(0);
+                        tween.TweenProperty(ostyNode, "modulate", Colors.White, 0.34999999403953552).SetDelay(0.10000000149011612);
                         ostyNode.StartReviveAnim();
                     }
 
-                    await PowerCmd.Apply<DieForYouPower>(army, 1m, null, null);
+                    await PowerCmd.Apply<DieForYouPower>(osty, 1m, null, null);
                     ostyNode?.TrackBlockStatus(summoner2.Creature);
                 }
 
-                await CreatureCmd.SetMaxHp(army, amount);
-                await CreatureCmd.Heal(army, amount, isReviving);
+                await CreatureCmd.SetMaxHp(osty, amount);
+                await CreatureCmd.Heal(osty, amount, isReviving);
                 if (isReviving)
                 {
-                    await Hook.AfterOstyRevived(combatState, army);
+                    await Hook.AfterOstyRevived(combatState, osty);
                 }
             }
 
             if (TestMode.IsOff)
             {
-                NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(army);
-                nCreature.OstyScaleToSize(army.MaxHp, 0.75f);
+                NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(osty);
+                nCreature.OstyScaleToSize(osty.MaxHp, 0.75f);
             }
 
             CombatManager.Instance.History.Summoned(combatState, (int)amount, summoner2);
             await Hook.AfterSummon(combatState, choiceContext, summoner2, amount);
             return new SummonResult(summoner2.Osty, amount);
         }
+
 
         public static async Task<IEnumerable<CommandArmy>> GiveCommandArmy(Player player, AbstractModel? source)
         {

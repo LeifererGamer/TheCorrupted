@@ -1,4 +1,5 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -17,7 +18,10 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.FromCard<CommandArmy>()
+        ];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new ArmyVar(5),
