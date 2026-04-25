@@ -55,7 +55,7 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = cardPlay.IsAutoPlay ? DynamicVars["DamageDiff"].BaseValue : DynamicVars.Block.BaseValue;
+            decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Block.BaseValue);
 
             await CreatureCmd.GainBlock(Owner.Creature, amount, DynamicVars.CalculatedBlock.Props, cardPlay);
         }

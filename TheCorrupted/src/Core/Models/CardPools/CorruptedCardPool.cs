@@ -106,6 +106,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<CorruptedGem>(),
                 ModelDb.Card<RitualisticSummons>(),
                 ModelDb.Card<CleanseWithRituals>(),
+                ModelDb.Card<DoomedEmpowerment>(),
+                ModelDb.Card<DevourSouls>(),
             ];
         }
 

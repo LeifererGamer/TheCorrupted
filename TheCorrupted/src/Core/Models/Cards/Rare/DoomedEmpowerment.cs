@@ -1,43 +1,37 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
 using BaseLib.Extensions;
-using MegaCrit.Sts2.Core.CardSelection;
+using Godot;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
-using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
-namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
+namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class SpreadTheCorruption() : CorruptedCardModel<FrailPower>(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        public override IEnumerable<CardKeyword> CanonicalKeywords =>
+        protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
-            CardKeyword.Exhaust,
-        ];
-
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => 
-        [
-            HoverTipFactory.FromCard<SpreadingCorruption>(),
-            HoverTipFactory.FromPower<FrailPower>()
+            new DoomedVar(25),
+            new CorruptedVar(),
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new CorruptedVar(2),
-        ];
 
         protected override void OnUpgrade()
         {
@@ -46,7 +40,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await SpreadingCorruption.CreateInHand(Owner, cardPlay.Card.CombatState);
+            await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+            await PowerCmd.Apply<DoomedEmpowermentPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
         }
     }
 }

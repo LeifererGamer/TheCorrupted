@@ -55,6 +55,12 @@
   "RITUALISTIC_SUMMONS_POWER.smartDescription": "Each time you perform a [gold]Ritual[/gold], apply [gold]Summon Army {Amount}[/gold].",
   "CLEANSE_WITH_RITUALS_POWER.title": "Cleanse With Rituals",
   "CLEANSE_WITH_RITUALS_POWER.description": "Each time you perform a [gold]Ritual[/gold], perform [gold]Cleansing[/gold].",
-  "CLEANSE_WITH_RITUALS_POWER.smartDescription": "Each time you perform a [gold]Ritual[/gold], perform [gold]Cleansing {Amount}[/gold]."
+  "CLEANSE_WITH_RITUALS_POWER.smartDescription": "Each time you perform a [gold]Ritual[/gold], perform [gold]Cleansing {Amount}[/gold].",
+  "DOOMED_EMPOWERMENT_POWER.title": "Doomed Empowerment",
+  "DOOMED_EMPOWERMENT_POWER.description": "Your [gold]Doomed[/gold] and [gold]Corrupted[/gold] cards deal their normal damage and effects when autoplayed.",
+  "DOOMED_EMPOWERMENT_POWER.smartDescription": "Your [gold]Doomed[/gold] and [gold]Corrupted[/gold] cards deal their normal damage and effects when autoplayed.",
+  "DEVOUR_SOULS_POWER.title": "Devour Souls",
+  "DEVOUR_SOULS_POWER.description": "When an enemy dies, gain max HP.",
+  "DEVOUR_SOULS_POWER.smartDescription": "When an enemy dies, gain {Amount} max HP."
 
 }

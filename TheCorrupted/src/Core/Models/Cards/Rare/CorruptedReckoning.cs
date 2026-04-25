@@ -39,7 +39,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = cardPlay.IsAutoPlay ? (DynamicVars.CalculatedDamage.PreviewValue / 2) : DynamicVars.CalculatedDamage.PreviewValue;
+            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedDamage.PreviewValue / 2), DynamicVars.CalculatedDamage.PreviewValue);
 
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)
                  .WithHitFx("vfx/vfx_attack_slash")

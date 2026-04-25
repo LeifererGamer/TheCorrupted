@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
@@ -33,14 +34,14 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars.First().Value.UpgradeValueBy(2); //DoomedVar
-            DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+            DynamicVars["Doomed"].UpgradeValueBy(2);
+            DynamicVars["DamageDiff"].UpgradeValueBy(1);
             DynamicVars.Vulnerable.UpgradeValueBy(1m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = cardPlay.IsAutoPlay ? DynamicVars["DamageDiff"].BaseValue : DynamicVars.Damage.BaseValue;
+            decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Damage.BaseValue);
 
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")

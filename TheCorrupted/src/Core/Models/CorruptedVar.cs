@@ -10,7 +10,7 @@ namespace BaseLib.Cards.Variables;
 public class CorruptedVar : DynamicVar
 {
     public const string Key = "Corrupted";
-    public CorruptedVar(decimal baseValue) : base(Key, baseValue)
+    public CorruptedVar(decimal baseValue = 0) : base(Key, baseValue)
     {
         this.WithTooltip();
     }

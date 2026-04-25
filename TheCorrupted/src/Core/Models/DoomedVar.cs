@@ -11,7 +11,7 @@ namespace BaseLib.Cards.Variables;
 public class DoomedVar : DynamicVar
 {
     public const string Key = "Doomed";
-    public DoomedVar(decimal baseValue) : base(Key, baseValue)
+    public DoomedVar(decimal baseValue = 0) : base(Key, baseValue)
     {
         this.WithTooltip();
     }

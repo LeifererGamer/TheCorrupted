@@ -55,7 +55,7 @@ internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRari
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = cardPlay.IsAutoPlay ? DynamicVars["DamageDiff"].IntValue  : DynamicVars.Damage.IntValue;
+            decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Damage.IntValue); 
 
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)

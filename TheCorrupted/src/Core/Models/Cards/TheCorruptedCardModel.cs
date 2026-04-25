@@ -1,11 +1,14 @@
-﻿using MegaCrit.Sts2.Core.Entities.Cards;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
 {
@@ -19,7 +22,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
 
             await DoOnPlay(choiceContext, cardPlay);
 
-            if (cardPlay.IsAutoPlay)
+            if (cardPlay.IsAutoPlay && !cardPlay.Card.Owner.HasPower<DoomedEmpowermentPower>())
             {
                 await OnAutoPlayExtra(choiceContext, cardPlay);
             }
@@ -39,6 +42,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
         protected virtual Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             return Task.CompletedTask;
+        }
+
+        protected virtual decimal getAmount(CardPlay cardPlay, decimal autoPlayValue, decimal normalValue)
+        {
+            return cardPlay.IsAutoPlay && !Owner.HasPower<DoomedEmpowermentPower>() ? autoPlayValue : normalValue;
         }
     }
 }

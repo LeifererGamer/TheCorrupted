@@ -33,18 +33,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            if (cardPlay.IsAutoPlay)
-            {
-                await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.CalculatedBlock.Calculate(cardPlay.Target) / 2, DynamicVars.CalculatedBlock.Props, cardPlay);
-            }
-            else
-            {
-                await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.CalculatedBlock.Calculate(cardPlay.Target), DynamicVars.CalculatedBlock.Props, cardPlay);
-            }
-        }
-
         protected override void OnUpgrade()
         {
             DynamicVars["Doomed"].UpgradeValueBy(4);
@@ -52,7 +40,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = cardPlay.IsAutoPlay ? DynamicVars.CalculatedBlock.Calculate(cardPlay.Target) / 2 : DynamicVars.CalculatedBlock.Calculate(cardPlay.Target);
+            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedBlock.Calculate(cardPlay.Target) / 2), DynamicVars.CalculatedBlock.Calculate(cardPlay.Target));
 
             await CreatureCmd.GainBlock(Owner.Creature, amount, DynamicVars.CalculatedBlock.Props, cardPlay);
         }

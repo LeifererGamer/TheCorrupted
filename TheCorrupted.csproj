@@ -37,7 +37,7 @@
 			<Private>False</Private>
 		</Reference>
 
-		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.8" PrivateAssets="All" />
+		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.9" PrivateAssets="All" />
 		<PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
 		<AdditionalFiles Include="Corrupted/localization/**/*.json" />
 	</ItemGroup>
