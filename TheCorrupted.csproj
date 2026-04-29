@@ -59,6 +59,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="thecorrupted\localization\eng\card_selection.json" />
 	  <Content Include="thecorrupted\localization\eng\enchantments.json" />
 	</ItemGroup>
 

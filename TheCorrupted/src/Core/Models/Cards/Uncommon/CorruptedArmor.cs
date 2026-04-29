@@ -43,7 +43,7 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(2),
-            new DamageDiffVar(7m),
+            new DamageVar("DamageDiff", 7m , ValueProp.Move),
             new BlockVar(14m, ValueProp.Move),
         ];
 

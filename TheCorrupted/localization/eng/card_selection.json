@@ -1,0 +1,4 @@
+{
+  "TO_RITUAL": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Exhaust[/gold].If you [gold]exhausted[/gold] {Amount:plural: a [jitter][purple]Curse[/purple][/jitter] [gold]Card[/gold]|[blue]{}[/blue] [jitter][purple]Curse[/purple][/jitter] [gold]Cards[/gold]} you perform the [gold]Ritual[/gold] effect.",
+  "TO_RITUAL_MAYBE": "Choose {Amount:plural:[blue]0-1[/blue] cards|[blue]0-{}[/blue] cards} to [gold]Exhaust[/gold].If you [gold]exhausted[/gold] {Amount:plural:a [jitter][purple]Curse[/purple][/jitter] [gold]Card[/gold]|[blue]{}[/blue] [jitter][purple]Curse[/purple][/jitter] [gold]Cards[/gold]} you perform the [gold]Ritual[/gold] effect. If not you failed the [gold]Ritual[/gold]."
+}

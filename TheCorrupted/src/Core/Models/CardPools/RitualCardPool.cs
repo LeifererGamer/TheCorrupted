@@ -2,6 +2,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Unlocks;
+using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
@@ -26,6 +27,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
         {
             return
             [
+                ModelDb.Card<DefensiveRitual>(),
                 ModelDb.Card<CorruptionToAshes>(),
                 ModelDb.Card<HellfireBarrier>(),
                 ModelDb.Card<DoubleShield>(),
@@ -37,6 +39,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<SmokeScreen>(),
                 ModelDb.Card<CleansingRitual>(),
                 ModelDb.Card<RitualOfSummoning>(),
+                ModelDb.Card<CorruptedShockwaves>(),
+                ModelDb.Card<MantleOfCorruption>(),
             ];
         }
 

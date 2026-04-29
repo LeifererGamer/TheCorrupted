@@ -27,7 +27,7 @@ internal class ForbiddenAlchemy() : CardModel(2, CardType.Skill, CardRarity.Unco
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await Ritual.PerformRitual(choiceContext, cardPlay, Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await PotionCmd.TryToProcure(PotionFactory.CreateRandomPotionInCombat(Owner, Owner.RunState.Rng.CombatPotionGeneration).ToMutable(), Owner);
             });

@@ -34,8 +34,5 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
                 await CorruptionCorrupted.CreateInDrawPile(player, combatState, false);
             }
         }
-        //var curse = combatState.CreateCard<Injury>(Owner);
-        //await CardPileCmd.AddGeneratedCardToCombat(curse, PileType.Hand, true);
-       
     }
 }

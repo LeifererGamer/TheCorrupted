@@ -29,7 +29,7 @@ internal class RitualOfGreaterDefence() : CardModel(1, CardType.Skill, CardRarit
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-            await Ritual.PerformRitual(choiceContext, cardPlay, Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             });

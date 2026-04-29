@@ -34,7 +34,7 @@ internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Uncomm
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await Ritual.PerformRitual(choiceContext, cardPlay, Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["PlatingPower"].BaseValue, Owner.Creature, this);
             });

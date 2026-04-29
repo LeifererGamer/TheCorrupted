@@ -108,6 +108,12 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<CleanseWithRituals>(),
                 ModelDb.Card<DoomedEmpowerment>(),
                 ModelDb.Card<DevourSouls>(),
+                ModelDb.Card<UltimateCorruption>(),
+                ModelDb.Card<CorruptedShockwaves>(),
+                ModelDb.Card<YourDaysAreDoomed>(),
+                ModelDb.Card<MantleOfCorruption>(),
+                ModelDb.Card<DoomsdayShield>(),
+                ModelDb.Card<CorruptedDelivery>(),
             ];
         }
 

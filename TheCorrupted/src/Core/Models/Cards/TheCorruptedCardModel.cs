@@ -17,7 +17,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
     {
          protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            if (Type == CardType.Attack)
+            if (Type == CardType.Attack && cardPlay.Target != null)
                 ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
             await DoOnPlay(choiceContext, cardPlay);

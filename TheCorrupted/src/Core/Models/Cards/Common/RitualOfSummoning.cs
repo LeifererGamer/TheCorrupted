@@ -35,7 +35,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await Ritual.PerformRitual(choiceContext, cardPlay, Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);
             });

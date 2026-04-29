@@ -15,7 +15,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 

@@ -36,7 +36,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-            await Ritual.PerformRitual(choiceContext, cardPlay, Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await PowerCmd.Apply<WeakPower>(CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature, this);
             });

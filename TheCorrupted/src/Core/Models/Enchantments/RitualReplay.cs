@@ -18,7 +18,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Enchantments
         public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             // Call your static PerformRitual method
-            await Ritual.PerformRitual(choiceContext, cardPlay, cardPlay.Card.Owner, this, async (card) =>
+            await Ritual.PerformRitual(choiceContext, cardPlay.Card.Owner, this, async (card) =>
             {
                 cardPlay.Card.BaseReplayCount += 1;
             });

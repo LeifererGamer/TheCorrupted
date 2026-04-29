@@ -1,5 +1,24 @@
 {
+  "CORRUPTED_BLADE_RELIC.title": "Cursed Blade",
   "CORRUPTED_BLADE_RELIC.description": "At the start of each combat, shuffle 1 [jitter][purple]Corruption[/purple][/jitter] into your draw pile.",
   "CORRUPTED_BLADE_RELIC.flavor": "A blade cursed by something evil.",
-  "CORRUPTED_BLADE_RELIC.title": "Cursed Blade"
+  "DU_VU_DOLL.title": "Du-Vu Doll",
+  "DU_VU_DOLL.description": "For each [jitter][purple]Curse[/purple][/jitter] in your [gold]Deck[/gold], start each combat with 1 additional [red]Strength[/red].",
+  "DU_VU_DOLL.flavor": "A doll devised to gain strength from malicious energy.",
+  "THECORRUPTED-ARMYNOMICON.title": "Armynomicon",
+  "THECORRUPTED-ARMYNOMICON.description": "At the start of each combat, [gold]Summon Army 5[/gold].",
+  "THECORRUPTED-ARMYNOMICON.flavor": "A book devised to summon an army at the start of combat.",
+  "CURSED_KEY.title": "Cursed Key",
+  "CURSED_KEY.description": "Gain {Energy:energyIcons()} at the start of each turn. Whenever you kill an [gold]Elite[/gold], obtain a [jitter][purple]Corruption[/purple][/jitter].",
+  "CURSED_KEY.flavor": "You can feel the malicious energy emanating from the key. Power comes at a price.",
+  "NECRONOMICON.title": "Necronomicon",
+  "NECRONOMICON.description": "The first [gold]Attack[/gold] played each turn that costs 2 or more is played twice. When you take this relic, become [jitter][purple]Cursed[/purple][/jitter].",
+  "NECRONOMICON.flavor": "Only a fool would try and harness this evil power. At night your dreams are haunted by images of the book devouring your mind.",
+  "BLUE_CANDLE.title": "Blue Candle",
+  "BLUE_CANDLE.description": "[gold]Unplayable[/gold] [jitter][purple]Curse[/purple][/jitter] cards can now be played.\nWhenever you play a [jitter][purple]Curse[/purple][/jitter], lose 1 HP and [gold]Exhaust[/gold] it.",
+  "BLUE_CANDLE.flavor": "The flame ignites when shrouded in darkness.",
+  "DOOM_STONE.title": "Doom Stone",
+  "DOOM_STONE.description": "Whenever you apply [jitter][pink]Doom[/pink][/jitter] to yourself, gain 1 [red]Strength[/red].",
+  "DOOM_STONE.flavor": "A stone that brings doom upon those who wield it."
+
 }

@@ -84,6 +84,34 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
             return curse;
         }
 
+        public static async Task<CardModel?> CreateInDeckPile(Player owner, CombatState combatState, bool addedByPlayer = true)
+        {
+            return (await CreateInDeckPile(owner, 1, combatState)).FirstOrDefault();
+        }
+
+        public static async Task<IEnumerable<CardModel>> CreateInDeckPile(Player owner, int count, CombatState combatState, bool addedByPlayer = true)
+        {
+            if (count == 0)
+            {
+                return Array.Empty<CardModel>();
+            }
+
+            if (CombatManager.Instance.IsOverOrEnding)
+            {
+                return Array.Empty<CardModel>();
+            }
+
+            List<CardModel> curse = new List<CardModel>();
+            for (int i = 0; i < count; i++)
+            {
+                curse.Add(combatState.CreateCard<CorruptionCorrupted>(owner));
+            }
+
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Deck, addedByPlayer, CardPilePosition.Random));
+            await Cmd.Wait(3f);
+            return curse;
+        }
+
     }
 }
 

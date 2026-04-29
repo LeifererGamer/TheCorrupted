@@ -166,6 +166,19 @@
   "THECORRUPTED-DOOMED_EMPOWERMENT.title": "Doomed Empowerment",
   "THECORRUPTED-DOOMED_EMPOWERMENT.description": "Your [gold]Doomed[/gold] and [gold]Corrupted[/gold] cards deal their normal damage and effects when autoplayed.[gold]Doomed {Doomed:diff()}[/gold]",
   "THECORRUPTED-DEVOUR_SOULS.title": "Devour Souls",
-  "THECORRUPTED-DEVOUR_SOULS.description": "Lose {HpLoss:diff()} HP.\n Whenever an Enemy dies, gain {MaxHp:diff()} Max HP."
-
+  "THECORRUPTED-DEVOUR_SOULS.description": "Lose {HpLoss:diff()} HP.\n Whenever an Enemy dies, gain {MaxHp:diff()} Max HP.",
+  "THECORRUPTED-ULTIMATE_CORRUPTION.title": "Ultimate Corruption",
+  "THECORRUPTED-ULTIMATE_CORRUPTION.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Energy:energyIcons()}.\n[gold]Summon Army {Army:diff()}[/gold].\nApply {DoomPower:diff()} [jitter][pink]Doom[/pink][/jitter] to yourself.\n Add {Cards:diff()} [jitter][purple]Spreading Corruption[/purple][/jitter] to your [gold]Hand[/gold].",
+  "THECORRUPTED-CORRUPTED_SHOCKWAVES.title": "Corrupted Shockwaves",
+  "THECORRUPTED-CORRUPTED_SHOCKWAVES.description": "Can only be played if you have {Cards:diff()} or more [jitter][purple]Curse[/purple][/jitter] {Cards:plural:card|cards} in your [gold]Exhaust Pile[/gold].\n[gold]Ritual[/gold]: Deal {Damage:diff()} damage to ALL enemies.\nAt the start of your turn, if this card is in your [gold]Discard Pile[/gold] and if you have {AutoCards:diff()} or more [jitter][purple]Curse[/purple][/jitter] {AutoCards:plural:card|cards} in your [gold]Exhaust Pile[/gold] it gets played each turn and deals {DamageDiff:diff()} damage to ALL enemies instead.",
+  "THECORRUPTED-YOUR_DAYS_ARE_DOOMED.title": "Your Days Are Doomed",
+  "THECORRUPTED-YOUR_DAYS_ARE_DOOMED.description": "{InCombat:Kill all Enemies with less than {DoomDamage:diff()} current HP.|Kill all Enemies with less current HP than [jitter][pink]Doom[/pink][/jitter] stacks on yourself.\n(Gets Multiplied for each Player in Multiplayer.)}",
+  "THECORRUPTED-MANTLE_OF_CORRUPTION.title": "Mantle of Corruption",
+  "THECORRUPTED-MANTLE_OF_CORRUPTION.description": "Shuffle 2 random [jitter][purple]Curse[/purple][/jitter] cards into your draw pile.\nAt the start of your turn, gain {Block:diff()} [gold]Block[/gold], [gold]Summon Army {Army:diff()}[/gold].\nChoose to [gold]Ritual[/gold] or not:\nApply 5 [jitter][pink]Doom[/pink][/jitter] to yourself.\nIf the [gold]Ritual[/gold] fails: [gold]Cleansing 5[/gold].",
+  "THECORRUPTED-DOOMSDAY_SHIELD.title": "Doomsday Shield",
+  "THECORRUPTED-DOOMSDAY_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Cleansing {Cleansing:diff()}[/gold]. If cleansed successfully, gain [gold]Block[/gold] equal to the amount cleansed.\n[gold]Doomed {Doomed:diff()}[/gold] (Gain {Block:diff()} [gold]Block[/gold].)",
+  "CORRUPTED_DELIVERY.title": "Corrupted Delivery",
+  "CORRUPTED_DELIVERY.description": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain 1 random [gold]Card[/gold] in to your [gold]Hand[/gold].",
+  "NECRONOMICURSE.title": "Necronomicurse",
+  "NECRONOMICURSE.description": "There is no escape from this curse."
 }

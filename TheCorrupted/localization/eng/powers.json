@@ -61,6 +61,13 @@
   "DOOMED_EMPOWERMENT_POWER.smartDescription": "Your [gold]Doomed[/gold] and [gold]Corrupted[/gold] cards deal their normal damage and effects when autoplayed.",
   "DEVOUR_SOULS_POWER.title": "Devour Souls",
   "DEVOUR_SOULS_POWER.description": "When an enemy dies, gain max HP.",
-  "DEVOUR_SOULS_POWER.smartDescription": "When an enemy dies, gain {Amount} max HP."
+  "DEVOUR_SOULS_POWER.smartDescription": "When an enemy dies, gain {Amount} max HP.",
+  "MANTLE_OF_CORRUPTION_POWER.title": "Doomed Mantle",
+  "MANTLE_OF_CORRUPTION_POWER.description": "At the start of your turn, gain [gold]Block[/gold], [gold]Summon Army {Army}[/gold].\nChoose to [gold]Ritual[/gold] or not:\nApply [jitter][pink]Doom[/pink][/jitter] to yourself.\nIf the [gold]Ritual[/gold] fails: [gold]Cleansing[/gold].",
+  "MANTLE_OF_CORRUPTION_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Block[/gold], [gold]Summon Army {Army}[/gold].\nChoose to [gold]Ritual[/gold] or not:\nApply {DoomOrCleansing} [jitter][pink]Doom[/pink][/jitter] to yourself.\nIf the [gold]Ritual[/gold] fails: [gold]Cleansing {DoomOrCleansing}[/gold]",
+  "CORRUPTED_DELIVERY_POWER.title": "Corrupted Delivery",
+  "CORRUPTED_DELIVERY_POWER.description": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain a random [gold]Card[/gold] in to your [gold]Hand[/gold].",
+  "CORRUPTED_DELIVERY_POWER.smartDescription": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain {Amount} random {Amount:plural:[gold]Card[/gold]|[gold]Cards[/gold]} in to your [gold]Hand[/gold]."
+
 
 }

@@ -43,22 +43,22 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(1),
-            new DamageDiffVar(4m),
+            new DamageVar("DamageDiff", 4m , ValueProp.Move),
             new DamageVar(8m, ValueProp.Move),
         ];
 
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars.First().Value.UpgradeValueBy(1); //CursedVar
-            DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+            DynamicVars["Corrupted"].UpgradeValueBy(1);
+            DynamicVars["DamageDiff"].UpgradeValueBy(1m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Damage.BaseValue);
 
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         }

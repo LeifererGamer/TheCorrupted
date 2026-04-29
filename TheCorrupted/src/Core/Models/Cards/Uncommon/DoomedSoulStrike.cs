@@ -33,7 +33,7 @@ internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRari
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DamageVar(6m, ValueProp.Move),
-            new DamageDiffVar(3m),
+            new DamageVar("DamageDiff", 3m , ValueProp.Move),
             new CleansingVar(5),
             new DoomedVar(5)
         ];

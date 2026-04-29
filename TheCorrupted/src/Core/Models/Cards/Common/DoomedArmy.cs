@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token;
 using TheCorrupted.TheCorrupted.src.Core.Models.Commands;
@@ -30,7 +31,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DoomedVar(3),
-            new DamageDiffVar(4m),
+            new DamageVar("DamageDiff", 4m , ValueProp.Move),
             new ArmyVar(8),
         ];
 

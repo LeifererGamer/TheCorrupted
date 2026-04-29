@@ -27,7 +27,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DoomedVar(3),
-            new DamageDiffVar(4m),
+            new DamageVar ("DamageDiff", 4m, ValueProp.Move),
             new DamageVar(8m, ValueProp.Move),
         ];
 
@@ -36,8 +36,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         protected override void OnUpgrade()
         {
             DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars.First().Value.UpgradeValueBy(2); //DoomedVar
-            DynamicVars.ElementAt(1).Value.UpgradeValueBy(1); //DamageDiffVar
+            DynamicVars["Doomed"].UpgradeValueBy(2);
+            DynamicVars["DamageDiff"].UpgradeValueBy(1);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
