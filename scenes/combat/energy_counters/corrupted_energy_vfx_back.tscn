@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3g2nshchsio5"]
+
+[ext_resource type="Script" uid="uid://can5hpsjor038" path="res://TheCorrupted/src/Core/Nodes/Vfx/SnParticleContainer.cs" id="1_fhif2"]
+[ext_resource type="PackedScene" uid="uid://pjm4qdwa8m56" path="res://scenes/vfx/vfx_common_glow.tscn" id="1_utcfc"]
+
+[node name="corrupted_energy_vfx_back" type="Node2D"]
+script = ExtResource("1_fhif2")
+
+[node name="vfx_common_glow" parent="." instance=ExtResource("1_utcfc")]

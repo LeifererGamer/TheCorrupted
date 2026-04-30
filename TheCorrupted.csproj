@@ -28,16 +28,18 @@
 	<ItemGroup>
 		<Reference Include="Sts2">
 			<HintPath>D:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="0Harmony">
 			<HintPath>$(GameDataDir)\0Harmony.dll</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="GodotSharp">
 			<HintPath>$(GameDataDir)\GodotSharp.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 
-		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.9" PrivateAssets="All" />
+		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.0" PrivateAssets="All" />
 		<PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
 	</ItemGroup>
 
@@ -49,11 +51,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="TheCorrupted\src\Core\Models\Extensions\StringExtensions.cs.uid" />
+	  <Compile Remove="Corrupted\**" />
+	  <EmbeddedResource Remove="Corrupted\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Corrupted\" />
+	  <AdditionalFiles Remove="thecorrupted\localization\eng\epochs.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="TheCorrupted\src\Core\Models\Extensions\StringExtensions.cs.uid" />
 	</ItemGroup>
 
 	<!-- Create Godot folder structure -->

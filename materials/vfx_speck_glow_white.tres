@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://duleqstqb3acy"]
+
+[ext_resource type="Shader" uid="uid://dxac26uokxu14" path="res://shaders/vfx_grayscale_particle_shader.gdshader" id="1_ferft"]
+
+[resource]
+shader = ExtResource("1_ferft")
+shader_parameter/pivot_offset = Vector2(0, 0)

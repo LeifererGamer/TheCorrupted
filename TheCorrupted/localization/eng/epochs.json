@@ -1,0 +1,23 @@
+{
+  "CORRUPTED2_EPOCH.description": "[red]The Ironclad.[/red] A warrior from a faraway land entered the [gold]Spire[/gold].\nDriven by pure instinct and accursed blood, he has lost all reason and identity.\n\nAll who prevent his ascent shall perish.",
+  "CORRUPTED2_EPOCH.title": "The Ironclad",
+  "CORRUPTED2_EPOCH.unlockInfo": "Beat [gold]Act[/gold] [blue]1[/blue] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "CORRUPTED3_EPOCH.description": "[jitter]The [red]Ironclad’s[/red] strength surges![/jitter]\n\nThe flames of the Demonic pact course through his blood. Cuts and bruises heal rapidly. The [blue]Valleyguard[/blue] are cleaved in two, the [orange]Desert Tribe[/orange] are burned to a crisp, [green]Wind Walkers[/green] [jitter]smashed[/jitter] into the ground, and even a familiar horde of aggressive bronze-cladded warriors are set ablaze with these [sine]exciting new flames[/sine]!\n\nAll of the Ironclad’s enemies are shown no mercy. All of the Ironclads... Ironclad?\n...where is everyone?",
+  "CORRUPTED3_EPOCH.title": "Devastation",
+  "CORRUPTED3_EPOCH.unlockInfo": "Beat [gold]Act[/gold] [blue]2[/blue] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "CORRUPTED4_EPOCH.description": "For centuries, war raged between the [red]Ironclads[/red] and the [blue]Valleyguard[/blue]. Driven by ambition, a young ironclad ventures to the forbidden boundary and bargains with the sacred [jitter]“Demon”[/jitter].",
+  "CORRUPTED4_EPOCH.title": "The Pact",
+  "CORRUPTED4_EPOCH.unlock": "The [red]Ironclad's[/red] rage cannot be tamed...\n[red]Ascension[/red] difficulties can be activated when starting a run.",
+  "CORRUPTED4_EPOCH.unlockInfo": "Beat [gold]Act[/gold] [blue]3[/blue] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "CORRUPTED4_EPOCH.unlockText": "Unlocked [red]Ascension[/red] for the [red]Ironclad[/red] and [gold]{Potion1}[/gold], [gold]{Potion2}[/gold], and [gold]{Potion3}[/gold].",
+  "CORRUPTED5_EPOCH.description": "The [red]Ironclad[/red] slays the [purple]Heart[/purple] with its full might... and the Demon's Contract hungrily absorbs the [purple]Blight[/purple] unto itself.\n\nImmediately, the warrior and [purple]Blight[/purple] are set ablaze. The parasite is drawn into the flame, its writhing form consumed like wax wicking into a fire.",
+  "CORRUPTED5_EPOCH.title": "Ablaze",
+  "CORRUPTED5_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [purple]Elites[/purple] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "CORRUPTED6_EPOCH.description": "It is said that a never ceasing flame atop the [gold]Spire[/gold] burns proudly. Proven by the neighboring clouds glowing a gentle violet through the darkest winter nights.\n\nThen one day, the clouds were normal.\nThe [purple]flame[/purple] went out.",
+  "CORRUPTED6_EPOCH.title": "Snuffed",
+  "CORRUPTED6_EPOCH.unlockInfo": "{IsRevealed:Killed|Kill} [blue]15[/blue] [red]Bosses[/red] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "CORRUPTED7_EPOCH.description": "“The [gold]Spire[/gold] was mine to rule. But the Architect lives again. [jitter]Look what he's done to my FACE[/jitter].”\n\nThe Demon throws a massive fit, smashing his chamber and setting all manner of things on fire.\n\n“My death puppet, brandish my power and kill again. [jitter]KILL THE ARCHITECT!![/jitter]”",
+  "CORRUPTED7_EPOCH.title": "My Face",
+  "CORRUPTED7_EPOCH.unlockInfo": "Beat [red]Ascension[/red] [blue]1[/blue] with the [red]Ironclad[/red]{IsRevealed:| to reveal this Epoch}.",
+  "STORY_CORRUPTED": "The Corrupted"
+}
