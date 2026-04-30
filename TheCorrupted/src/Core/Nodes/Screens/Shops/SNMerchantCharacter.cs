@@ -1,7 +1,7 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 
-namespace TheCorrupted.src.Core.Nodes.Screens.Shops;
+namespace TheCorrupted.TheCorrupted.src.Core.Nodes.Screens.Shops;
 
 [GlobalClass]
 public partial class SNMerchantCharacter : NMerchantCharacter

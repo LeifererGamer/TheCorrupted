@@ -13,4 +13,14 @@ public static class StringExtensions
         return Path.Join("images", "packed", "card_portraits", "curse", path);
     }
 
+    public static string RelicImagePath(this string path)
+    {
+        return Path.Join("images", "relics", path);
+    }
+
+    public static string PotionImagePath(this string path)
+    {
+        return Path.Join("images", "potions", path);
+    }
+
 }

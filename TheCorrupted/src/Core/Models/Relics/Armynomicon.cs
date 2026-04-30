@@ -17,12 +17,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Commands;
+using TheCorrupted.TheCorrupted.src.Core.Models.RelicPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 {
-    internal class Armynomicon : RelicModel, ICustomModel
+    internal class Armynomicon : RelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Common;
 
@@ -32,7 +34,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
         [
             new ArmyVar(5)
         ];
-
 
         public override async Task BeforeCombatStart()
         {

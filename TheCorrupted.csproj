@@ -39,28 +39,13 @@
 
 		<PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.9" PrivateAssets="All" />
 		<PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
-		<AdditionalFiles Include="Corrupted/localization/**/*.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\ancients.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\cards.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\characters.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\monsters.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\powers.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\relics.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\eng\static_hover_tips.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\ancients.zhs.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\cards.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\characters.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\powers.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\relics.json" />
-	  <AdditionalFiles Include="TheCorrupted\localization\zhs\static_hover_tips.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="thecorrupted\localization\eng\card_selection.json" />
-	  <Content Include="thecorrupted\localization\eng\enchantments.json" />
+		<AdditionalFiles Include="TheCorrupted\localization\**\*.json" />
+		<Content Include="TheCorrupted\localization\**\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>

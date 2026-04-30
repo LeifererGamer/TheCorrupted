@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2qvxya2xt5j"
-path="res://.godot/imported/mana_circulation.png-b99de2e0fce04824da4598484387288e.ctex"
+uid="uid://bvcbw4ojn76j5"
+path="res://.godot/imported/corrupted2_epoch.png-5d8dd3ea8263f0b317e53126f02f660f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/packed/card_portraits/corrupted/mana_circulation.png"
-dest_files=["res://.godot/imported/mana_circulation.png-b99de2e0fce04824da4598484387288e.ctex"]
+source_file="res://images/timeline/epoch_portraits/corrupted2_epoch.png"
+dest_files=["res://.godot/imported/corrupted2_epoch.png-5d8dd3ea8263f0b317e53126f02f660f.ctex"]
 
 [params]
 
