@@ -8,7 +8,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Commands;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
 {
-    internal class SummonArmyNextTurnPower : PowerModel, ICustomModel
+    internal class SummonArmyNextTurnPower : PowerModel
     {
         public override PowerType Type => PowerType.Buff;
 

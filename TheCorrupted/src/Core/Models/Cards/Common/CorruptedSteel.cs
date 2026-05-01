@@ -14,7 +14,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
 
-internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();

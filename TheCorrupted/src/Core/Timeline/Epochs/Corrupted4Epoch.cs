@@ -13,7 +13,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Potions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 {
-    internal class Corrupted4Epoch : EpochModel
+    public class Corrupted4Epoch : EpochModel
     {
         public override string Id => "CORRUPTED4_EPOCH";
 
@@ -22,6 +22,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
         public override int EraPosition => 4;
 
         public override string StoryId => "Corrupted";
+
+        public override bool IsArtPlaceholder => true;
 
         public static List<PotionModel> Potions
         {

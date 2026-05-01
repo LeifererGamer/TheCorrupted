@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://np2dvowvqg3b"
-path="res://.godot/imported/corrupted_shockwave.png-e32313bf0663bfb2ffc975bac1c20956.ctex"
+uid="uid://cxf800pauxqpf"
+path="res://.godot/imported/corrupted_shockwaves.png-50d3c4054f2006d96c25b528c2c3aebc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/packed/card_portraits/corrupted/corrupted_shockwave.png"
-dest_files=["res://.godot/imported/corrupted_shockwave.png-e32313bf0663bfb2ffc975bac1c20956.ctex"]
+source_file="res://images/packed/card_portraits/corrupted/corrupted_shockwaves.png"
+dest_files=["res://.godot/imported/corrupted_shockwaves.png-50d3c4054f2006d96c25b528c2c3aebc.ctex"]
 
 [params]
 

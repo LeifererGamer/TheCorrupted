@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic;
+using TheCorrupted.TheCorrupted.src.Core.Models.PotionPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.RelicPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
@@ -40,7 +41,7 @@ public sealed class Corrupted : CharacterModel
 
         public override CardPoolModel CardPool => ModelDb.CardPool<CorruptedCardPool>();
 
-        public override PotionPoolModel PotionPool => ModelDb.PotionPool<IroncladPotionPool>();
+        public override PotionPoolModel PotionPool => ModelDb.PotionPool<CorruptedPotionPool>();
 
         public override RelicPoolModel RelicPool => ModelDb.RelicPool<CorruptedRelicPool>();
 

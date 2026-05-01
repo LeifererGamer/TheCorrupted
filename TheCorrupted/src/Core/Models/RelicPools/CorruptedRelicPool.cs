@@ -32,34 +32,34 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.RelicPools
             ];
         }
 
-        public override IEnumerable<RelicModel> GetUnlockedRelics(UnlockState unlockState)
-        {
-            var list = AllRelics.ToList();
-            return list;
-        }
-
        // public override IEnumerable<RelicModel> GetUnlockedRelics(UnlockState unlockState)
        // {
-       //     List<RelicModel> list = base.AllRelics.ToList();
-       //     if (!unlockState.IsEpochRevealed<Ironclad3Epoch>())
-       //     {
-       //         list.RemoveAll(delegate (RelicModel r)
-       //         {
-       //             RelicModel r3 = r;
-       //             return Ironclad3Epoch.Relics.Any((RelicModel relic) => relic.Id == r3.Id);
-       //         });
-       //     }
-       //
-       //     if (!unlockState.IsEpochRevealed<Ironclad6Epoch>())
-       //     {
-       //         list.RemoveAll(delegate (RelicModel r)
-       //         {
-       //             RelicModel r2 = r;
-       //             return Ironclad6Epoch.Relics.Any((RelicModel relic) => relic.Id == r2.Id);
-       //         });
-       //     }
-       //
+       //     var list = AllRelics.ToList();
        //     return list;
        // }
+
+        public override IEnumerable<RelicModel> GetUnlockedRelics(UnlockState unlockState)
+        {
+            List<RelicModel> list = base.AllRelics.ToList();
+            if (!unlockState.IsEpochRevealed<Ironclad3Epoch>())
+            {
+                list.RemoveAll(delegate (RelicModel r)
+                {
+                    RelicModel r3 = r;
+                    return Ironclad3Epoch.Relics.Any((RelicModel relic) => relic.Id == r3.Id);
+                });
+            }
+       
+            if (!unlockState.IsEpochRevealed<Ironclad6Epoch>())
+            {
+                list.RemoveAll(delegate (RelicModel r)
+                {
+                    RelicModel r2 = r;
+                    return Ironclad6Epoch.Relics.Any((RelicModel relic) => relic.Id == r2.Id);
+                });
+            }
+       
+            return list;
+        }
     }
 }

@@ -50,14 +50,6 @@
 		</Content>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Remove="Corrupted\**" />
-	  <EmbeddedResource Remove="Corrupted\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AdditionalFiles Remove="thecorrupted\localization\eng\epochs.json" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <None Include="TheCorrupted\src\Core\Models\Extensions\StringExtensions.cs.uid" />

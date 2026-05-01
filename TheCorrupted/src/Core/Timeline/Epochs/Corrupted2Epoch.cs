@@ -1,6 +1,8 @@
 ﻿using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
+using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Timeline;
 using MegaCrit.Sts2.Core.Timeline.Epochs;
 using System;
@@ -12,10 +14,11 @@ using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
+using TheCorrupted.TheCorrupted.src.Core.Models.Characters;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 {
-    internal class Corrupted2Epoch : EpochModel
+    public class Corrupted2Epoch : EpochModel
     {
         public override string Id => "CORRUPTED2_EPOCH";
 
@@ -45,24 +48,25 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
             }
         }
 
-        public override EpochModel[] GetTimelineExpansion()
-        {
-            return new EpochModel[5]
-            {
-            EpochModel.Get(EpochModel.GetId<Corrupted3Epoch>()),
-            EpochModel.Get(EpochModel.GetId<Corrupted4Epoch>()),
-            EpochModel.Get(EpochModel.GetId<Corrupted5Epoch>()),
-            EpochModel.Get(EpochModel.GetId<Corrupted6Epoch>()),
-            EpochModel.Get(EpochModel.GetId<Corrupted7Epoch>())
-            };
-        }
+      //  public override EpochModel[] GetTimelineExpansion()
+      //  {
+      //      return new EpochModel[5]
+      //      {
+      //  // Use the raw strings here as well!
+      //  EpochModel.Get("CORRUPTED3_EPOCH"),
+      //  EpochModel.Get("CORRUPTED4_EPOCH"),
+      //  EpochModel.Get("CORRUPTED5_EPOCH"),
+      //  EpochModel.Get("CORRUPTED6_EPOCH"),
+      //  EpochModel.Get("CORRUPTED7_EPOCH")
+      //      };
+      //  }
 
         public override string UnlockText => CreateCardUnlockText(Cards);
 
         public override void QueueUnlocks()
         {
             NTimelineScreen.Instance.QueueCardUnlock(Cards);
-            EpochModel.QueueTimelineExpansion(GetTimelineExpansion());
+           // EpochModel.QueueTimelineExpansion(GetTimelineExpansion());
         }
     }
 }

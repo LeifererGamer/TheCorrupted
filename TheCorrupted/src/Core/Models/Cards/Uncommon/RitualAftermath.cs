@@ -50,7 +50,8 @@ internal class RitualAftermath() : CorruptedCardModel<WeakPower>(2, CardType.Att
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Damage.UpgradeValueBy(2m);
+            DynamicVars.ExtraDamage.UpgradeValueBy(1m);
+            DynamicVars.CalculationExtra.UpgradeValueBy(1m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

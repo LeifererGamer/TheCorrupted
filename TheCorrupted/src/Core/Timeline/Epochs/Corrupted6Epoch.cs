@@ -12,7 +12,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 {
-    internal class Corrupted6Epoch : EpochModel
+    public class Corrupted6Epoch : EpochModel
     {
         public override string Id => "CORRUPTED6_EPOCH";
 
@@ -21,6 +21,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
         public override int EraPosition => 4;
 
         public override string StoryId => "Corrupted";
+
+        public override bool IsArtPlaceholder => true;
 
         public static List<RelicModel> Relics
         {

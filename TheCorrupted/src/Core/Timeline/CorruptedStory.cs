@@ -3,10 +3,9 @@ using TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Stories
 {
-    internal class CorruptedStory : StoryModel
+    public class CorruptedStory : StoryModel
     {
-        // Use lowercase so StringHelper.Slugify() doesn't break it
-        protected override string Id => "corrupted";
+        protected override string Id => "CORRUPTED";
 
         public override EpochModel[] Epochs => new EpochModel[6]
         {

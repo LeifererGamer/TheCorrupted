@@ -20,7 +20,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Commands;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
 {
 
-internal class ArmyOfDoomPower : PowerModel, ICustomModel
+internal class ArmyOfDoomPower : PowerModel
     {
         public override PowerType Type => PowerType.Buff;
 

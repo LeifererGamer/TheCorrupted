@@ -2,6 +2,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Timeline.Epochs;
 using MegaCrit.Sts2.Core.Unlocks;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Ancient;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic;
@@ -9,6 +10,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
+using TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
 {
@@ -119,8 +121,41 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
 
         protected override IEnumerable<CardModel> FilterThroughEpochs(UnlockState unlockState, IEnumerable<CardModel> cards)
         {
-            return cards.ToList();
+            List<CardModel> list = cards.ToList();
+            if (!unlockState.IsEpochRevealed<Corrupted2Epoch>())
+            {
+                list.RemoveAll(delegate (CardModel c)
+                {
+                    CardModel c4 = c;
+                    return Corrupted2Epoch.Cards.Any((CardModel card) => card.Id == c4.Id);
+                });
+            }
+
+            if (!unlockState.IsEpochRevealed<Corrupted5Epoch>())
+            {
+                list.RemoveAll(delegate (CardModel c)
+                {
+                    CardModel c3 = c;
+                    return Corrupted5Epoch.Cards.Any((CardModel card) => card.Id == c3.Id);
+                });
+            }
+
+            if (!unlockState.IsEpochRevealed<Corrupted7Epoch>())
+            {
+                list.RemoveAll(delegate (CardModel c)
+                {
+                    CardModel c2 = c;
+                    return Corrupted7Epoch.Cards.Any((CardModel card) => card.Id == c2.Id);
+                });
+            }
+
+            return list;
         }
+
+        // protected override IEnumerable<CardModel> FilterThroughEpochs(UnlockState unlockState, IEnumerable<CardModel> cards)
+        // {
+        //     return cards.ToList();
+        // }
     }
 
 }

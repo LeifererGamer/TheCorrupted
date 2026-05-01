@@ -14,7 +14,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 {
-    internal class Corrupted5Epoch : EpochModel
+    public class Corrupted5Epoch : EpochModel
     {
         public override string Id => "CORRUPTED5_EPOCH";
 
@@ -23,6 +23,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
         public override int EraPosition => 4;
 
         public override string StoryId => "Corrupted";
+
+        public override bool IsArtPlaceholder => true;
 
         public static List<CardModel> Cards
         {
