@@ -31,7 +31,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             foreach (CardModel c in PileType.Hand.GetPile(Owner).Cards.Where((c) => c.Type.Equals(CardType.Curse)).ToList())
-                await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this).Targeting(cardPlay.Target)
+                await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                     .Execute(choiceContext);
         }

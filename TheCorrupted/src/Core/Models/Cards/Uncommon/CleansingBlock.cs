@@ -45,7 +45,7 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await Cleansing.PerformCleansing(DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
-            await CreatureCmd.Heal(Owner.Creature, DynamicVars.Damage.BaseValue);
+            await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
             
         }
 

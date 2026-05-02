@@ -49,7 +49,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-            await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["SummonArmy"].IntValue, this);
+            await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["SummonArmy"].PreviewValue, this);
         }
 
         protected override void OnUpgrade()

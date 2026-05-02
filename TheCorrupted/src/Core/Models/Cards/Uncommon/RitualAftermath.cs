@@ -56,7 +56,7 @@ internal class RitualAftermath() : CorruptedCardModel<WeakPower>(2, CardType.Att
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedDamage.IntValue / 2), DynamicVars.CalculatedDamage.IntValue);
+            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedDamage.Calculate(cardPlay.Target) * 3 / 4), DynamicVars.CalculatedDamage.PreviewValue);
 
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)

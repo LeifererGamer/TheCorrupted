@@ -32,18 +32,23 @@ internal class SavedByCorruptionPower : PowerModel
 
         public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
         {
-            if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
-            {
-                Flash();
-                await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+            if (card.Owner == Owner.Player) {
+                if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
+                {
+                    Flash();
+                    await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+                }
             }
         }
         public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
         {
-            if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
+            if (card.Owner == Owner.Player)
             {
-                Flash();
-                await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+                if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
+                {
+                    Flash();
+                    await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+                }
             }
         }
     }
