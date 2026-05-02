@@ -37,7 +37,7 @@ internal class YourDaysAreDoomed() : CardModel(2, CardType.Skill, CardRarity.Rar
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CalculationBaseVar(0m),
             new CalculationExtraVar(1m),
-             new CalculatedVar("DoomDamage").WithMultiplier(static (card, _) => card.Owner.Creature.HasPower<DoomPower>() ? card.Owner.Creature.GetPower<DoomPower>().Amount * card.CombatState.Allies.Where(a => a.IsPlayer).Count() : 0)
+             new CalculatedVar("DoomDamage").WithMultiplier(static (card, _) => (decimal)(card.Owner.Creature.HasPower<DoomPower>() ? card.Owner.Creature.GetPower<DoomPower>().Amount * (card.CombatState.Allies.Where(a => a.IsPlayer).Count() > 1 ? ((card.CombatState.Allies.Where(a => a.IsPlayer).Count() -1) * 0.5) + 1 : 1) : 0))
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
