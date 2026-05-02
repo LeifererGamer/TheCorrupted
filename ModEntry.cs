@@ -24,7 +24,6 @@ public partial class ModEntry : Node // Make this partial and inherit from Node
         var assembly = Assembly.GetExecutingAssembly();
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
 
-        // 1. Run our forced injection!
         InjectCustomEpochs();
 
         harmony.PatchAll();
@@ -40,7 +39,7 @@ public partial class ModEntry : Node // Make this partial and inherit from Node
         _ = EpochModel.AllEpochIds;
         var allIdsList = Traverse.Create(typeof(EpochModel)).Field("_allEpochIds").GetValue<List<string>>();
 
-        // 3. Define our custom Epochs
+        // 3. Define custom Epochs
         Type[] myEpochs = new Type[]
         {
             typeof(Corrupted2Epoch),
@@ -51,7 +50,7 @@ public partial class ModEntry : Node // Make this partial and inherit from Node
             typeof(Corrupted7Epoch)
         };
 
-        // 4. Surgically inject them into the game's brain
+        // 4. Inject them into the game's brain
         foreach (Type t in myEpochs)
         {
             EpochModel instance = (EpochModel)Activator.CreateInstance(t);

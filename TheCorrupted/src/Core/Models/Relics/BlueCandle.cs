@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Afflictions;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -18,7 +19,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
+using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Enchantments;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 {
@@ -37,11 +40,13 @@ internal class BlueCandle : RelicModel
         {
             if (player == Owner && combatState.RoundNumber == 1)
             {
-                foreach (var card in CardPile.GetCards(player, PileType.Draw).Where(c => c.Type == CardType.Curse))
-                {
-                    card.RemoveKeyword(CardKeyword.Unplayable);
-                    card.AddKeyword(CardKeyword.Exhaust);
-                }
+                    IEnumerable<CardModel> cards = base.Owner.PlayerCombatState.AllCards.Where((CardModel c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>()));
+                    foreach (CardModel card in cards)
+                    {
+                        await CardCmd.Afflict<Entangled>(card, 1m);
+                        card.RemoveKeyword(CardKeyword.Unplayable);
+                        card.AddKeyword(CardKeyword.Exhaust);
+                    }
             }
         }
 

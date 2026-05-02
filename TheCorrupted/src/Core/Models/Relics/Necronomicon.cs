@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
@@ -24,6 +25,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
     internal class Necronomicon : RelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Shop;
+
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            HoverTipFactory.FromCard<Necronomicurse>(),
+        ];
 
         private bool _activatedThisTurn;
 

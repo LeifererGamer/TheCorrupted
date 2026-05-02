@@ -41,7 +41,7 @@ internal class RitualAftermath() : CorruptedCardModel<WeakPower>(2, CardType.Att
             new CalculatedVar("Half").WithMultiplier(delegate(CardModel card, Creature? _)
             {
                 CardModel card2 = card;
-                return (CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Count((CardExhaustedEntry e) => e.HappenedThisTurn(card2.CombatState) && e.Actor == card2.Owner.Creature) / 2);
+                return ((CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Count((CardExhaustedEntry e) => e.HappenedThisTurn(card2.CombatState) && e.Actor == card2.Owner.Creature) * 3 ) / 4);
             }),
 
         ];

@@ -27,19 +27,24 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            HoverTipFactory.FromPower<DoomPower>(),
+        ];
+
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new DoomedVar(10),
             new CalculationBaseVar(0m),
             new ExtraDamageVar(6m),
-            new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count((CardModel c) => c.Type == CardType.Curse)),
+            new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count((CardModel c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>()))),
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedDamage.PreviewValue / 2), DynamicVars.CalculatedDamage.PreviewValue);
+            decimal amount = getAmount(cardPlay, (DynamicVars.CalculatedDamage.IntValue / 2), DynamicVars.CalculatedDamage.IntValue);
 
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target)
                  .WithHitFx("vfx/vfx_attack_slash")

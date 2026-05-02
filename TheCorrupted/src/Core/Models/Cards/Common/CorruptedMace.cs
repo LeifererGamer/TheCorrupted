@@ -20,10 +20,13 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DoomPower>()];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.FromPower<DoomPower>()
+        ];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new DoomedVar(3),
+            new DoomedVar(5),
             new DamageVar("DamageDiff", 5m , ValueProp.Move),
             new DamageVar(10m, ValueProp.Move),
             new PowerVar<VulnerablePower>(2m)

@@ -16,7 +16,6 @@ public class AscensionOneCompletedPatch
         {
             if (serializableRun.Ascension == 1)
             {
-                // BYPASS: Use the raw string ID!
                 string correctEpochId = "CORRUPTED7_EPOCH";
                 EpochModel customEpoch = EpochModel.Get(correctEpochId);
 

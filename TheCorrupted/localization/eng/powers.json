@@ -1,7 +1,7 @@
 {
   "DOOMING_STRENGTH_POWER.title": "Dooming Strength",
-  "DOOMING_STRENGTH_POWER.description": "At the start of your turn, add X [red]Strength[/red] where X is half the ammount of [jitter][pink]Doom[/pink][/jitter] stacks on yourself. Remove this [red]Strength[/red] at the end of your turn.",
-  "DOOMING_STRENGTH_POWER.smartDescription": "At the start of your turn, add X [red]Strength[/red] where X is half the ammount of [jitter][pink]Doom[/pink][/jitter] stacks on yourself. Remove this [red]Strength[/red] at the end of your turn.",
+  "DOOMING_STRENGTH_POWER.description": "At the start of each turn apply 1 [red]Strength[/red] for each {Divider} stacks of [jitter][pink]Doom[/pink][/jitter].\nRemove this [red]Strength[/red] at the end of your turn.",
+  "DOOMING_STRENGTH_POWER.smartDescription": "At the start of each turn apply {Amount} [red]Strength[/red] for each {Divider} stacks of [jitter][pink]Doom[/pink][/jitter].\nRemove this [red]Strength[/red] at the end of your turn.",
   "STATUS_QUO_POWER.title": "Status Quo",
   "STATUS_QUO_POWER.description": "[gold]Status[/gold] cards will now count as [jitter][purple]Curse[/purple][/jitter] cards for all purposes.",
   "STATUS_QUO_POWER.smartDescription": "[gold]Status[/gold] cards will now count as [jitter][purple]Curse[/purple][/jitter] cards for all purposes.",

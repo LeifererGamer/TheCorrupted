@@ -7,9 +7,11 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
+
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            HoverTipFactory.FromPower<DoomPower>(),
+        ];
 
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [

@@ -23,12 +23,17 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
-        protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DoomPower>()];
+        protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [
+            HoverTipFactory.FromPower<DoomPower>(),
+            HoverTipFactory.FromPower<WeakPower>(),
+        ];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DoomedVar(3),
             new DamageVar ("DamageDiff", 4m, ValueProp.Move),
             new DamageVar(8m, ValueProp.Move),
+            new PowerVar<WeakPower>(1m)
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
@@ -38,6 +43,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             DynamicVars.Damage.UpgradeValueBy(2m);
             DynamicVars["Doomed"].UpgradeValueBy(2);
             DynamicVars["DamageDiff"].UpgradeValueBy(1);
+            DynamicVars.Weak.UpgradeValueBy(1m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -47,6 +53,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             await DamageCmd.Attack(amount).FromCard(this).Targeting(cardPlay.Target) //DamageDiffVar
                  .WithHitFx("vfx/vfx_attack_slash")
                  .Execute(choiceContext);
+        }
+
+        protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        {
+            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
     }
 }

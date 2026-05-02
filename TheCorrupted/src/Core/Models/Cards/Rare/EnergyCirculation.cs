@@ -16,7 +16,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
-internal class EnergyCirculation() : CardModel(5, CardType.Power, CardRarity.Rare, TargetType.Self)
+internal class EnergyCirculation() : CardModel(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 

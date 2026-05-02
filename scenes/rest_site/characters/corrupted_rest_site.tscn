@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvtdsx5v7l4b4"]
 
-[ext_resource type="Script" uid="uid://cw3k3450x6tik" path="res://src/Core/Nodes/RestSite/SNRestSiteCharacter.cs" id="1_dq7dj"]
+[ext_resource type="Script" uid="uid://cw3k3450x6tik" path="res://TheCorrupted/src/Core/Nodes/RestSite/SNRestSiteCharacter.cs" id="1_dq7dj"]
 [ext_resource type="Texture2D" uid="uid://c3aj7b6jp73n0" path="res://animations/rest_site/corrupted/restsite_corrupted.png" id="2_0ywhp"]
 [ext_resource type="PackedScene" uid="uid://cq082pb0eb1ur" path="res://scenes/ui/selection_reticle.tscn" id="2_dq7dj"]
 
 [node name="CorruptedRestSite" type="Node2D"]
-position = Vector2(5, 108)
+position = Vector2(5, 153)
 scale = Vector2(0.760006, 0.760006)
 script = ExtResource("1_dq7dj")
 

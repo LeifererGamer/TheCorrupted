@@ -27,7 +27,7 @@ internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Common
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
-            new PowerVar<PlatingPower>(4m),
+            new PowerVar<PlatingPower>(6m),
             new RitualVar(1),
         ];
 
@@ -42,7 +42,7 @@ internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Common
 
         protected override void OnUpgrade()
         {
-            DynamicVars["PlatingPower"].UpgradeValueBy(1m);
+            DynamicVars["PlatingPower"].UpgradeValueBy(2m);
         }
 
     }

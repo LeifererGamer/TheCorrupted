@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b52v0j8ni4dbg"
-path="res://.godot/imported/thecorrupted-summon_army_next_turn_power.png-083e563266520d05ef44c39bc9747155.ctex"
+uid="uid://b1d5nd4a4fofb"
+path="res://.godot/imported/doomsday_shield.png-df61a572eebd297306e1263cedf16681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/powers/thecorrupted-summon_army_next_turn_power.png"
-dest_files=["res://.godot/imported/thecorrupted-summon_army_next_turn_power.png-083e563266520d05ef44c39bc9747155.ctex"]
+source_file="res://images/packed/card_portraits/corrupted/doomsday_shield.png"
+dest_files=["res://.godot/imported/doomsday_shield.png-df61a572eebd297306e1263cedf16681.ctex"]
 
 [params]
 

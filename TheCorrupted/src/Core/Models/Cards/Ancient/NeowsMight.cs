@@ -21,15 +21,13 @@ internal class NeowsMight() : CardModel(1, CardType.Skill, CardRarity.Ancient, T
             CardKeyword.Exhaust,
         ];
 
-        protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+            await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
             foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
             {
                 card.EnergyCost.SetThisTurnOrUntilPlayed(card.EnergyCost.Canonical - 1, reduceOnly: true);
             }
-
-            return Task.CompletedTask;
         }
 
         protected override void OnUpgrade()

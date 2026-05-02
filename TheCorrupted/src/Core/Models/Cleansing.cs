@@ -13,7 +13,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
             {
                 if (creature.GetPower<DoomPower>().Amount <= amount)
                     amount = creature.GetPower<DoomPower>().Amount;
-
                 await PowerCmd.Apply<DoomPower>(creature, -amount, creature, card);
             }
             else

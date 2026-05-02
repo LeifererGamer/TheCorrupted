@@ -25,7 +25,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token
 {
-    public sealed class CommandArmy() : CardModel(2, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
+    public sealed class CommandArmy() : CardModel(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -61,7 +61,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CalculationBaseVar(0m),
-            new ExtraDamageVar(1m).FromOsty(),
+            new ExtraDamageVar(1.5m).FromOsty(),
             new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier(delegate(CardModel card, Creature? _)
             {
                 Creature osty = card.Owner.Osty;

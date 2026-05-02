@@ -13,7 +13,7 @@ namespace TheCorrupted.Patches
     {
         private static void Postfix(ref IEnumerable<CharacterModel> __result)
         {
-            // Add Watcher to the list of all characters
+            // Add Corrupted to the list of all characters
             var charactersList = __result.ToList();
             charactersList.Add(ModelDb.Character<Corrupted>());
 

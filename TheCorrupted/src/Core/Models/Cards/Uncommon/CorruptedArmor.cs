@@ -43,21 +43,21 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(2),
-            new DamageVar("DamageDiff", 7m , ValueProp.Move),
+            new BlockVar("DamageDiff", 11m , ValueProp.Move),
             new BlockVar(14m, ValueProp.Move),
         ];
 
         protected override void OnUpgrade()
         {
             DynamicVars.Block.UpgradeValueBy(6m);
-            DynamicVars["DamageDiff"].UpgradeValueBy(3m);
+            DynamicVars["DamageDiff"].UpgradeValueBy(4m);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Block.BaseValue);
 
-            await CreatureCmd.GainBlock(Owner.Creature, amount, DynamicVars.CalculatedBlock.Props, cardPlay);
+            await CreatureCmd.GainBlock(Owner.Creature, amount, DynamicVars.Block.Props, cardPlay);
         }
 
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)

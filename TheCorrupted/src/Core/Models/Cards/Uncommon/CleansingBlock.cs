@@ -26,7 +26,7 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new BlockVar(8m, ValueProp.Move),
             new CleansingVar(5m),
-            new DamageVar(3, ValueProp.Move), //Healing
+            new HealVar(3),
         ];
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
@@ -53,7 +53,7 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
         {
             DynamicVars.Block.UpgradeValueBy(2m);
             DynamicVars["Cleansing"].UpgradeValueBy(3m);
-            DynamicVars.Damage.UpgradeValueBy(1m);
+            DynamicVars.Heal.UpgradeValueBy(1m);
         }
 
     }

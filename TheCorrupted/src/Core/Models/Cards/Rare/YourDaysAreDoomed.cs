@@ -51,7 +51,7 @@ internal class YourDaysAreDoomed() : CardModel(2, CardType.Skill, CardRarity.Rar
             foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
             {
                 if (Owner.Creature.HasPower<DoomPower>())
-                    if (hittableEnemy.CurrentHp <= Owner.Creature.GetPower<DoomPower>().Amount * CombatState.Allies.Where(a => a.IsPlayer).Count())
+                    if (hittableEnemy.CurrentHp <= Owner.Creature.GetPower<DoomPower>().Amount * (CombatState.Allies.Where(a => a.IsPlayer).Count() > 1 ? ((CombatState.Allies.Where(a => a.IsPlayer).Count() -1) * 0.5) + 1 : 1))
                         creatures.Add(hittableEnemy);
             }
             await DoomPower.DoomKill(creatures);

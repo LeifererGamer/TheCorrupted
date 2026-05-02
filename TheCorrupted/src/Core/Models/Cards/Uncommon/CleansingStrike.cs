@@ -53,7 +53,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         }
         public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
         {
-            if (dealer == Owner.Creature && result.UnblockedDamage > 0)
+            if (dealer == Owner.Creature && result.UnblockedDamage > 0 && cardSource == this)
             {
                 var amount = await Cleansing.PerformCleansing(result.UnblockedDamage, Owner.Creature, this);
                 await ArmyCmd.Summon(choiceContext, Owner, amount, this);

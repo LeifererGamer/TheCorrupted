@@ -116,6 +116,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
                 ModelDb.Card<MantleOfCorruption>(),
                 ModelDb.Card<DoomsdayShield>(),
                 ModelDb.Card<CorruptedDelivery>(),
+                ModelDb.Card<NeowsDoomingCorruption>(),
             ];
         }
 

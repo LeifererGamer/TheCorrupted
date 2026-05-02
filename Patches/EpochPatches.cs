@@ -7,7 +7,7 @@ using TheCorrupted.TheCorrupted.src.Core.Timeline.Stories; // Make sure this nam
 
 namespace TheCorrupted.Patches;
 
-// 1. Inject Card Epochs (2, 5, 7)
+// Inject Card Epochs (2, 5, 7)
 [HarmonyPatch(typeof(SaveManager), "GetCardUnlockEpochIds")]
 internal class InjectCardUnlocksPatch
 {
@@ -23,7 +23,7 @@ internal class InjectCardUnlocksPatch
     }
 }
 
-// 2. Inject Relic Epochs (3, 6)
+// Inject Relic Epochs (3, 6)
 [HarmonyPatch(typeof(SaveManager), "GetRelicUnlockEpochIds")]
 internal class InjectRelicUnlocksPatch
 {
@@ -38,7 +38,7 @@ internal class InjectRelicUnlocksPatch
     }
 }
 
-// 3. Inject Potion Epoch (4)
+// Inject Potion Epoch (4)
 [HarmonyPatch(typeof(SaveManager), "GetPotionUnlockEpochIds")]
 internal class InjectPotionUnlocksPatch
 {

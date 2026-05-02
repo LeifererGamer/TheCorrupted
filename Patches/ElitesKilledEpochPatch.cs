@@ -20,7 +20,6 @@ internal class ElitesKilledEpochPatch
     {
         if (localPlayer.Character.Id.Entry == "CORRUPTED")
         {
-            // BYPASS: Use the raw string ID!
             string correctEpochId = "CORRUPTED5_EPOCH";
             EpochModel customEpoch = EpochModel.Get(correctEpochId);
 
@@ -49,7 +48,7 @@ internal class ElitesKilledEpochPatch
                 }
             }
 
-            Log.Info($"[Corrupted Patch] Elites Defeated: {elitesDefeated}/15");
+            //Log.Info($"[Corrupted Patch] Elites Defeated: {elitesDefeated}/15");
 
             if (elitesDefeated >= 15)
             {
@@ -57,7 +56,7 @@ internal class ElitesKilledEpochPatch
                     .Method("TryObtainEpochMidRun", customEpoch, localPlayer)
                     .GetValue();
 
-                Log.Info($"[Corrupted Patch] Successfully granted Elite Epoch: {correctEpochId}");
+                //Log.Info($"[Corrupted Patch] Successfully granted Elite Epoch: {correctEpochId}");
             }
 
             return false;

@@ -20,6 +20,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
 internal class GroupSummoning() : CardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
+        public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override IEnumerable<DynamicVar> CanonicalVars => 

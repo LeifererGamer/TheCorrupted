@@ -19,6 +19,8 @@
   "BLUE_CANDLE.flavor": "The flame ignites when shrouded in darkness.",
   "DOOM_STONE.title": "Doom Stone",
   "DOOM_STONE.description": "Whenever you apply [jitter][pink]Doom[/pink][/jitter] to yourself, gain 1 [red]Strength[/red].",
-  "DOOM_STONE.flavor": "A stone that brings doom upon those who wield it."
-
+  "DOOM_STONE.flavor": "A stone that brings doom upon those who wield it.",
+  "DOOMED_BLADE.title": "Doomed Blade",
+  "DOOMED_BLADE.description": "At the start of each combat, shuffle 2 [jitter][purple]Corruption[/purple][/jitter] into your draw pile and apply {DoomPower} [jitter][pink]Doom[/pink][/jitter] to yourself.",
+  "DOOMED_BLADE.flavor": "A blade cursed by something evil."
 }

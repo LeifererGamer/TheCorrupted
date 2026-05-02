@@ -31,7 +31,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DoomedVar(3),
-            new DamageVar("DamageDiff", 4m , ValueProp.Move),
+            new DynamicVar("DamageDiff", 4m),
             new ArmyVar(8),
         ];
 

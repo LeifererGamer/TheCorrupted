@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Cards.Variables;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -31,13 +32,18 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
         HoverTipFactory.FromPower<StrengthPower>()
         ];
 
+        protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [
+            new DynamicVar("Divider", 3),
+        ];
+
         public int amount = 0;
         public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
         {
             if (side == Owner.Side)
             {
                 Flash();
-                amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / 2 * Amount : 0;
+                amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
                 await PowerCmd.Apply<StrengthPower>(Owner, amount, Owner, null);
             }
         }
