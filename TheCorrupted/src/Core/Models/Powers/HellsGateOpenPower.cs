@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
+using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
 {
@@ -20,12 +22,15 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
 
         public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
         {
+            if (player != Owner.Player)
+                return;
+
             Flash();
-            IEnumerable<CardModel> distinctForCombat = CardFactory.GetDistinctForCombat(Owner.Player, ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.Player.UnlockState, CombatState.RunState.CardMultiplayerConstraint), 1, CombatState.RunState.Rng.CombatCardGeneration);
-            foreach (CardModel item in distinctForCombat)
-            {
-                await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, addedByPlayer: true);
-            }
+            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(Owner.Player, from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.Player.UnlockState, Owner.Player.RunState.CardMultiplayerConstraint)
+                                                                                    where c.Type == CardType.Curse && (c is not Enthralled || c.Owner.Relics.Where(r => r is BlueCandle).Any())
+                                                                                    select c, Amount, Owner.Player.RunState.Rng.CombatCardGeneration);
+
+            await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Hand, addedByPlayer: true);
         }
     }
 }

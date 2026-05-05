@@ -65,7 +65,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token
             new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier(delegate(CardModel card, Creature? _)
             {
                 Creature osty = card.Owner.Osty;
-                return osty != null && osty.IsAlive ? osty.CurrentHp : 0;
+                return osty != null && osty.IsAlive ? osty.MaxHp : 0;
             })
         ];
 

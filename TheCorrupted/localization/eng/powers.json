@@ -67,7 +67,15 @@
   "MANTLE_OF_CORRUPTION_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Block[/gold], [gold]Summon Army {Army}[/gold].\nChoose to [gold]Ritual[/gold] or not:\nApply {DoomOrCleansing} [jitter][pink]Doom[/pink][/jitter] to yourself.\nIf the [gold]Ritual[/gold] fails: [gold]Cleansing {DoomOrCleansing}[/gold]",
   "CORRUPTED_DELIVERY_POWER.title": "Corrupted Delivery",
   "CORRUPTED_DELIVERY_POWER.description": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain a random [gold]Card[/gold] in to your [gold]Hand[/gold].",
-  "CORRUPTED_DELIVERY_POWER.smartDescription": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain {Amount} random {Amount:plural:[gold]Card[/gold]|[gold]Cards[/gold]} in to your [gold]Hand[/gold]."
-
+  "CORRUPTED_DELIVERY_POWER.smartDescription": "Whenever you [gold]Exhaust[/gold] a [jitter][purple]Curse[/purple][/jitter] card, gain {Amount} random {Amount:plural:[gold]Card[/gold]|[gold]Cards[/gold]} in to your [gold]Hand[/gold].",
+  "NEOWS_DOOMING_POWER.title": "Neow's Dooming",
+  "NEOWS_DOOMING_POWER.description": "You can not die from the effects of [jitter][pink]Doom[/pink][/jitter].",
+  "NEOWS_DOOMING_POWER.smartDescription": "You can not die from the effects of [jitter][pink]Doom[/pink][/jitter].",
+  "NEOWS_CORRUPTION_POWER.title": "Neow's Corruption",
+  "NEOWS_CORRUPTION_POWER.description": "The effects of [gold]Perform Ritual[/gold] cards are played an additional time if the Ritual was successful.",
+  "NEOWS_CORRUPTION_POWER.smartDescription": "The effects of [gold]Perform Ritual[/gold] cards are played an additional time if the Ritual was successful.",
+  "NORMALITY_POWER.title": "Normality",
+  "NORMALITY_POWER.description": "The next 3 [gold]Cards[/gold] you play cost 1 less.",
+  "NORMALITY_POWER.smartDescription": "The next {Amount} {Amount:plural:[gold]Card[/gold]|[gold]Cards[/gold]} you play cost 1 less."
 
 }

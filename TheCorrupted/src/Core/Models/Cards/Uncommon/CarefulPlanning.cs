@@ -29,7 +29,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Cards.UpgradeValueBy(1);
+            EnergyCost.UpgradeBy(-1);
         }
 
     }

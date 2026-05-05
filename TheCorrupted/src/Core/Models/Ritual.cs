@@ -36,6 +36,10 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                 if (cardModel.Type.Equals(CardType.Curse) || (cardModel.Type.Equals(CardType.Status) && player.Creature.HasPower<StatusQuoPower>()))
                 {
                     await getBenefits(cardModel);
+                    if (player.Creature.HasPower<NeowsCorruptionPower>())
+                    {
+                        await getBenefits(cardModel);
+                    }
                     if (player.Creature.HasPower<DoomingCorruptionPower>())
                     {
                         PowerCmd.Apply<DoomPower>([player.Creature], player.Creature.GetPower<DoomingCorruptionPower>().Amount, player.Creature, cardModel);

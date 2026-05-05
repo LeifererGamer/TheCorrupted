@@ -40,7 +40,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         }
         public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
         {
-            if (dealer == Owner.Creature && result.UnblockedDamage > 0)
+            if (cardSource == this && dealer == Owner.Creature && result.UnblockedDamage > 0)
             {
                 await CreatureCmd.Heal(Owner.Creature, result.UnblockedDamage);
             }

@@ -50,6 +50,10 @@
 		</Content>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Remove="TheCorrupted\localization\eng\afflictions.json" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 	  <None Include="TheCorrupted\src\Core\Models\Extensions\StringExtensions.cs.uid" />

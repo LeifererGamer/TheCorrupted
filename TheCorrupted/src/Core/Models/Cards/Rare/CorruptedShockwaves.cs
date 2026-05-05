@@ -56,6 +56,7 @@ internal class CorruptedShockwaves() : TheCorruptedCardModel(2, CardType.Attack,
         {
             DynamicVars.Damage.UpgradeValueBy(4m);
             DynamicVars["DamageDiff"].UpgradeValueBy(2m);
+            DynamicVars["AutoCards"].UpgradeValueBy(-2);
         }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

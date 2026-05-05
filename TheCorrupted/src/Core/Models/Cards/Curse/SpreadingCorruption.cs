@@ -65,7 +65,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
         private static async Task<CardModel?> CreateRandomCurseInDrawPile(Player player, CombatState combatState)
         {
             CardModel cardModel = CardFactory.GetDistinctForCombat(player, from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
-                                                                           where c.Type == CardType.Curse
+                                                                           where c.Type == CardType.Curse && c is not Enthralled
                                                                            select c, 1, player.RunState.Rng.CombatCardGeneration).FirstOrDefault();
             if (cardModel != null)
             {
