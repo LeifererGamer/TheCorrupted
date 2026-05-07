@@ -15,7 +15,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
 internal class ForbiddenAlchemy() : CardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();

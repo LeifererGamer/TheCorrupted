@@ -14,7 +14,7 @@
   "SAVED_BY_CORRUPTION_POWER.title": "Saved by Corruption",
   "SAVED_BY_CORRUPTION_POWER.description": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is drawn or Exhausted, gain {Amount} [gold]Block[/gold].",
   "SAVED_BY_CORRUPTION_POWER.smartDescription": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is drawn or Exhausted, gain {Amount} [gold]Block[/gold].",
-  "ENERGY_CIRCULATION_POWER.title": "Mana Circulation",
+  "ENERGY_CIRCULATION_POWER.title": "Energy Circulation",
   "ENERGY_CIRCULATION_POWER.description": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is Exhausted, gain {Energy:energyIcons()}",
   "ENERGY_CIRCULATION_POWER.smartDescription": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is Exhausted, gain {Energy:energyIcons()}",
   "CAREFUL_PLANNING_POWER.title": "Careful Planning",

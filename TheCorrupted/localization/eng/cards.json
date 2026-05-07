@@ -27,7 +27,7 @@
   "HELLS_GATE_OPEN.description": "At the start of your turn, add 1 random [jitter][purple]Curse[/purple][/jitter] card into your [gold]Hand[/gold].",
   "SAVED_BY_CORRUPTION.title": "Saved by Corruption",
   "SAVED_BY_CORRUPTION.description": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is drawn or [gold]Exhausted[/gold], gain {SavedByCorruptionPower:diff()} [gold]Block[/gold].",
-  "ENERGY_CIRCULATION.title": "Mana Circulation",
+  "ENERGY_CIRCULATION.title": "Energy Circulation",
   "ENERGY_CIRCULATION.description": "Whenever a [jitter][purple]Curse[/purple][/jitter] card is [gold]Exhausted[/gold], gain {Energy:energyIcons()}.",
   "CAREFUL_PLANNING.title": "Careful Planning",
   "CAREFUL_PLANNING.description": "Whenever you draw a [jitter][purple]Curse[/purple][/jitter] card, draw  {Cards:diff()} {Cards:plural:card|cards}.",
