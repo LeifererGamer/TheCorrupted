@@ -13,7 +13,7 @@ shader_parameter/void_color = Color(0.14509805, 0.6745098, 0.9607843, 1)
 shader_parameter/void_edge_color = Color(0.09019608, 0.5764706, 0.9019608, 1)
 shader_parameter/corner_radius = 0.055
 
-[node name="DoubtAff" type="Control"]
+[node name="AscendersBaneAff" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 

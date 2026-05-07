@@ -1,5 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
+using BaseLib.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -18,6 +19,7 @@ using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token;
+using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Ancient
@@ -34,14 +36,20 @@ internal class NeowsDoomingCorruption() : CardModel(1, CardType.Power, CardRarit
             HoverTipFactory.FromPower<NeowsDoomingPower>(),
         ];
 
+        protected override IEnumerable<DynamicVar> CanonicalVars => [
+            new RitualVar(),
+            new PowerVar<DoomPower>(5m),
+            new CardsVar(1),
+        ];
+
+        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<DoomPower>([Owner.Creature], DynamicVars.Doom.BaseValue, Owner.Creature, this);
-            await SpreadingCorruption.CreateInHand(Owner, DynamicVars["Ritual"].IntValue, CombatState);
-            var ritualPerformed = await Ritual.ChooseIfPerformRitual(choiceContext, Owner, this, async (card) =>
+            var ritualPerformed = await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await PowerCmd.Apply<NeowsCorruptionPower>([Owner.Creature], 1m, Owner.Creature, this);
-            });
+            }, true);
             if (!ritualPerformed)
             {
                 await PowerCmd.Apply<NeowsDoomingPower>([Owner.Creature], 1m, Owner.Creature, this);
@@ -50,10 +58,7 @@ internal class NeowsDoomingCorruption() : CardModel(1, CardType.Power, CardRarit
 
         protected override void OnUpgrade()
         {
-            DynamicVars.ExtraDamage.UpgradeValueBy(1m);
-            DynamicVars.CalculationExtra.UpgradeValueBy(1m);
-            DynamicVars.Doom.UpgradeValueBy(5m);
-            DynamicVars["Ritual"].UpgradeValueBy(1m);
+            EnergyCost.UpgradeBy(-1);
         }
 
     }

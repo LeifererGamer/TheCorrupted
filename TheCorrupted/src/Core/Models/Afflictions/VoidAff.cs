@@ -13,10 +13,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class VoidAff : AfflictionModel
+    internal class VoidAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
             await PlayerCmd.GainEnergy(1m, Card.Owner);

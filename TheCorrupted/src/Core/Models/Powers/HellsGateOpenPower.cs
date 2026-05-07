@@ -16,9 +16,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
     {
         public override PowerType Type => PowerType.Buff;
 
-
         public override PowerStackType StackType => PowerStackType.Counter;
-
 
         public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
         {
@@ -26,9 +24,14 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
                 return;
 
             Flash();
-            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(Owner.Player, from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.Player.UnlockState, Owner.Player.RunState.CardMultiplayerConstraint)
-                                                                                    where c.Type == CardType.Curse && (c is not Enthralled || c.Owner.Relics.Where(r => r is BlueCandle).Any())
-                                                                                    select c, Amount, Owner.Player.RunState.Rng.CombatCardGeneration);
+            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(
+                Owner.Player,
+                from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.Player.UnlockState, Owner.Player.RunState.CardMultiplayerConstraint)
+                where c.Type == CardType.Curse && (c is not Enthralled || Owner.Player.Relics.Any(r => r is BlueCandle))
+                select c,
+                Amount,
+                Owner.Player.RunState.Rng.CombatCardGeneration
+            );
 
             await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Hand, addedByPlayer: true);
         }

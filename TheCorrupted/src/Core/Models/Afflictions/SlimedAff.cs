@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class SlimedAff : AfflictionModel
+    internal class SlimedAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
 

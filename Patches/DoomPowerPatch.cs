@@ -10,15 +10,21 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.Patches
 {
-    [HarmonyPatch(typeof(DoomPower), nameof(DoomPower.GetDoomedCreatures))]
+    [HarmonyPatch(typeof(DoomPower), nameof(DoomPower.IsOwnerDoomed))]
     public static class DoomPowerPatch
     {
-        public static void Postfix(ref IReadOnlyList<Creature> __result)
+        public static void Postfix(DoomPower __instance, ref bool __result)
         {
-            // Take the original result and filter out anyone with NeowsDoomingCorruptionPower
-            __result = __result
-                .Where(c => !c.HasPower<NeowsDoomingPower>())
-                .ToList();
+            // If the original game said they were doomed...
+            if (__result)
+            {
+                // ...but they have our custom power...
+                if (__instance.Owner.HasPower<NeowsDoomingPower>())
+                {
+                    // ...then they are not actually doomed!
+                    __result = false;
+                }
+            }
         }
     }
 }

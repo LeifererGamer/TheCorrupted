@@ -12,10 +12,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class EnthralledAff : AfflictionModel
+    internal class EnthralledAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.ForEnergy(Card)

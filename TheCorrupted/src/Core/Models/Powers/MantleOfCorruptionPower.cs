@@ -53,10 +53,10 @@ internal class MantleOfCorruptionPower : PowerModel
                 Flash();
                 await CreatureCmd.GainBlock(base.Owner, base.Amount, ValueProp.Unpowered, null);
                 await ArmyCmd.Summon(choiceContext, Owner.Player, DynamicVars["Army"].BaseValue, this);
-                var ritualPerformed = await Ritual.ChooseIfPerformRitual(choiceContext, Owner.Player, this, async (card) =>
+                var ritualPerformed = await Ritual.PerformRitual(choiceContext, Owner.Player, this, async (card) =>
                 {
-                    Cleansing.PerformCleansing(DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
-                });
+                    await Cleansing.PerformCleansing(DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
+                }, true);
                 if(!ritualPerformed)
                 {
                     await PowerCmd.Apply<DoomPower>([Owner], DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);

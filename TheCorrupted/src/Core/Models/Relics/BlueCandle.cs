@@ -42,7 +42,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
         {
             if (player == Owner && combatState.RoundNumber == 1)
             {
-                IEnumerable<CardModel> cards = base.Owner.PlayerCombatState.AllCards.Where((CardModel c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>()));
+                IEnumerable<CardModel> cards = base.Owner.PlayerCombatState.AllCards.Where((CardModel c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>() && c is not FranticEscape));
                 foreach (CardModel card in cards)
                 {
                     await SetAffliction(card);
@@ -52,7 +52,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 
         public override async Task AfterCardEnteredCombat(CardModel card)
         {
-            if (card.Owner == Owner && (card.Type == CardType.Curse || (card.Type == CardType.Status && card.Owner.Creature.HasPower<StatusQuoPower>())))
+            if (card.Owner == Owner && (card.Type == CardType.Curse || (card.Type == CardType.Status && card.Owner.Creature.HasPower<StatusQuoPower>() && card is not FranticEscape)))
             {
                 await SetAffliction(card);
             }
@@ -60,7 +60,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 
         public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
         {
-            if (cardPlay.Card.Owner == base.Owner && (cardPlay.Card.Type == CardType.Curse || (cardPlay.Card.Type == CardType.Status && cardPlay.Card.Owner.Creature.HasPower<StatusQuoPower>())) && !cardPlay.IsAutoPlay)
+            if (cardPlay.Card.Owner == base.Owner && (cardPlay.Card.Type == CardType.Curse || (cardPlay.Card.Type == CardType.Status && cardPlay.Card.Owner.Creature.HasPower<StatusQuoPower>()) && cardPlay.Card is not FranticEscape) && !cardPlay.IsAutoPlay)
             {
                 var damage = 1m;
                 if (cardPlay.Card is Greed)
@@ -76,7 +76,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             card.AddKeyword(CardKeyword.Exhaust);
             if (card is AscendersBane)
             {
-                await CardCmd.Afflict<AscendersBaneAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is BadLuck)
             {
@@ -84,11 +84,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is Clumsy)
             {
-                await CardCmd.Afflict<ClumsyAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is CurseOfTheBell)
             {
-                await CardCmd.Afflict<CurseOfTheBellAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Debt)
             {
@@ -116,7 +116,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is Guilty)
             {
-                await CardCmd.Afflict<GuiltyAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Injury)
             {
@@ -128,7 +128,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is PoorSleep)
             {
-                await CardCmd.Afflict<PoorSleepAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Regret)
             {
@@ -140,11 +140,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is SporeMind)
             {
-                await CardCmd.Afflict<SporeMindAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Writhe)
             {
-                await CardCmd.Afflict<WritheAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is CorruptionCorrupted)
             {
@@ -168,7 +168,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is Dazed)
             {
-                await CardCmd.Afflict<DazedAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Infection)
             {
@@ -180,7 +180,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             }
             else if (card is Soot)
             {
-                await CardCmd.Afflict<SootAff>(card, 1m);
+                await CardCmd.Afflict<BlueCandleAff>(card, 1m);
             }
             else if (card is Toxic)
             {

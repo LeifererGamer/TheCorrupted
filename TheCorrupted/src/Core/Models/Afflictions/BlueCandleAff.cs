@@ -1,4 +1,7 @@
-﻿using MegaCrit.Sts2.Core.Models;
+﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +10,11 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class BlueCandleAff : AfflictionModel
+    internal class BlueCandleAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
+        public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
+        {
+            await CardPileCmd.Draw(choiceContext, Card.Owner);
+        }
     }
 }

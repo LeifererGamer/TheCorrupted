@@ -64,9 +64,14 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
 
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(Owner, from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
-                                                                                    where c.Type == CardType.Curse && (c is not Enthralled || c.Owner.Relics.Where(r => r is BlueCandle).Any())
-                                                                                    select c, 2, Owner.RunState.Rng.CombatCardGeneration);
+            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(
+                Owner,
+                from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
+                where c.Type == CardType.Curse && (c is not Enthralled || Owner.Relics.Any(r => r is BlueCandle))
+                select c,
+                2,
+                Owner.RunState.Rng.CombatCardGeneration
+            );
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
         }
     }

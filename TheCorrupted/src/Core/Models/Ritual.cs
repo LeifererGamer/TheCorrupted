@@ -19,10 +19,15 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
             cardModel.EnchantInternal(ModelDb.Enchantment<RitualReplay>().ToMutable(), 1m);
         }
 
-        internal static async Task<bool> ChooseIfPerformRitual(PlayerChoiceContext choiceContext, Player player, AbstractModel source, Func<CardModel, Task> getBenefits)
+        internal static async Task<bool> PerformRitual(PlayerChoiceContext choiceContext, Player player, AbstractModel source, Func<CardModel, Task> getBenefits, bool isOptional = false)
         {
+            string locKey = isOptional ? "TO_RITUAL_MAYBE" : "TO_RITUAL";
+            CardSelectorPrefs prefs = isOptional
+                ? new CardSelectorPrefs(new LocString("card_selection", locKey), 0, 1)
+                : new CardSelectorPrefs(new LocString("card_selection", locKey), 1);
+
             CardModel cardModel = (await CardSelectCmd.FromHand(
-                prefs: new CardSelectorPrefs(new LocString("card_selection", "TO_RITUAL_MAYBE"),0, 1),
+                prefs: prefs,
                 context: choiceContext,
                 player: player,
                 filter: null,
@@ -36,6 +41,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                 if (cardModel.Type.Equals(CardType.Curse) || (cardModel.Type.Equals(CardType.Status) && player.Creature.HasPower<StatusQuoPower>()))
                 {
                     await getBenefits(cardModel);
+
                     if (player.Creature.HasPower<NeowsCorruptionPower>())
                     {
                         await getBenefits(cardModel);
@@ -56,39 +62,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                 }
             }
             return false;
-        }
-
-        internal static async Task PerformRitual(PlayerChoiceContext choiceContext, Player player, AbstractModel source, Func<CardModel, Task> getBenefits)
-        {
-            CardModel cardModel = (await CardSelectCmd.FromHand(
-                prefs: new CardSelectorPrefs(new LocString("card_selection", "TO_RITUAL"), 1),
-                context: choiceContext,
-                player: player,
-                filter: null,
-                source: source)).FirstOrDefault();
-
-            if (cardModel != null)
-            {
-                await CardCmd.Exhaust(choiceContext, cardModel);
-                await CreatureCmd.TriggerAnim(player.Creature, "Cast", player.Character.CastAnimDelay);
-
-                if (cardModel.Type.Equals(CardType.Curse) || (cardModel.Type.Equals(CardType.Status) && player.Creature.HasPower<StatusQuoPower>()))
-                {
-                    await getBenefits(cardModel);
-                    if (player.Creature.HasPower<DoomingCorruptionPower>())
-                    {
-                        PowerCmd.Apply<DoomPower>([player.Creature], player.Creature.GetPower<DoomingCorruptionPower>().Amount, player.Creature, cardModel);
-                    }
-                    if (player.Creature.HasPower<RitualisticSummonsPower>())
-                    {
-                        ArmyCmd.Summon(choiceContext, player, player.Creature.GetPower<RitualisticSummonsPower>().Amount, cardModel);
-                    }
-                    if (player.Creature.HasPower<CleanseWithRitualsPower>())
-                    {
-                        Cleansing.PerformCleansing(player.Creature.GetPower<CleanseWithRitualsPower>().Amount, player.Creature, cardModel);
-                    }
-                }
-            }
         }
     }
 }

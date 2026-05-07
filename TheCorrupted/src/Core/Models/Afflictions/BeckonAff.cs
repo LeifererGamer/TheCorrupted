@@ -1,6 +1,7 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Cards;
@@ -12,10 +13,12 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class BeckonAff : AfflictionModel
+    internal class BeckonAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+        HoverTipFactory.FromPower<DoomPower>(),
+        ];
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {

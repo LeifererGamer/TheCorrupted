@@ -13,10 +13,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class ShameAff : AfflictionModel
+    internal class ShameAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<FrailPower>()

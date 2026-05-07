@@ -12,9 +12,12 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class DoubtAff : AfflictionModel
+    internal class DoubtAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
+        protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [
+            HoverTipFactory.FromPower<WeakPower>(),
+        ];
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {

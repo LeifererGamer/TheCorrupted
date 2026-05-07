@@ -32,6 +32,7 @@ internal class HellfireBreathingPower : PowerModel
         {
             if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
             {
+                Flash();
                 foreach (Creature hittableEnemy in CombatState.HittableEnemies)
                 {
                     NFireBurstVfx child = NFireBurstVfx.Create(hittableEnemy, 0.75f);

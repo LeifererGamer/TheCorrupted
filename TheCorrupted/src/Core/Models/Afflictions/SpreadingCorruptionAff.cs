@@ -9,13 +9,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class SpreadingCorruptionAff : AfflictionModel
+    internal class SpreadingCorruptionAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
 
-        public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
-        {
-
-        }
     }
 }

@@ -13,10 +13,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class NormalityAff : AfflictionModel
+    internal class NormalityAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
             await PowerCmd.Apply<NormalityPower>([Card.Owner.Creature], 3m, Card.Owner.Creature, Card);

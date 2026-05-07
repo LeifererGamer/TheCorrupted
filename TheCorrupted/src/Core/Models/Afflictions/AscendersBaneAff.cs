@@ -11,10 +11,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class AscendersBaneAff : AfflictionModel
+    internal class AscendersBaneAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
 

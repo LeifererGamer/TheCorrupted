@@ -15,10 +15,8 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class ToxicAff : AfflictionModel
+    internal class ToxicAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
             await PowerCmd.Apply<PoisonPower>(CombatState.HittableEnemies, 5m, Card.Owner.Creature, Card);

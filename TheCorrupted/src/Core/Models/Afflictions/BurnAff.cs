@@ -16,17 +16,14 @@ using System.Threading.Tasks;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 {
-    internal class BurnAff : AfflictionModel
+    internal class BurnAff : CustomAfflictionModel
     {
-        public override bool HasExtraCardText => true;
-
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
             foreach (Creature hittableEnemy in CombatState.HittableEnemies)
             {
-                NFireBurstVfx child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
-                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
-
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(hittableEnemy));
+                SfxCmd.Play("event:/sfx/characters/attack_fire");
             }
             await DamageCmd.Attack(2m).FromCard(Card).TargetingAllOpponents(Card.CombatState).Execute(choiceContext);
         }

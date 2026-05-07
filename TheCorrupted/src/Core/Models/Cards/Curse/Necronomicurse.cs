@@ -46,7 +46,7 @@ internal class Necronomicurse() : CardModel(-1, CardType.Curse, CardRarity.Curse
 
         public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
         {
-            if (card.Id == Id)
+            if (card == this)
             {
                 await CreateInHand(card.Owner, CombatState);
             }

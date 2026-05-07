@@ -21,7 +21,7 @@ internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Rare, Ta
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
-            HoverTipFactory.FromEnchantment<RitualReplay>().FirstOrDefault(),
+            HoverTipFactory.FromEnchantment<RitualReplay>().First(),
             HoverTipFactory.Static(StaticHoverTip.ReplayStatic),
 
         ];
