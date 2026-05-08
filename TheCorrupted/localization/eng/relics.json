@@ -1,6 +1,6 @@
 {
   "CORRUPTED_BLADE_RELIC.title": "Corrupted Blade",
-  "CORRUPTED_BLADE_RELIC.description": "At the start of each combat, shuffle 1 [jitter][purple]Corruption[/purple][/jitter] into your draw pile.",
+  "CORRUPTED_BLADE_RELIC.description": "At the start of each combat, shuffle 1 [jitter][purple]Corruption[/purple][/jitter] into your [gold]Draw Pile[/gold].",
   "CORRUPTED_BLADE_RELIC.flavor": "A blade corrupted by something evil.",
   "DU_VU_DOLL.title": "Du-Vu Doll",
   "DU_VU_DOLL.description": "For each [jitter][purple]Curse[/purple][/jitter] in your [gold]Deck[/gold], start each combat with 1 additional [red]Strength[/red].",
@@ -21,6 +21,6 @@
   "DOOM_STONE.description": "Whenever you apply [jitter][pink]Doom[/pink][/jitter] to yourself, gain 1 [red]Strength[/red].",
   "DOOM_STONE.flavor": "A stone that brings doom upon those who wield it.",
   "DOOMED_BLADE.title": "Doomed Blade",
-  "DOOMED_BLADE.description": "At the start of each combat, shuffle 2 [jitter][purple]Corruption[/purple][/jitter] into your draw pile and apply {DoomPower} [jitter][pink]Doom[/pink][/jitter] to yourself.",
+  "DOOMED_BLADE.description": "At the start of each combat, shuffle 2 [jitter][purple]Corruption[/purple][/jitter] into your [gold]Draw Pile[/gold] and apply {DoomPower} [jitter][pink]Doom[/pink][/jitter] to yourself.",
   "DOOMED_BLADE.flavor": "A blade doomed by something evil."
 }

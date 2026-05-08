@@ -19,7 +19,7 @@
   "DEBT_AFF.extraCardText": "If played: Gain 10 Gold.\nLose 1 HP.",
   "DECAY_AFF.title": "Decay",
   "DECAY_AFF.description": "",
-  "DECAY_AFF.extraCardText": "If played: Enchant an Attack card with [jitter][purple]Corrupted[/purple][/jitter].\nLose 1 HP.",
+  "DECAY_AFF.extraCardText": "If played: Enchant an Attack in your Hand with [jitter][purple]Corrupted[/purple][/jitter].\nLose 1 HP.",
   "DOUBT_AFF.title": "Doubt",
   "DOUBT_AFF.description": "",
   "DOUBT_AFF.extraCardText": "If played: Apply 1 Weak to ALL enemies.\nLose 1 HP.",

@@ -1,0 +1,12 @@
+{
+  "BASELIB-RITUAL.title": "Ritual Durchführen",
+  "BASELIB-RITUAL.description": "Du musst eine Karte aus deiner [gold]Hand[/gold] [gold]erschöpfen[/gold]. Handelt es sich bei der [gold]erschöpften[/gold] Karte um einen [jitter][purple]Fluch[/purple][/jitter], werden die Effekte dieser Karte abgehandelt.",
+  "BASELIB-DOOMED.title": "Verdammt {Doomed}",
+  "BASELIB-DOOMED.description": "Falls diese Karte vor dem Ende deines Zuges aus deiner [gold]Hand[/gold] abgeworfen wird, spiele sie kostenlos, aber in einer abgeschwächten Form, aus. Wende {Doomed} [jitter][pink]Verderben[/pink][/jitter] auf dich selbst an.",
+  "BASELIB-CORRUPTED.title": "Verdorben {Corrupted}",
+  "BASELIB-CORRUPTED.description": "Falls diese Karte vor dem Ende deines Zuges aus deiner [gold]Hand[/gold] abgeworfen wird, spiele sie kostenlos, aber in einer abgeschwächten Form, aus. Mische {Corrupted} {Corrupted:plural:zufälligen [jitter][purple]Fluch[/purple][/jitter]|zufällige [jitter][purple]Flüche[/purple][/jitter]} in dein [gold]Nachziehstapel[/gold] und wende {Corrupted} [gold]Gebrechlich[/gold] für [gold]Fertigkeiten[/gold] oder [gold]Schwach[/gold] für [gold]Angriffe[/gold] auf dich selbst an.",
+  "BASELIB-ARMY.title": "Armee Beschwören",
+  "BASELIB-ARMY.description": "Beschwöre eine [gold]Verdorbene Armee[/gold] mit [blue]X[/blue] HP.\nFalls sie bereits beschworen ist, erhöhe ihre maximalen TP für diesen Kampf um [blue]X[/blue].\nWenn du in jedem Kampf zum ersten Mal eine Armee beschwörst, nimm [gold]Armee befehligen[/gold] in deine [gold]Hand[/gold] .",
+  "BASELIB-CLEANSING.title": "Reinigung",
+  "BASELIB-CLEANSING.description": "Entferne bis zu X [jitter][pink]Verderben[/pink][/jitter] von dir selbst."
+}

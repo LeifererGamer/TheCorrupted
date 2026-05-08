@@ -1,6 +1,6 @@
 {
   "CORRUPTED.aromaPrinciple": "[sine][purple]Through corruption, I find power...[/purple][/sine]",
-  "CORRUPTED.banter.alive.endTurnPing": "[sine]Faster or i will corrupt you![/sine]",
+  "CORRUPTED.banter.alive.endTurnPing": "[sine]Faster or i will [jitter][purple]corrupt[/purple][/jitter] you![/sine]",
   "CORRUPTED.banter.dead.endTurnPing": "...",
   "CORRUPTED.cardsModifierDescription": "Corrupted cards will now appear in rewards and shops.",
   "CORRUPTED.cardsModifierTitle": "Corrupted Cards",

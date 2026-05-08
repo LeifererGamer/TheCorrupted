@@ -2,7 +2,5 @@
   "THECORRUPTED-SOUL_BREW.title": "Soul Brew",
   "THECORRUPTED-SOUL_BREW.description": "[gold]Summon Army {Army}[/gold].",
   "THECORRUPTED-DOOMED_POTION.title": "Doomed Potion",
-  "THECORRUPTED-DOOMED_POTION.description": "Apply {DoomPower} [jitter][pink]Doom[/pink][/jitter] to yourself.",
-  "SOUL_BREW.description": "",
-  "SOUL_BREW.title": "SoulBrew"
+  "THECORRUPTED-DOOMED_POTION.description": "Apply {DoomPower} [jitter][pink]Doom[/pink][/jitter] to yourself."
 }

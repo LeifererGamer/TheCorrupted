@@ -1,0 +1,16 @@
+{
+  "CORRUPTED.aromaPrinciple": "[sine][purple]Durch Korrumption finde ich Macht...[/purple][/sine]",
+  "CORRUPTED.banter.alive.endTurnPing": "[sine]Schneller oder ich [jitter][purple]verderbe[/purple][/jitter] dich![/sine]",
+  "CORRUPTED.banter.dead.endTurnPing": "...",
+  "CORRUPTED.cardsModifierDescription": "Korrumpierte Karten tauchen nun in Belohnungen und Shops auf.",
+  "CORRUPTED.cardsModifierTitle": "Korrumpierte Karten",
+  "CORRUPTED.description": "Eine verdorbene Seele, die gekommen ist, um den Turm zu untersuchen. Meister der Korruption.",
+  "CORRUPTED.eventDeathPrevention": "Ich muss überleben. Ich darf mich nicht von Verderben überwältigen lassen.",
+  "CORRUPTED.goldMonologue": "[sine]Verkaufen Sie gutes... Verderben?[/sine]",
+  "CORRUPTED.possessiveAdjective": "sein",
+  "CORRUPTED.pronounObject": "sein",
+  "CORRUPTED.pronounPossessive": "sein",
+  "CORRUPTED.pronounSubject": "er",
+  "CORRUPTED.title": "Der Korrumpierte",
+  "CORRUPTED.titleObject": "Der Korrumpierte"
+}

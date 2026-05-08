@@ -4,7 +4,7 @@
   "BASELIB-DOOMED.title": "Doomed {Doomed}",
   "BASELIB-DOOMED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Add {Doomed} [jitter][pink]Doom[/pink][/jitter] to yourself.",
   "BASELIB-CORRUPTED.title": "Corrupted {Corrupted}",
-  "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Deck[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself.",
+  "BASELIB-CORRUPTED.description": "If you discard this card at the end of your turn, it gets played for free, but in a weaker form. Shuffle {Corrupted} random [jitter][purple]Curse[/purple][/jitter] into your [gold]Draw Pile[/gold] and add {Corrupted} [gold]Frail[/gold] for [gold]Skills[/gold] or [gold]Weak[/gold] for [gold]Attacks[/gold] to yourself.",
   "BASELIB-ARMY.title": "Summon Army",
   "BASELIB-ARMY.description": "Summon a [gold]Corrupted Army[/gold] with [blue]X[/blue] HP.\nIf already summoned, raise their Max HP by [blue]X[/blue] for this combat.\nThe first time you [gold]Summon Army[/gold] each combat, add [gold]Command Army[/gold] into your [gold]Hand[/gold].",
   "BASELIB-CLEANSING.title": "Cleansing",

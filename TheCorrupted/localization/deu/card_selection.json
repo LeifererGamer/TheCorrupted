@@ -1,0 +1,4 @@
+{
+  "TO_RITUAL": "[gold]Erschöpfe[/gold] {Amount:plural:eine Karte|[blue]{}[/blue] Karten}. Ist es {Amount:plural:eine [jitter][purple]Fluch[/purple][/jitter] [gold]Karte[/gold]|[blue]{}[/blue] [jitter][purple]Fluch[/purple][/jitter] [gold]Karten[/gold]} führe den Effekt des [gold]Ritual[/gold] aus.",
+  "TO_RITUAL_MAYBE": "[gold]Erschöpfe[/gold] {Amount:plural:[blue]0-1[/blue] Karten|[blue]0-{}[/blue] Karten}. Ist es {Amount:plural:eine [jitter][purple]Fluch[/purple][/jitter] [gold]Karte[/gold]|[blue]{}[/blue] [jitter][purple]Fluch[/purple][/jitter] [gold]Karten[/gold]} führe den Effekt des [gold]Ritual[/gold] aus. Andernfalls ist das [gold]Ritual[/gold] fehlgeschlagen."
+}
