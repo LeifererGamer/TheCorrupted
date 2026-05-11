@@ -19,11 +19,17 @@ public class BossesKilledEpochPatch
         if (localPlayer.Character.Id.Entry == "CORRUPTED")
         {
             int bossesDefeated = CalculateBossKills(__instance, localPlayer);
-           //ModEntry.Logger.Info($"[Corrupted Patch] Bosses Defeated: {bossesDefeated}/15");
 
             if (bossesDefeated >= 15)
             {
-                Unlock(__instance, "CORRUPTED6_EPOCH", localPlayer);
+                // FIX: Check if we've already obtained it globally OR discovered it during this specific run
+                bool isObtainedGlobally = __instance.Progress.IsEpochObtained("CORRUPTED6_EPOCH");
+                bool isDiscoveredThisRun = localPlayer.DiscoveredEpochs.Contains("CORRUPTED6_EPOCH");
+
+                if (!isObtainedGlobally && !isDiscoveredThisRun)
+                {
+                    Unlock(__instance, "CORRUPTED6_EPOCH", localPlayer);
+                }
             }
 
             // Skip the original method
@@ -47,6 +53,13 @@ public class BossesKilledEpochPatch
         if (serializable != null)
         {
             serializable.State = EpochState.Obtained;
+        }
+        else
+        {
+            // Optional: If your custom epoch is entirely missing from the Serializable list, 
+            // the game's native "ObtainEpoch" won't stick. You may need to inject it manually 
+            // here depending on how you've set up your Mod's save integration.
+            ModEntry.Logger.Warn($"[Corrupted Patch] Epoch {id} was not found in Serializable Epochs to update state!");
         }
     }
 

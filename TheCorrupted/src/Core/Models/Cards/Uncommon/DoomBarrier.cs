@@ -22,7 +22,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         [
             HoverTipFactory.FromPower<DoomPower>(),
         ];
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
              new CalculationBaseVar(0m),

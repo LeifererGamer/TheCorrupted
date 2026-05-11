@@ -21,7 +21,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new BlockVar(5m, ValueProp.Move),

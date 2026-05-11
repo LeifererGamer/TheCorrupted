@@ -38,14 +38,7 @@ internal class RitualisticSummons() : CardModel(2, CardType.Power, CardRarity.Ra
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(
-                Owner,
-                from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
-                where c.Type == CardType.Curse && (c is not Enthralled || Owner.Relics.Any(r => r is BlueCandle))
-                select c,
-                2,
-                Owner.RunState.Rng.CombatCardGeneration
-            );
+            IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
             await PowerCmd.Apply<RitualisticSummonsPower>(base.Owner.Creature, DynamicVars["Army"].IntValue, base.Owner.Creature, this);
         }

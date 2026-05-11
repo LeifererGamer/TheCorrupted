@@ -17,6 +17,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
@@ -35,7 +37,7 @@ internal class HellfireShockwave() : CardModel(1, CardType.Attack, CardRarity.Un
 
             var repeat = 1;
             CardPile hand = PileType.Hand.GetPile(Owner);
-            if (hand.Cards.Any((c) => c.Type == CardType.Curse))
+            if (hand.Cards.Any((c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>())))
                 repeat = 2;
             for (int i = 0; i < repeat; i++)
             {

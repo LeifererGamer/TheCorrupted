@@ -18,8 +18,6 @@ internal class SavedByCorruption() : CardModel(1, CardType.Power, CardRarity.Unc
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
            new PowerVar<SavedByCorruptionPower>(3m)
         ];

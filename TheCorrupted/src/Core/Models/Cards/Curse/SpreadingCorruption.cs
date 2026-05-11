@@ -66,14 +66,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
 
         private static async Task<CardModel?> CreateRandomCurseInDrawPile(Player player, CombatState combatState)
         {
-            CardModel cardModel = CardFactory.GetDistinctForCombat(
-                    player,
-                    from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
-                    where c.Type == CardType.Curse && (c is not Enthralled || player.Relics.Any(r => r is BlueCandle))
-                    select c,
-                    1,
-                    player.RunState.Rng.CombatCardGeneration
-                ).FirstOrDefault();
+            CardModel cardModel = CorruptedCardPool.GetRandomCurses(player, 1).FirstOrDefault();
             if (cardModel != null)
             {
                 await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, addedByPlayer: true);

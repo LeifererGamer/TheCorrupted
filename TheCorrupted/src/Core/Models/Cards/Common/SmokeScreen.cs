@@ -18,7 +18,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [

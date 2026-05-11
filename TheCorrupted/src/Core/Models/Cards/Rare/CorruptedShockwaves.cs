@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Badges;
 using MegaCrit.Sts2.Core.ValueProps;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class CorruptedShockwaves() : TheCorruptedCardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), ICustomModel
+    internal class CorruptedShockwaves() : CardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), ICustomModel
     {
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
@@ -47,7 +48,12 @@ internal class CorruptedShockwaves() : TheCorruptedCardModel(2, CardType.Attack,
             {
                 if (Pile != null && Pile.Type == PileType.Discard && player == base.Owner && CardPile.GetCards(base.Owner, PileType.Exhaust).Where(c => c.Type == CardType.Curse || (c.Type == CardType.Status && base.Owner.Creature.HasPower<StatusQuoPower>())).Count() >= base.DynamicVars["AutoCards"].IntValue)
                 {
-                    await CardCmd.AutoPlay(choiceContext, this, null);
+                    //await CardCmd.AutoPlay(choiceContext, this, null);
+                    CardCmd.Preview(this);
+                    await DamageCmd.Attack(DynamicVars["DamageDiff"].BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+                    .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
+                    .Execute(choiceContext);
+                    await CorruptionCorrupted.CreateInDrawPile(base.Owner, base.CombatState);
                 }
             }
         }
@@ -59,36 +65,15 @@ internal class CorruptedShockwaves() : TheCorruptedCardModel(2, CardType.Attack,
             DynamicVars["AutoCards"].UpgradeValueBy(-2);
         }
 
-        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            var amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars.Damage.BaseValue);
-
-            if (cardPlay.IsAutoPlay)
+            await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await DamageCmd.Attack(amount).FromCard(this).TargetingAllOpponents(base.CombatState)
+                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
-            }
-            else
-            {
-                await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
-                {
-                    await DamageCmd.Attack(amount).FromCard(this).TargetingAllOpponents(base.CombatState)
-                    .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
-                    .Execute(choiceContext);
-                });
-            }
-        }
-
-        protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-           await CorruptionCorrupted.CreateInHand(base.Owner, base.CombatState);
-           
-        }
-
-        protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-        {
-            await CorruptionCorrupted.CreateInDrawPile(base.Owner, base.CombatState);
+                await CorruptionCorrupted.CreateInHand(base.Owner, base.CombatState);
+            });
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
@@ -31,14 +32,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
                 // Hier nutzen wir jetzt den Platzhalter <TPower> statt <WeakPower>
                 await PowerCmd.Apply<TPower>(Owner.Creature, DynamicVars["Corrupted"].BaseValue, Owner.Creature, this);
 
-                IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(
-                    Owner,
-                    from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
-                    where c.Type == CardType.Curse && (c is not Enthralled || Owner.Relics.Any(r => r is BlueCandle))
-                    select c,
-                    DynamicVars["Corrupted"].IntValue,
-                    Owner.RunState.Rng.CombatCardGeneration
-                );
+                IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, DynamicVars["Corrupted"].IntValue);
                 CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
             }
         }

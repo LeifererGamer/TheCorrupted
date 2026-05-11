@@ -36,14 +36,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-            IEnumerable<CardModel> curses = CardFactory.GetDistinctForCombat(
-                Owner,
-                from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
-                where c.Type == CardType.Curse && (c is not Enthralled || Owner.Relics.Any(r => r is BlueCandle))
-                select c,
-                1,
-                Owner.RunState.Rng.CombatCardGeneration
-            );
+            IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
             await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars.Doom.BaseValue, Owner.Creature, this);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);

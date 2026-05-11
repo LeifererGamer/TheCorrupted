@@ -17,7 +17,6 @@ internal class RitualOfGreaterDefence() : CardModel(1, CardType.Skill, CardRarit
     {
         public override bool GainsBlock => true;
         public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-        protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new BlockVar(6m, ValueProp.Move),

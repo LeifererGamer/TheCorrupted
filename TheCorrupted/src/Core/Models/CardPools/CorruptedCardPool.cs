@@ -1,6 +1,10 @@
 ﻿using BaseLib.Abstracts;
 using Godot;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Timeline.Epochs;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -10,6 +14,7 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon;
+using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 using TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
@@ -151,6 +156,18 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.CardPools
             }
 
             return list;
+        }
+
+        public static IEnumerable<CardModel> GetRandomCurses(Player player, int amount)
+        {
+            return CardFactory.GetDistinctForCombat(
+                player,
+                from c in ModelDb.CardPool<CurseCardPool>().GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
+                where c.Type == CardType.Curse && (c is not Enthralled || player.Relics.Any(r => r is BlueCandle) && (c is not BadLuck || player.RunState.CurrentActIndex > 0))
+                select c,
+                amount,
+                player.RunState.Rng.CombatCardGeneration
+            );
         }
 
         // protected override IEnumerable<CardModel> FilterThroughEpochs(UnlockState unlockState, IEnumerable<CardModel> cards)
