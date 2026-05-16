@@ -64,7 +64,7 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 }

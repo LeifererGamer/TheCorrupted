@@ -38,7 +38,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
                 if (item != null)
                 {
                     await CardCmd.Exhaust(choiceContext, item);
-                    await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+                    await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
                 }
             }
         }

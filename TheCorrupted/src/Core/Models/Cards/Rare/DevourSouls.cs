@@ -34,7 +34,7 @@ internal class DevourSouls() : CardModel(2, CardType.Power, CardRarity.Rare, Tar
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
-            await PowerCmd.Apply<DevourSoulsPower>(Owner.Creature, DynamicVars.MaxHp.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DevourSoulsPower>(choiceContext, Owner.Creature, DynamicVars.MaxHp.BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

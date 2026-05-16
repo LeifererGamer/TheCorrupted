@@ -19,7 +19,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
             if (Pile.Type.Equals(PileType.Hand))
             {
                 IEnumerable<Creature> creatures = [Owner.Creature];
-                await PowerCmd.Apply<DoomPower>(creatures, DynamicVars["Doomed"].BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<DoomPower>(choiceContext, creatures, DynamicVars["Doomed"].BaseValue, Owner.Creature, this);
                 await CardCmd.AutoPlay(choiceContext, this, null);
             }
         }

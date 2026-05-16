@@ -30,7 +30,7 @@ internal class DoomingStrength() : CardModel(2, CardType.Power, CardRarity.Rare,
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<DoomingStrengthPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<DoomingStrengthPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }
 
 

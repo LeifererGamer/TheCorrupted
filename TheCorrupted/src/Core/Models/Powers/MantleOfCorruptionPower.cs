@@ -55,26 +55,27 @@ internal class MantleOfCorruptionPower : PowerModel
                 await ArmyCmd.Summon(choiceContext, Owner.Player, DynamicVars["Army"].BaseValue, this);
                 var ritualPerformed = await Ritual.PerformRitual(choiceContext, Owner.Player, this, async (card) =>
                 {
-                    await Cleansing.PerformCleansing(DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
+                    await Cleansing.PerformCleansing(choiceContext,DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
                 }, true);
                 if(!ritualPerformed)
                 {
-                    await PowerCmd.Apply<DoomPower>([Owner], DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
+                    await PowerCmd.Apply<DoomPower>(choiceContext, [Owner], DynamicVars[_doomOrCleansingKey].BaseValue, Owner, null);
                 }
             }
         }
 
-        public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+        public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
         {
             if ( (power == this))
-                UpdateDoomOrCleansing(); 
+                await UpdateDoomOrCleansing(); 
         }
 
-        private void UpdateDoomOrCleansing()
+        private async Task UpdateDoomOrCleansing()
         {
             AssertMutable();
             DynamicVars["Army"].BaseValue = Amount / 2;
             DynamicVars[_doomOrCleansingKey].BaseValue = (int)(Amount / 5) * 5;
+            await Task.CompletedTask;
         }
     }
 }

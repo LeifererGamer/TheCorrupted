@@ -45,7 +45,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<UnstableEnergyPower>(Owner.Creature, 1, Owner.Creature, this);
+            await PowerCmd.Apply<UnstableEnergyPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

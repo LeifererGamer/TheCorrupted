@@ -40,7 +40,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
             });
         }
 

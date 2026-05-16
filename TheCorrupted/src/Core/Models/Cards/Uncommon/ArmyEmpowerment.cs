@@ -37,7 +37,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<ArmyEmpowermentPower>(cardPlay.Target, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<ArmyEmpowermentPower>(choiceContext, cardPlay.Target, 1m, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

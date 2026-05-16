@@ -39,8 +39,8 @@ internal class RitualisticSummons() : CardModel(2, CardType.Power, CardRarity.Ra
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            await PowerCmd.Apply<RitualisticSummonsPower>(base.Owner.Creature, DynamicVars["Army"].IntValue, base.Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
+            await PowerCmd.Apply<RitualisticSummonsPower>(choiceContext, base.Owner.Creature, DynamicVars["Army"].IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

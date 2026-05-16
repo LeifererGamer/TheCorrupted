@@ -23,7 +23,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<CarefulPlanningPower>(Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<CarefulPlanningPower>(choiceContext, Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
         }
 
 

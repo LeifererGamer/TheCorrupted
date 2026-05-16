@@ -40,7 +40,7 @@ internal class Doomsday() : CardModel(1, CardType.Power, CardRarity.Uncommon, Ta
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomsdayPower>(base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
+            await PowerCmd.Apply<DoomsdayPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

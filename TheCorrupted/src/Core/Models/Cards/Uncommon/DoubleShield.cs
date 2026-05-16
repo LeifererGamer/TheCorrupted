@@ -32,7 +32,7 @@ internal class DoubleShield() : CardModel(1, CardType.Skill, CardRarity.Uncommon
             decimal amount = await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<BlockNextTurnPower>(Owner.Creature, amount, Owner.Creature, this);
+                await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
             });
         }
 

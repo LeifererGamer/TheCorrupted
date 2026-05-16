@@ -28,7 +28,7 @@ internal class CorruptedDelivery() : CardModel(1, CardType.Power, CardRarity.Rar
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<CorruptedDeliveryPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<CorruptedDeliveryPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

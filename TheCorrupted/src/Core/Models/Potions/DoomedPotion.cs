@@ -43,6 +43,6 @@ internal class DoomedPotion : CustomPotionModel
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         NCombatRoom.Instance?.PlaySplashVfx(Owner.Creature, new Color("6876bd"));
-        await PowerCmd.Apply<DoomPower>([Owner.Creature], DynamicVars["DoomPower"].BaseValue, Owner.Creature, null);
+        await PowerCmd.Apply<DoomPower>(choiceContext, [Owner.Creature], DynamicVars["DoomPower"].BaseValue, Owner.Creature, null);
     }
 }

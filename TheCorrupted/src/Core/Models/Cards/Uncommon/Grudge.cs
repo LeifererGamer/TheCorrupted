@@ -24,7 +24,7 @@ internal class Grudge() : CardModel(1, CardType.Skill, CardRarity.Uncommon, Targ
             if (rite != null)
             {
                 rite.EnergyCost.SetThisTurnOrUntilPlayed(0, reduceOnly: true);
-                await CardPileCmd.AddGeneratedCardToCombat(rite, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(rite, PileType.Hand, Owner);
             }
         }
 

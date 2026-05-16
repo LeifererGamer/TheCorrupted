@@ -44,7 +44,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             if (card == this)
             {
                 var newCard = card.CreateClone();
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, addedByPlayer: true));
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, Owner));
             }
         }
 

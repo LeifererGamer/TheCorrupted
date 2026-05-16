@@ -27,7 +27,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
                     NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(nWormyImpactVfx);
                 }
             }
-            await PowerCmd.Apply<PoisonPower>(CombatState.HittableEnemies, 3m, Card.Owner.Creature, Card);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, CombatState.HittableEnemies, 3m, Card.Owner.Creature, Card);
         }
     }
 }

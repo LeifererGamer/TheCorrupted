@@ -48,11 +48,11 @@ internal class NeowsDoomingCorruption() : CardModel(1, CardType.Power, CardRarit
         {
             var ritualPerformed = await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<NeowsCorruptionPower>([Owner.Creature], 1m, Owner.Creature, this);
+                await PowerCmd.Apply<NeowsCorruptionPower>(choiceContext, [Owner.Creature], 1m, Owner.Creature, this);
             }, true);
             if (!ritualPerformed)
             {
-                await PowerCmd.Apply<NeowsDoomingPower>([Owner.Creature], 1m, Owner.Creature, this);
+                await PowerCmd.Apply<NeowsDoomingPower>(choiceContext, [Owner.Creature], 1m, Owner.Creature, this);
             }
         }
 

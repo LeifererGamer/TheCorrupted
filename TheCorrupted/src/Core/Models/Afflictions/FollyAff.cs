@@ -22,7 +22,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await PowerCmd.Apply<StrengthPower>([Card.Owner.Creature], 2m, Card.Owner.Creature, null);
+            await PowerCmd.Apply<StrengthPower>(choiceContext, [Card.Owner.Creature], 2m, Card.Owner.Creature, null);
         }
     }
 }

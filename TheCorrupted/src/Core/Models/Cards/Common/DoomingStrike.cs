@@ -34,7 +34,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
-            await PowerCmd.Apply<DoomPower>(Owner.Creature, attackCommand.Results.Sum((r) => r.TotalDamage / 2), Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, attackCommand.Results.SelectMany(hitList => hitList).Sum((r) => r.TotalDamage / 2), Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

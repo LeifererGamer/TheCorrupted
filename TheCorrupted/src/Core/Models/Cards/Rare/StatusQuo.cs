@@ -21,7 +21,7 @@ internal class StatusQuo() : CardModel(2, CardType.Power, CardRarity.Rare, Targe
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<StatusQuoPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<StatusQuoPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }
 
 

@@ -37,7 +37,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<WeakPower>(CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<WeakPower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature, this);
             });
         }
 

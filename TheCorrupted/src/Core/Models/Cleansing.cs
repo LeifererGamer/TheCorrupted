@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -7,13 +8,13 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
 {
     internal static class Cleansing
     {
-        internal static async Task<decimal> PerformCleansing(decimal amount, Creature creature, CardModel card)
+        internal static async Task<decimal> PerformCleansing(PlayerChoiceContext choiceContext, decimal amount, Creature creature, CardModel card)
         {
             if (creature.HasPower<DoomPower>())
             {
                 if (creature.GetPower<DoomPower>().Amount <= amount)
                     amount = creature.GetPower<DoomPower>().Amount;
-                await PowerCmd.Apply<DoomPower>(creature, -amount, creature, card);
+                await PowerCmd.Apply<DoomPower>(choiceContext, creature, -amount, creature, card);
             }
             else
             {

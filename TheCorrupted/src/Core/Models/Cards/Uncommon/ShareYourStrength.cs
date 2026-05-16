@@ -44,7 +44,7 @@ internal class ShareYourStrength() : CardModel(1, CardType.Skill, CardRarity.Unc
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             if (Owner.Creature.HasPower<StrengthPower>())
-                await PowerCmd.Apply<StrengthPower>(cardPlay.Target, Owner.Creature.GetPower<StrengthPower>().Amount, Owner.Creature, this);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target, Owner.Creature.GetPower<StrengthPower>().Amount, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

@@ -34,7 +34,7 @@ internal class EnergyCirculation() : CardModel(3, CardType.Power, CardRarity.Rar
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<EnergyCirculationPower>(Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<EnergyCirculationPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
         }
 
 

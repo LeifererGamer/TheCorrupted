@@ -24,7 +24,7 @@ internal class SavedByCorruption() : CardModel(1, CardType.Power, CardRarity.Unc
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<SavedByCorruptionPower>(Owner.Creature, DynamicVars["SavedByCorruptionPower"].IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<SavedByCorruptionPower>(choiceContext, Owner.Creature, DynamicVars["SavedByCorruptionPower"].IntValue, Owner.Creature, this);
         }
 
 
