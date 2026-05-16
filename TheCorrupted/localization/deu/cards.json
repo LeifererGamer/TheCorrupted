@@ -64,7 +64,7 @@
   "THECORRUPTED-DOOM_BARRIER.title": "Verderbensbarriere",
   "THECORRUPTED-DOOM_BARRIER.description": "Erhalte [gold]Block[/gold] in Höhe der hälfte an [jitter][pink]Verderben[/pink][/jitter] Stapel auf dir.{InCombat:\n(Erhalte {CalculatedBlock:diff()} [gold]Block[/gold])|}\n[gold]Verderbend {Doomed:diff()}[/gold] (Erhalte die Hälfte des [gold]Blocks[/gold] nach dem du [gold]Verderbend[/gold] angewendet hast.)",
   "CORRUPTED_AMULET.title": "Korrumpierendes Amulet",
-  "CORRUPTED_AMULET.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nZiehe 1 Karte.\nMische eine zufällige [jitter][purple]Fluch[/purple][/jitter] Karte in dein [gold]Nachziehstapel[/gold].",
+  "CORRUPTED_AMULET.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nZiehe 1 Karte.\nMische eine [jitter][purple]Korruption[/purple][/jitter] Karte in dein [gold]Nachziehstapel[/gold].",
   "THECORRUPTED-CORRUPTED_ARMOR.title": "Korrumpierende Rüstung",
   "THECORRUPTED-CORRUPTED_ARMOR.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nMische 2 zufällige [jitter][purple]Fluch[/purple][/jitter] Karten in dein [gold]Nachziehstapel[/gold].\n\n[gold]Korrumpierend {Corrupted:diff()}[/gold] (Erhalte {DamageDiff:diff()} [gold]Block[/gold].)",
   "CORRUPTED_SPELLBOOK.title": "Korrumpierendes Zauberbuch",

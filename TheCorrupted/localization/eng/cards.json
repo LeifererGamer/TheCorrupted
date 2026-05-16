@@ -64,7 +64,7 @@
   "THECORRUPTED-DOOM_BARRIER.title": "Doom Barrier",
   "THECORRUPTED-DOOM_BARRIER.description": "Gain [gold]Block[/gold] equal to half of the [jitter][pink]Doom[/pink][/jitter] stacks on yourself.{InCombat:\n(Gain {CalculatedBlock:diff()} [gold]Block[/gold])|}\n[gold]Doomed {Doomed:diff()}[/gold] (Gain half of the [gold]Block[/gold] after applying [gold]Doomed[/gold].)",
   "CORRUPTED_AMULET.title": "Corrupted Amulet",
-  "CORRUPTED_AMULET.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw 1 card.\nShuffle a random [jitter][purple]Curse[/purple][/jitter] card into your draw pile.",
+  "CORRUPTED_AMULET.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw 1 card.\nShuffle a [jitter][purple]CORRUPTION[/purple][/jitter] card into your draw pile.",
   "THECORRUPTED-CORRUPTED_ARMOR.title": "Corrupted Armor",
   "THECORRUPTED-CORRUPTED_ARMOR.description": "Gain {Block:diff()} [gold]Block[/gold].\nShuffle 2 random [jitter][purple]Curse[/purple][/jitter] cards into your draw pile.\n\n[gold]Corrupted {Corrupted:diff()}[/gold] (Gain {DamageDiff:diff()} [gold]Block[/gold].)",
   "CORRUPTED_SPELLBOOK.title": "Corrupted Spellbook",

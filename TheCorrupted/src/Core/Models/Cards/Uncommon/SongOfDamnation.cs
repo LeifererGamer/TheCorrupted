@@ -51,8 +51,9 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             for (int i = 0; i < xValue; i++)
             {
                 await ArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].BaseValue, this);
+                await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
             }
-            await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars["DoomPower"].BaseValue * xValue, Owner.Creature, this);
+            
         }
 
         protected override void OnUpgrade()

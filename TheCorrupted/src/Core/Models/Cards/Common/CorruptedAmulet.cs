@@ -35,10 +35,10 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 1);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+            await CorruptionCorrupted.CreateInDrawPile(Owner, CombatState, true);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+
         }
 
         protected override void OnUpgrade()

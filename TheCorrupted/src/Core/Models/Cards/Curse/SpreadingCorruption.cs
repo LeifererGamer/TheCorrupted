@@ -1,6 +1,7 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -69,7 +70,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
             CardModel cardModel = CorruptedCardPool.GetRandomCurses(player, 1).FirstOrDefault();
             if (cardModel != null)
             {
-                await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, addedByPlayer: true);
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, true, CardPilePosition.Random));
             }
             return cardModel;
         }

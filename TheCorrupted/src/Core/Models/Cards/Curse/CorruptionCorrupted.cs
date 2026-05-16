@@ -80,7 +80,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
             }
 
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Draw, addedByPlayer, CardPilePosition.Random));
-            await Cmd.Wait(3f);
+            //await Cmd.Wait(3f);
             return curse;
         }
 
