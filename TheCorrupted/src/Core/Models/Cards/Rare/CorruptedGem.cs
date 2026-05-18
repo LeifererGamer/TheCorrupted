@@ -39,7 +39,7 @@ internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Rare, Ta
             CardModel cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1), context: choiceContext, player: base.Owner, filter: delegate (CardModel c)
             {
                 CardType type = c.Type;
-                return (type != CardType.Curse && type != CardType.Status && !c.DynamicVars.ContainsKey("Ritual") && c.Enchantment == null && type != CardType.Power) ? true : false;
+                return (type != CardType.Curse && type != CardType.Status && type != CardType.Quest && !c.DynamicVars.ContainsKey("Ritual") && c.Enchantment == null && type != CardType.Power) ? true : false;
             }, source: this)).FirstOrDefault();
             if (cardModel != null)
             {

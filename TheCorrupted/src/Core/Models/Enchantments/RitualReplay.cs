@@ -21,7 +21,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Enchantments
             await Ritual.PerformRitual(choiceContext, cardPlay.Card.Owner, this, async (card) =>
             {
                 cardPlay.Card.BaseReplayCount += 1;
-            });
+            }, true);
         }
     }
 }
