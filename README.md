@@ -10,7 +10,7 @@ Currently the mod is being developed actively and the goal is to have a custom c
 
 Requirements:
 
-Requires BaseLib 3.1.0, found here: https://github.com/Alchyr/BaseLib-StS2.
+Requires BaseLib 3.1.2, found here: https://github.com/Alchyr/BaseLib-StS2.
 
 Thanks to:
 Shuyou114 for ZHS translation (its outdated, since i added new cards)
