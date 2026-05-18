@@ -11,7 +11,7 @@
   [
     {
       "id": "BaseLib",
-      "min_version": "3.1.2"
+      "min_version": "3.1.3"
     }
   ],
   "affects_gameplay": true

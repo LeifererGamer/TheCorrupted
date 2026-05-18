@@ -48,7 +48,7 @@
   "SHARE_THE_WEIGHT.title": "Die Last Teilen",
   "SHARE_THE_WEIGHT.description": "[gold]Erschöpfe[/gold] alle [jitter][purple]Fluch[/purple][/jitter] Karten in deiner [gold]Hand[/gold].\nFüge {Damage:diff()} Schaden zu.",
   "SOUL_REAP.title": "Seelenernte",
-  "SOUL_REAP.description": "Füge {Damage:diff()} Schaden zu. Heile TP in Höhe es zugefügten Schaden zu.",
+  "SOUL_REAP.description": "Füge {Damage:diff()} Schaden zu. Heile TP in Höhe des zugefügten Schadens.",
   "THECORRUPTED-ENERGY_STRIKE.title": "Enerie Schlag",
   "THECORRUPTED-ENERGY_STRIKE.description": "Füge {Damage:diff()} Schaden zu.\nFalls du eine [jitter][purple]Fluch[/purple][/jitter] Karte in deiner [gold]Hand[/gold] hast, erhalte {Energy:energyIcons()}{Energy:energyIcons()}.\n[gold]Verderbend {Doomed:diff()}[/gold] (Füge {DamageDiff:diff()} Schaden zu. Zu Beginn deines nächsten Zuges erhalte {Energy:energyIcons()}.)",
   "SURPRISE_ATTACK.title": "Überraschungsangriff",

@@ -1,5 +1,5 @@
 {
   "RITUAL_REPLAY.title": "Erneut Spielen Ritual",
-  "RITUAL_REPLAY.description": "Diese Karte erhält:\n[gold]Ritual durchführen[/gold]: Erhöhe das [gold]Erneut Spielen[/gold] dieser Karte um [blue]{Betrag}[/blue]."
+  "RITUAL_REPLAY.description": "Diese Karte erhält:\nEntscheide ob du [gold]Ritual Durchführen[/gold] willst oder nicht:\nErhöhe das [gold]Erneut Spielen[/gold] dieser Karte um [blue]{Betrag}[/blue]."
 
 }
