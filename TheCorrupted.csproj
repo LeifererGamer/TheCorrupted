@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<Reference Include="Sts2">
-			<HintPath>D:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
+			<HintPath>D:\Program Files (x86)\Megadot\sts2.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="0Harmony">
