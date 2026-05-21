@@ -6,4 +6,18 @@ namespace TheCorrupted.TheCorrupted.src.Core.Nodes.Combat;
 [GlobalClass]
 public partial class SNCreatureVisuals : NCreatureVisuals
 {
+    // Add a static reference for easy access from your logic classes
+    public static SNCreatureVisuals? Instance { get; private set; }
+
+    private AnimationPlayer? _anim;
+    private Node2D? _visuals;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Instance = this; // Bind the instance when the node enters the tree
+
+        _anim = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+        _visuals = GetNodeOrNull<Node2D>("Visuals");
+    }
 }

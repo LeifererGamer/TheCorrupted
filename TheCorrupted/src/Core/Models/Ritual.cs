@@ -26,6 +26,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                 ? new CardSelectorPrefs(new LocString("card_selection", locKey), 0, 1)
                 : new CardSelectorPrefs(new LocString("card_selection", locKey), 1);
 
+            await CreatureCmd.TriggerAnim(player.Creature, "Cast", player.Character.CastAnimDelay);
+
             CardModel cardModel = (await CardSelectCmd.FromHand(
                 prefs: prefs,
                 context: choiceContext,
@@ -36,8 +38,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
             if (cardModel != null)
             {
                 await CardCmd.Exhaust(choiceContext, cardModel);
-                await CreatureCmd.TriggerAnim(player.Creature, "Cast", player.Character.CastAnimDelay);
-
+                
                 if (cardModel.Type.Equals(CardType.Curse) || (cardModel.Type.Equals(CardType.Status) && player.Creature.HasPower<StatusQuoPower>()))
                 {
                     await getBenefits(cardModel);
