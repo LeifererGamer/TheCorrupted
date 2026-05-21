@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
@@ -17,6 +18,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             CardPile hand = PileType.Hand.GetPile(Owner);
             List<CardModel> cards = hand.Cards.ToList();
             foreach (CardModel card in cards)

@@ -30,7 +30,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 
     internal class BlueCandle : RelicModel
     {
-        public override RelicRarity Rarity => RelicRarity.Uncommon;
+        public override RelicRarity Rarity => RelicRarity.Rare;
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [

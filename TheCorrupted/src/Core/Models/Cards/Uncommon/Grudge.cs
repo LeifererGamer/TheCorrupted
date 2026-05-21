@@ -20,6 +20,7 @@ internal class Grudge() : CardModel(1, CardType.Skill, CardRarity.Uncommon, Targ
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             CardModel rite = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<RitualCardPool>().GetUnlockedCards(Owner.UnlockState, CombatState.RunState.CardMultiplayerConstraint), 1, CombatState.RunState.Rng.CombatCardGeneration).FirstOrDefault();
             if (rite != null)
             {

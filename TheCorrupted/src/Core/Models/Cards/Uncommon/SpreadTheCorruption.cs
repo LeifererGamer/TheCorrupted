@@ -46,6 +46,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await SpreadingCorruption.CreateInHand(Owner, cardPlay.Card.CombatState);
         }
     }

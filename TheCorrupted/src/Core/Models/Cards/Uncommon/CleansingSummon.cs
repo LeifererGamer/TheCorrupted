@@ -43,19 +43,17 @@ internal class CleansingSummon() : CardModel(0, CardType.Skill, CardRarity.Uncom
                 int xValue = ResolveEnergyXValue();
                 for (int i = 0; i < xValue; i++)
                 {
-                    var amount = await Cleansing.PerformCleansing(choiceContext,DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+                    var amount = await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
                     if (amount <= 0)
                         return;
-                    await ArmyCmd.Summon(choiceContext, Owner, amount, this);
+                    await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);
                 }
             }
         }
 
         protected override void OnUpgrade()
         {
-            DynamicVars.Block.UpgradeValueBy(2m);
-            DynamicVars.Doom.UpgradeValueBy(3m);
-            DynamicVars.Damage.UpgradeValueBy(1m);
+            DynamicVars["Army"].UpgradeValueBy(2m);
         }
 
     }

@@ -36,6 +36,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
             CardPile hand = PileType.Hand.GetPile(Owner);
             if (hand.Cards.Where((c) => c.Type == CardType.Curse).ToList().Any())

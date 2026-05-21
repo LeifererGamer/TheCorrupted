@@ -43,6 +43,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         {
             decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars["Army"].BaseValue);
 
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, Owner, amount, this);
         }
 

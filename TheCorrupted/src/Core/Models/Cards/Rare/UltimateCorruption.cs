@@ -52,6 +52,7 @@ internal class UltimateCorruption() : CardModel(0, CardType.Skill, CardRarity.Ra
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, cardPlay.Card);
