@@ -21,7 +21,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
 
 internal class DuVuDoll : RelicModel
     {
-        public override RelicRarity Rarity => RelicRarity.Rare;
+        public override RelicRarity Rarity => RelicRarity.Uncommon;
 
         public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
         {

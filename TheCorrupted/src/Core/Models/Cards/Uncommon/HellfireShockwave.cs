@@ -47,7 +47,7 @@ internal class HellfireShockwave() : CardModel(1, CardType.Attack, CardRarity.Un
                     NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
 
                 }
-                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState).Execute(choiceContext); ;
+                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState).Execute(choiceContext);
             }
 
         }
