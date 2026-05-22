@@ -18,10 +18,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Ancient
 {
 
-internal class NeowsMight() : CardModel(1, CardType.Skill, CardRarity.Ancient, TargetType.Self), ICustomModel
+internal class NeowsMight() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Ancient, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new RitualVar(),
             new BlockVar(10m,ValueProp.Move),
@@ -31,9 +29,7 @@ internal class NeowsMight() : CardModel(1, CardType.Skill, CardRarity.Ancient, T
             new CalculatedDamageVar(ValueProp.Move).WithMultiplier(static (card, _) => card.Owner.Creature.HasPower<DoomPower>() ? card.Owner.Creature.GetPower<DoomPower>().Amount : 0)
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
@@ -54,7 +50,6 @@ internal class NeowsMight() : CardModel(1, CardType.Skill, CardRarity.Ancient, T
                 }
                 await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).TargetingAllOpponents(CombatState).Execute(choiceContext);
             }
-            
         }
 
         protected override void OnUpgrade()

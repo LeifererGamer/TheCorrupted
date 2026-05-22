@@ -18,8 +18,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
     internal class CorruptedMace() : DoomedCardModel(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>()
@@ -31,16 +29,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new DamageVar(10m, ValueProp.Move),
             new PowerVar<VulnerablePower>(2m)
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override void OnUpgrade()
-        {
-            DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars["Doomed"].UpgradeValueBy(2);
-            DynamicVars["DamageDiff"].UpgradeValueBy(1);
-            DynamicVars.Vulnerable.UpgradeValueBy(1m);
-        }
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
@@ -55,6 +43,14 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CorruptionCorrupted.CreateInHand(Owner, CombatState);
+        }
+
+        protected override void OnUpgrade()
+        {
+            DynamicVars.Damage.UpgradeValueBy(2m);
+            DynamicVars["Doomed"].UpgradeValueBy(2);
+            DynamicVars["DamageDiff"].UpgradeValueBy(1);
+            DynamicVars.Vulnerable.UpgradeValueBy(1m);
         }
     }
 }

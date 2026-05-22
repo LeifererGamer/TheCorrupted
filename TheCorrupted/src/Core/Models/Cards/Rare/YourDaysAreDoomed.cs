@@ -28,10 +28,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class YourDaysAreDoomed() : CardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
+internal class YourDaysAreDoomed() : TheCorruptedCardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DoomPower>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -41,10 +39,7 @@ internal class YourDaysAreDoomed() : CardModel(2, CardType.Skill, CardRarity.Rar
             new CalculatedVar("PlayerMultiplier").WithMultiplier(static (card, _) => (decimal)(card.CombatState.Allies.Where(a => a.IsPlayer).Count() > 1 ? ((card.CombatState.Allies.Where(a => a.IsPlayer).Count() -1) * 0.5) + 1 : 1))
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 
@@ -52,7 +47,7 @@ internal class YourDaysAreDoomed() : CardModel(2, CardType.Skill, CardRarity.Rar
             foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
             {
                 if (Owner.Creature.HasPower<DoomPower>())
-                    if (hittableEnemy.CurrentHp <= Owner.Creature.GetPower<DoomPower>().Amount * (CombatState.Allies.Where(a => a.IsPlayer).Count() > 1 ? ((CombatState.Allies.Where(a => a.IsPlayer).Count() -1) * 0.5) + 1 : 1))
+                    if (hittableEnemy.CurrentHp <= Owner.Creature.GetPower<DoomPower>().Amount * (CombatState.Allies.Where(a => a.IsPlayer).Count() > 1 ? ((CombatState.Allies.Where(a => a.IsPlayer).Count() - 1) * 0.5) + 1 : 1))
                         creatures.Add(hittableEnemy);
             }
             await DoomPower.DoomKill(creatures);

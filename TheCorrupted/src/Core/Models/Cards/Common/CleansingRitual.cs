@@ -13,10 +13,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class CleansingRitual() : CardModel(0, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+    internal class CleansingRitual() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
             [
                 HoverTipFactory.FromPower<DoomPower>(),
@@ -27,9 +25,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new CleansingVar(3),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
@@ -41,7 +37,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
                     await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, -amount, Owner.Creature, this);
                 }
             });
-
         }
 
         protected override void OnUpgrade()

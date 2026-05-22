@@ -23,10 +23,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-internal class ReadyYourArmy() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class ReadyYourArmy() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromCard<CommandArmy>()
@@ -36,15 +34,13 @@ internal class ReadyYourArmy() : CardModel(1, CardType.Skill, CardRarity.Uncommo
             new ArmyVar(4),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].IntValue, this);
             IEnumerable<CommandArmy> enumerable = (from c in base.Owner.PlayerCombatState.AllCards.OfType<CommandArmy>()
-                                                      where c.Pile.Type != PileType.Hand
-                                                      select c).ToList();
+                                                   where c.Pile.Type != PileType.Hand
+                                                   select c).ToList();
             foreach (CommandArmy item in enumerable)
             {
                 await CardPileCmd.Add(item, PileType.Hand);

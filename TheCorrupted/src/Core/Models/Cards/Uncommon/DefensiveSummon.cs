@@ -22,11 +22,9 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
 
-internal class DefensiveSummon() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class DefensiveSummon() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
         public override bool GainsBlock => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
@@ -35,9 +33,7 @@ internal class DefensiveSummon() : CardModel(1, CardType.Skill, CardRarity.Uncom
             new BlockVar(7m, ValueProp.Move)
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);

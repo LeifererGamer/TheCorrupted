@@ -18,18 +18,16 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
-internal class GroupSummoning() : CardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+internal class GroupSummoning() : TheCorruptedCardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
-
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override IEnumerable<DynamicVar> CanonicalVars => 
         [
             new ArmyVar(),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await PowerCmd.Apply<GroupSummoningPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }

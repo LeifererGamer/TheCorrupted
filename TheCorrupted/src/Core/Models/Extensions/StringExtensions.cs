@@ -23,4 +23,14 @@ public static class StringExtensions
         return Path.Join("images", "potions", path);
     }
 
+    public static string BigRelicImagePath(this string path)
+    {
+        return Path.Join("images", "relics", path);
+    }
+
+    public static string TresRelicImagePath(this string path)
+    {
+        return Path.Join("images", "atlases", "relic_atlas.sprites", path);
+    }
+
 }

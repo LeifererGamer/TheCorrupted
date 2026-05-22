@@ -15,10 +15,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
+internal class CorruptedGem() : TheCorruptedCardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromEnchantment<RitualReplay>().First(),
@@ -31,9 +29,7 @@ internal class CorruptedGem() : CardModel(2, CardType.Skill, CardRarity.Rare, Ta
             new RitualVar(),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             CardModel cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1), context: choiceContext, player: base.Owner, filter: delegate (CardModel c)

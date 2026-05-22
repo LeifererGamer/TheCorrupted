@@ -1,14 +1,14 @@
 {
-  "THE_ARCHITECT.talk.CORRUPTED.0-0r.char": "I sense a cursed presence...",
-  "THE_ARCHITECT.talk.CORRUPTED.0-0r.next": "Continue",
-  "THE_ARCHITECT.talk.CORRUPTED.0-1r.ancient": "Ah, the Corrupted arrives. Corrupted, but restless.",
-  "THE_ARCHITECT.talk.CORRUPTED.0-attack": "Both",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.0-0r.char": "I sense a cursed presence...",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.0-0r.next": "Continue",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.0-1r.ancient": "Ah, the Corrupted arrives. Corrupted, but restless.",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.0-attack": "Both",
 
-  "THE_ARCHITECT.talk.CORRUPTED.1-0.next": "Continue",
-  "THE_ARCHITECT.talk.CORRUPTED.1-0.char": "[sine]I am ready for what comes.[/sine]",
-  "THE_ARCHITECT.talk.CORRUPTED.1-1.ancient": "[jitter]Good. Then let the trial begin.[/jitter]",
-  "THE_ARCHITECT.talk.CORRUPTED.1-1.next": "Continue",
-  "THE_ARCHITECT.talk.CORRUPTED.1-2.char": "[sine]I will not falter.[/sine]",
-  "THE_ARCHITECT.talk.CORRUPTED.1-2.next": "Continue",
-  "THE_ARCHITECT.talk.CORRUPTED.1-3.ancient": "[jitter]We shall see…[/jitter]"
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-0.next": "Continue",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-0.char": "[sine]I am ready for what comes.[/sine]",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-1.ancient": "[jitter]Good. Then let the trial begin.[/jitter]",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-1.next": "Continue",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-2.char": "[sine]I will not falter.[/sine]",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-2.next": "Continue",
+  "THE_ARCHITECT.talk.THECORRUPTED-CORRUPTED.1-3.ancient": "[jitter]We shall see…[/jitter]"
 }

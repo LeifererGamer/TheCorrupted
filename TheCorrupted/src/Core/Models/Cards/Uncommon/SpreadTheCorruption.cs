@@ -33,8 +33,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             HoverTipFactory.FromPower<FrailPower>()
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(2),
         ];

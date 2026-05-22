@@ -11,20 +11,14 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class CorruptionToAshes() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
-    {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-
+    internal class CorruptionToAshes() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+    {        
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CardsVar(4),
             new RitualVar(1),
         ];
 
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {

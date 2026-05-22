@@ -13,10 +13,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class CloakOfCorruption() : CardModel(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
+    internal class CloakOfCorruption() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
         public override bool GainsBlock => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override IEnumerable<DynamicVar> CanonicalVars => 
         [
@@ -24,8 +23,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new EnergyVar(1),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             CardPile hand = PileType.Hand.GetPile(Owner);

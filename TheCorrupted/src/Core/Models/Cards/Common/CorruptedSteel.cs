@@ -14,30 +14,26 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
 
-internal class CorruptedSteel() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+internal class CorruptedSteel() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<PlatingPower>()
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new PowerVar<PlatingPower>(6m),
             new RitualVar(1),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, DynamicVars["PlatingPower"].BaseValue, Owner.Creature, this);
             });
         }
+
 
         protected override void OnUpgrade()
         {

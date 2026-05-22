@@ -22,9 +22,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class UnstableEnergy() : CardModel(3, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
+    internal class UnstableEnergy() : TheCorruptedCardModel(3, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -41,9 +40,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
             new PowerVar<DoomPower>(10),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await PowerCmd.Apply<UnstableEnergyPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         }

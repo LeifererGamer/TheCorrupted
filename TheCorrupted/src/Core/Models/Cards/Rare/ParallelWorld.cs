@@ -7,16 +7,14 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class ParallelWorld() : CardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    internal class ParallelWorld() : TheCorruptedCardModel(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         public override IEnumerable<CardKeyword> CanonicalKeywords =>
         [
             CardKeyword.Exhaust,
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             CardPile hand = PileType.Hand.GetPile(Owner);
@@ -29,7 +27,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
                     CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Draw, Owner, CardPilePosition.Random), 2.2f);
                 }
             }
-
         }
 
         protected override void OnUpgrade()

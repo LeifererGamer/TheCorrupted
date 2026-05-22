@@ -25,9 +25,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class CorruptedShockwaves() : CardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), ICustomModel
+    internal class CorruptedShockwaves() : TheCorruptedCardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override bool IsPlayable => CardPile.GetCards(base.Owner, PileType.Exhaust).Where(c => c.Type == CardType.Curse || (c.Type == CardType.Status && base.Owner.Creature.HasPower<StatusQuoPower>())).Count() >= base.DynamicVars.Cards.IntValue;
 
@@ -38,9 +37,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
             new DamageVar(20m, ValueProp.Move),
             new DamageVar("DamageDiff", 8m , ValueProp.Move),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
 
         public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
         {
@@ -58,14 +54,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
             }
         }
 
-        protected override void OnUpgrade()
-        {
-            DynamicVars.Damage.UpgradeValueBy(4m);
-            DynamicVars["DamageDiff"].UpgradeValueBy(2m);
-            DynamicVars["AutoCards"].UpgradeValueBy(-2);
-        }
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
@@ -74,6 +63,13 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
                 .Execute(choiceContext);
                 await CorruptionCorrupted.CreateInHand(base.Owner, base.CombatState);
             });
+        }
+
+        protected override void OnUpgrade()
+        {
+            DynamicVars.Damage.UpgradeValueBy(4m);
+            DynamicVars["DamageDiff"].UpgradeValueBy(2m);
+            DynamicVars["AutoCards"].UpgradeValueBy(-2);
         }
     }
 }

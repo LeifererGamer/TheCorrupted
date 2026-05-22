@@ -17,7 +17,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
     internal class DoomBarrier() : DoomedCardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
         public override bool GainsBlock => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
+
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -29,8 +29,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             new CalculatedBlockVar(ValueProp.Move).WithMultiplier(static (card, _) => card.Owner.Creature.HasPower<DoomPower>() ? card.Owner.Creature.GetPower<DoomPower>().Amount: 0),
             new DoomedVar(4),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override void OnUpgrade()
         {

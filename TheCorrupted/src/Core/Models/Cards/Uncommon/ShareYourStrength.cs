@@ -22,10 +22,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-internal class ShareYourStrength() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
+internal class ShareYourStrength() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
     {
         public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         public override IEnumerable<CardKeyword> CanonicalKeywords => 
         [
@@ -41,7 +40,7 @@ internal class ShareYourStrength() : CardModel(1, CardType.Skill, CardRarity.Unc
             HoverTipFactory.FromPower<StrengthPower>(),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             if (Owner.Creature.HasPower<StrengthPower>())

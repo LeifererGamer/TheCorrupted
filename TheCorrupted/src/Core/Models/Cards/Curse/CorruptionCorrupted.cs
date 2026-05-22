@@ -1,14 +1,19 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using BaseLib.Abstracts;
+using BaseLib.Extensions;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
 {
-    public sealed class CorruptionCorrupted() : CardModel(-1, CardType.Curse, CardRarity.Curse, TargetType.None)
+    [Pool(typeof(CurseCardPool))]
+    public sealed class CorruptionCorrupted() : CustomCardModel(-1, CardType.Curse, CardRarity.Curse, TargetType.None)
     {
         public override int MaxUpgradeLevel => 0;
 
@@ -28,6 +33,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
         public override CardPoolModel Pool => ModelDb.CardPool<CurseCardPool>();
 
         public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
+
+        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePathCurses();
 
         public static async Task<CardModel?> CreateInHand(Player owner, ICombatState combatState)
         {

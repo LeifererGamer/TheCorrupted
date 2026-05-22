@@ -27,8 +27,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
 internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         decimal cleansingAmount = 0m;
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -44,8 +42,6 @@ internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRari
             new DoomedVar(5),
             new PowerVar<WeakPower>(1),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {

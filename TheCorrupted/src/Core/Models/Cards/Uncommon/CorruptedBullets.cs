@@ -15,11 +15,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class CorruptedBullets() : CardModel(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    internal class CorruptedBullets() : TheCorruptedCardModel(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CalculationBaseVar(0m),
             new ExtraDamageVar(7m),
@@ -27,9 +24,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             new DamageVar(7m, ValueProp.Move),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             foreach (CardModel c in PileType.Hand.GetPile(Owner).Cards.Where((c) => c.Type.Equals(CardType.Curse)).ToList())
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")

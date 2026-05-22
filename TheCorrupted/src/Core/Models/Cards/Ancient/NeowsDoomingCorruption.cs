@@ -25,10 +25,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Ancient
 {
 
-internal class NeowsDoomingCorruption() : CardModel(1, CardType.Power, CardRarity.Ancient, TargetType.Self), ICustomModel
+internal class NeowsDoomingCorruption() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Ancient, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -42,9 +40,7 @@ internal class NeowsDoomingCorruption() : CardModel(1, CardType.Power, CardRarit
             new CardsVar(1),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             var ritualPerformed = await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {

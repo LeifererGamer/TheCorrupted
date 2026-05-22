@@ -15,10 +15,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class CorruptedEnergy() : CardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    internal class CorruptedEnergy() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new EnergyVar(1),
@@ -34,7 +32,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             EnergyHoverTip,
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);

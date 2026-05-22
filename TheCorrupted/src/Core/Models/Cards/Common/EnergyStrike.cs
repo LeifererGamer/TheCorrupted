@@ -16,8 +16,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
     internal class EnergyStrike() : DoomedCardModel(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -32,8 +30,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new DamageVar(10m, ValueProp.Move),
             new EnergyVar(1),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
 
         protected override void OnUpgrade()

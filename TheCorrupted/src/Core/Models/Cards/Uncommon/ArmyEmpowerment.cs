@@ -27,15 +27,12 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class ArmyEmpowerment() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+    internal class ArmyEmpowerment() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             await PowerCmd.Apply<ArmyEmpowermentPower>(choiceContext, cardPlay.Target, 1m, base.Owner.Creature, this);
         }

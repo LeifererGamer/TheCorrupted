@@ -46,8 +46,6 @@ internal class RitualAftermath() : CorruptedCardModel<WeakPower>(2, CardType.Att
 
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override void OnUpgrade()
         {
             DynamicVars.ExtraDamage.UpgradeValueBy(1m);

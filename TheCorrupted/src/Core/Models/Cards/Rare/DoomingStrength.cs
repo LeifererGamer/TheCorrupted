@@ -12,11 +12,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
-internal class DoomingStrength() : CardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+internal class DoomingStrength() : TheCorruptedCardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [
 
         HoverTipFactory.FromPower<StrengthPower>(),
@@ -28,7 +25,7 @@ internal class DoomingStrength() : CardModel(2, CardType.Power, CardRarity.Rare,
             new DynamicVar("Divider", 3),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await PowerCmd.Apply<DoomingStrengthPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }

@@ -17,10 +17,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class CleansingBlock() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         public override bool GainsBlock => true;
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -28,8 +26,6 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
             new CleansingVar(5m),
             new HealVar(3),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [
 
@@ -41,12 +37,11 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
             CardKeyword.Exhaust,
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
             await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
-            
         }
 
         protected override void OnUpgrade()
@@ -55,7 +50,6 @@ internal class CleansingBlock() : CardModel(1, CardType.Skill, CardRarity.Uncomm
             DynamicVars["Cleansing"].UpgradeValueBy(3m);
             DynamicVars.Heal.UpgradeValueBy(1m);
         }
-
     }
 
 }

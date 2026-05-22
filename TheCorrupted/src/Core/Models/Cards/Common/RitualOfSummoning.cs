@@ -20,10 +20,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class RitualOfSummoning() : CardModel(0, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+    internal class RitualOfSummoning() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -31,15 +29,12 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new ArmyVar(3),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
                 await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);
             });
-           
         }
 
         protected override void OnUpgrade()

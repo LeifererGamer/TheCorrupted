@@ -23,8 +23,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
 internal class DoomsdayShield() : DoomedCardModel(1, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         public override bool GainsBlock => true;
 
         decimal cleansingAmount = 0m;
@@ -39,8 +37,6 @@ internal class DoomsdayShield() : DoomedCardModel(1, CardType.Skill, CardRarity.
             new CleansingVar(10),
             new DoomedVar(10)
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {

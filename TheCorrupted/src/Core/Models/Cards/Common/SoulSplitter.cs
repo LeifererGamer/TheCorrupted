@@ -21,10 +21,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
 
-internal class SoulSplitter() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
+internal class SoulSplitter() : TheCorruptedCardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -32,14 +30,11 @@ internal class SoulSplitter() : CardModel(1, CardType.Attack, CardRarity.Common,
             new DamageVar(5m, ValueProp.Move)
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);
         }

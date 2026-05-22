@@ -22,10 +22,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class DoomsdaySummon() : CardModel(1, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
+    internal class DoomsdaySummon() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromCard<CommandArmy>(),
@@ -44,9 +42,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
             new CalculatedVar("SummonArmy").WithMultiplier(static (card, _) => card.Owner.Creature.HasPower<DoomPower>() ? card.Owner.Creature.GetPower<DoomPower>().Amount : 0)
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["SummonArmy"].PreviewValue, this);
@@ -56,6 +52,5 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
         {
             EnergyCost.UpgradeBy(-1);
         }
-
     }
 }

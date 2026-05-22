@@ -14,10 +14,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class SummonArmy() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+    internal class SummonArmy() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromCard<CommandArmy>()
@@ -27,9 +25,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new ArmyVar(5),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);

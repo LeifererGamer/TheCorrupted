@@ -14,19 +14,16 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class SavedByCorruption() : CardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+internal class SavedByCorruption() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
            new PowerVar<SavedByCorruptionPower>(3m)
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await PowerCmd.Apply<SavedByCorruptionPower>(choiceContext, Owner.Creature, DynamicVars["SavedByCorruptionPower"].IntValue, Owner.Creature, this);
         }
-
 
         protected override void OnUpgrade()
         {

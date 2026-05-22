@@ -22,8 +22,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
     internal class DoomedArmy() : DoomedCardModel(2, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -35,8 +33,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new DynamicVar("DamageDiff", 4m),
             new ArmyVar(8),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {

@@ -16,20 +16,16 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-    internal class HellfirePact() : CardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    internal class HellfirePact() : TheCorruptedCardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CardsVar(1),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await PowerCmd.Apply<HellfirePactPower>(choiceContext, Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
         }
-
 
         protected override void OnUpgrade()
         {

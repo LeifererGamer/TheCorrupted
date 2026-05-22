@@ -15,10 +15,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class DelayedSummoning() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
+    internal class DelayedSummoning() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CommandArmy>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -26,15 +24,12 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new EnergyVar(1),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await PowerCmd.Apply<SummonArmyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars["Army"].BaseValue, Owner.Creature, this);
             await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
         }
-
         protected override void OnUpgrade()
         {
             DynamicVars["Army"].UpgradeValueBy(1m);
