@@ -23,8 +23,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 
         public override string StoryId => "Corrupted";
 
-        public override bool IsArtPlaceholder => true;
-
         public static List<PotionModel> Potions
         {
             get

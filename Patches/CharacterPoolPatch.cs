@@ -7,23 +7,20 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Characters;
 
 namespace TheCorrupted.Patches
 {
-    [HarmonyPatch(typeof(ModelDb), "AllCharacters", MethodType.Getter)]
-    [HarmonyPriority(Priority.First)]
-    public class ModelDbAllCharactersPatch
+    namespace TheCorrupted.Patches
     {
-        private static void Postfix(ref IEnumerable<CharacterModel> __result)
+        [HarmonyPatch(typeof(ModelDb), "AllCharacters", MethodType.Getter)]
+        [HarmonyPriority(Priority.First)]
+        public class ModelDbAllCharactersPatch
         {
-            // Add Corrupted to the list of all characters
-            var charactersList = __result.ToList();
-            charactersList.Add(ModelDb.Character<Corrupted>());
+            private static void Postfix(ref IEnumerable<CharacterModel> __result)
+            {
+                // Safely append the Corrupted character
+                var charactersList = __result.ToList();
+                charactersList.Add(ModelDb.Character<Corrupted>());
 
-
-            __result = charactersList;
-
-
-            typeof(ModelDb).GetField("_allCharacterCardPools", BindingFlags.Static | BindingFlags.NonPublic)
-                ?.SetValue(null, null);
-            typeof(ModelDb).GetField("_allCards", BindingFlags.Static | BindingFlags.NonPublic)?.SetValue(null, null);
+                __result = charactersList;
+            }
         }
     }
 }

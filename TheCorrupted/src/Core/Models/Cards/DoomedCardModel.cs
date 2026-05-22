@@ -10,12 +10,10 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
     internal abstract class DoomedCardModel(int cost, CardType type, CardRarity rarity, TargetType target)
         : TheCorruptedCardModel(cost, type, rarity, target)
     {
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+        public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
         {
-            if (side != Owner.Creature.Side)
-            {
-                return;
-            }
+            if (!participants.ToList().Contains(Owner.Creature)) return;
+
             if (Pile.Type.Equals(PileType.Hand))
             {
                 IEnumerable<Creature> creatures = [Owner.Creature];
