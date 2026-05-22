@@ -29,7 +29,7 @@ internal class GroupSummoning() : TheCorruptedCardModel(2, CardType.Power, CardR
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<GroupSummoningPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<GroupSummoningPower>(Owner.Creature, 1m, Owner.Creature, this);
         }
 
 

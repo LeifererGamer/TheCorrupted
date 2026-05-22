@@ -29,7 +29,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<IntangiblePower>(choiceContext, Owner.Creature, DynamicVars["IntangiblePower"].IntValue, Owner.Creature, this);
+                await PowerCmd.Apply<IntangiblePower>(Owner.Creature, DynamicVars["IntangiblePower"].IntValue, Owner.Creature, this);
             });
         }
 

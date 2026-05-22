@@ -47,7 +47,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
 
         public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePathCurses();
 
-        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
         {
             CardPile? pile = base.Pile;
             if (pile != null && pile.Type == PileType.Exhaust && player == base.Owner)
@@ -65,22 +65,22 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
             
         }
 
-        private static async Task<CardModel?> CreateRandomCurseInDrawPile(Player player, ICombatState combatState)
+        private static async Task<CardModel?> CreateRandomCurseInDrawPile(Player player, CombatState combatState)
         {
             CardModel cardModel = CorruptedCardPool.GetRandomCurses(player, 1).FirstOrDefault();
             if (cardModel != null)
             {
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, player, CardPilePosition.Random));
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, true, CardPilePosition.Random));
             }
             return cardModel;
         }
 
-        public static async Task<CardModel?> CreateInHand(Player owner, ICombatState combatState)
+        public static async Task<CardModel?> CreateInHand(Player owner, CombatState combatState)
         {
             return (await CreateInHand(owner, 1, combatState)).FirstOrDefault();
         }
 
-        public static async Task<IEnumerable<CardModel>> CreateInHand(Player owner, int count, ICombatState combatState)
+        public static async Task<IEnumerable<CardModel>> CreateInHand(Player owner, int count, CombatState combatState)
         {
             if (count == 0)
             {
@@ -98,7 +98,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
                 curse.Add(combatState.CreateCard<SpreadingCorruption>(owner));
             }
 
-            await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Hand, owner);
+            await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Hand, true);
             return curse;
         }
 
@@ -125,7 +125,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse
                 curse.Add(combatState.CreateCard<SpreadingCorruption>(owner));
             }
 
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Draw, owner, CardPilePosition.Random));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curse, PileType.Draw, true, CardPilePosition.Random));
             await Cmd.Wait(3f);
             return curse;
         }

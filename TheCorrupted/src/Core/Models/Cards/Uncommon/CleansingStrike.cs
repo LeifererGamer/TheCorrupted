@@ -44,7 +44,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
         {
             if (dealer == Owner.Creature && result.UnblockedDamage > 0 && cardSource == this)
             {
-                var amount = await Cleansing.PerformCleansing(choiceContext, result.UnblockedDamage, Owner.Creature, this);
+                var amount = await Cleansing.PerformCleansing( result.UnblockedDamage, Owner.Creature, this);
                 await ArmyCmd.Summon(choiceContext, Owner, amount, this);
             }
         }

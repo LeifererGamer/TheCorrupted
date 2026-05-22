@@ -44,7 +44,7 @@ internal class ShareYourStrength() : TheCorruptedCardModel(1, CardType.Skill, Ca
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             if (Owner.Creature.HasPower<StrengthPower>())
-                await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target, Owner.Creature.GetPower<StrengthPower>().Amount, Owner.Creature, this);
+                await PowerCmd.Apply<StrengthPower>(cardPlay.Target, Owner.Creature.GetPower<StrengthPower>().Amount, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

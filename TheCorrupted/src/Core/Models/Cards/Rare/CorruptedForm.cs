@@ -36,8 +36,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
-            await PowerCmd.Apply<CorruptedFormPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
+            await PowerCmd.Apply<CorruptedFormPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

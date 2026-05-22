@@ -41,8 +41,8 @@ internal class DoomingCorruption() : TheCorruptedCardModel(2, CardType.Power, Ca
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
-            await PowerCmd.Apply<DoomingCorruptionPower>(choiceContext, base.Owner.Creature, DynamicVars["Ritual"].IntValue, base.Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
+            await PowerCmd.Apply<DoomingCorruptionPower>(base.Owner.Creature, DynamicVars["Ritual"].IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

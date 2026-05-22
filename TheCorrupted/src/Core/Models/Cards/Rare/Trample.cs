@@ -42,7 +42,7 @@ internal class Trample() : TheCorruptedCardModel(2, CardType.Power, CardRarity.R
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<TramplePower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<TramplePower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
             await ArmyCmd.Summon(choiceContext, base.Owner, DynamicVars["Army"].IntValue, this);
         }
 

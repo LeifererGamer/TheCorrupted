@@ -49,7 +49,7 @@ internal class DrainStrength() : TheCorruptedCardModel(1, CardType.Skill, CardRa
             {
                 NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
             }
-            await PowerCmd.Apply<CrushUnderPower>(choiceContext, enemies, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<CrushUnderPower>(enemies, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

@@ -24,7 +24,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
                 if (card != null)
                 {
                     var newCard = card.CreateClone();
-                    CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Draw, Owner, CardPilePosition.Random), 2.2f);
+                    CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Draw, true, CardPilePosition.Random), 2.2f);
                 }
             }
         }

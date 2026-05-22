@@ -39,22 +39,21 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
         ];
 
         public int amount = 0;
-        public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+        public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
         {
-            if (participants.ToList().Contains(Owner))
-            {
-                Flash();
-                amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
-                await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, amount, Owner, null);                                        
-            }
+            if (side != Owner.Side) return;
+
+            Flash();
+            amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
+            await PowerCmd.Apply<StrengthPower>(Owner, amount, Owner, null);                                        
         }
-        public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+        
+        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {
-            if (participants.ToList().Contains(Owner))
-            {
-                Flash();
-                await PowerCmd.Apply<StrengthPower>(choiceContext,Owner, -amount, Owner, null);
-            }
+            if (side != Owner.Side) return;
+
+            Flash();
+            await PowerCmd.Apply<StrengthPower>(Owner, -amount, Owner, null);
         }
     }
 }

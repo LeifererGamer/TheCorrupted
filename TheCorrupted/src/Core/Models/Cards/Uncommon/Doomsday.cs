@@ -36,7 +36,7 @@ internal class Doomsday() : TheCorruptedCardModel(1, CardType.Power, CardRarity.
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomsdayPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
+            await PowerCmd.Apply<DoomsdayPower>(base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
         }
 
 

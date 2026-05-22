@@ -13,19 +13,19 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
      where TPower : PowerModel
     {
 
-        public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {
-            if (!participants.ToList().Contains(Owner.Creature)) return;
+            if (side != Owner.Creature.Side) return;
 
             if (Pile.Type.Equals(PileType.Hand))
             {
                 await CardCmd.AutoPlay(choiceContext, this, null);
 
                 // Hier nutzen wir jetzt den Platzhalter <TPower> statt <WeakPower>
-                await PowerCmd.Apply<TPower>(choiceContext, Owner.Creature, DynamicVars["Corrupted"].BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<TPower>(Owner.Creature, DynamicVars["Corrupted"].BaseValue, Owner.Creature, this);
 
                 IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, DynamicVars["Corrupted"].IntValue);
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
             }
         }
     }

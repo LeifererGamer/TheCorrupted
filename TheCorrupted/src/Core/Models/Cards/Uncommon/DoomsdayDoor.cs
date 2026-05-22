@@ -37,7 +37,7 @@ internal class DoomsdayDoor() : TheCorruptedCardModel(0, CardType.Skill, CardRar
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars.Doom.BaseValue, Owner.Creature, this);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         }

@@ -32,7 +32,7 @@ internal class EnergyCirculation() : TheCorruptedCardModel(3, CardType.Power, Ca
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<EnergyCirculationPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<EnergyCirculationPower>(Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

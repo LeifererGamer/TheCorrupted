@@ -34,7 +34,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
             if (card.Type.Equals(CardType.Curse) || card.Type.Equals(CardType.Status) && Owner.HasPower<StatusQuoPower>())
             {
                 Flash();
-                await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
+                await PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
             }
         }
     }

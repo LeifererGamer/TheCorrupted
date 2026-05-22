@@ -39,7 +39,7 @@ internal class CleansingSummon() : TheCorruptedCardModel(0, CardType.Skill, Card
                 int xValue = ResolveEnergyXValue();
                 for (int i = 0; i < xValue; i++)
                 {
-                    var amount = await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+                    var amount = await Cleansing.PerformCleansing( DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
                     if (amount <= 0)
                         return;
                     await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);

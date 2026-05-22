@@ -24,7 +24,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<HellfirePactPower>(choiceContext, Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<HellfirePactPower>(Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

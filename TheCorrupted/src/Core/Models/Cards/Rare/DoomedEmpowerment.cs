@@ -44,7 +44,7 @@ internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRari
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomedEmpowermentPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<DoomedEmpowermentPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
         }
     }
 }

@@ -52,7 +52,7 @@ internal class UltimateCorruption() : TheCorruptedCardModel(0, CardType.Skill, C
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, cardPlay.Card);
-            await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
             await SpreadingCorruption.CreateInHand(Owner, cardPlay.Card.CombatState);
         }
 

@@ -24,7 +24,7 @@ internal class Grudge() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Un
             if (rite != null)
             {
                 rite.EnergyCost.SetThisTurnOrUntilPlayed(0, reduceOnly: true);
-                await CardPileCmd.AddGeneratedCardToCombat(rite, PileType.Hand, Owner);
+                await CardPileCmd.AddGeneratedCardToCombat(rite, PileType.Hand, true);
             }
         }
 

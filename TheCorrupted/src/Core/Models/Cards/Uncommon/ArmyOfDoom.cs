@@ -36,7 +36,7 @@ internal class ArmyOfDoom() : TheCorruptedCardModel(2, CardType.Power, CardRarit
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<ArmyOfDoomPower>(choiceContext, base.Owner.Creature, base.DynamicVars["ArmyOfDoomPower"].IntValue, base.Owner.Creature, this);
+            await PowerCmd.Apply<ArmyOfDoomPower>(base.Owner.Creature, base.DynamicVars["ArmyOfDoomPower"].IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

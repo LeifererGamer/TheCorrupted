@@ -25,7 +25,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<HellfireBreathingPower>(choiceContext, Owner.Creature, DynamicVars["HellfireBreathingPower"].IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<HellfireBreathingPower>(Owner.Creature, DynamicVars["HellfireBreathingPower"].IntValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

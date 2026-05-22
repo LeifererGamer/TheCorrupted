@@ -33,7 +33,7 @@ internal class ArmyOfDoomPower : PowerModel
 
         public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
         {
-            await PowerCmd.Apply<DoomPower>(choiceContext, base.Owner, base.Amount, base.Owner, null);
+            await PowerCmd.Apply<DoomPower>(base.Owner, base.Amount, base.Owner, null);
             await ArmyCmd.Summon(choiceContext, player, base.Amount, this);
         }
     }
