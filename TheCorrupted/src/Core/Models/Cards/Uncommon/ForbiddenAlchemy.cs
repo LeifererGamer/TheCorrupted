@@ -13,18 +13,13 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class ForbiddenAlchemy() : CardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class ForbiddenAlchemy() : TheCorruptedCardModel(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new RitualVar(1),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {

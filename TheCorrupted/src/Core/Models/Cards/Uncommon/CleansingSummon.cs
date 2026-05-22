@@ -16,10 +16,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class CleansingSummon() : CardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class CleansingSummon() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override bool HasEnergyCostX => true;
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -27,23 +25,21 @@ internal class CleansingSummon() : CardModel(0, CardType.Skill, CardRarity.Uncom
             new ArmyVar(5),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [
 
         HoverTipFactory.FromPower<DoomPower>(),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-            
+
             if (Owner.Creature.HasPower<DoomPower>())
             {
                 int xValue = ResolveEnergyXValue();
                 for (int i = 0; i < xValue; i++)
                 {
-                    var amount = await Cleansing.PerformCleansing(DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+                    var amount = await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
                     if (amount <= 0)
                         return;
                     await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, this);

@@ -25,8 +25,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
     internal class CorruptedReckoning() : DoomedCardModel(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -39,8 +37,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
             new ExtraDamageVar(6m),
             new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count((CardModel c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>()))),
         ];
-
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -21,8 +22,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
     internal class DoomedArmy() : DoomedCardModel(2, CardType.Skill, CardRarity.Common, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -35,12 +34,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new ArmyVar(8),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             decimal amount = getAmount(cardPlay, DynamicVars["DamageDiff"].BaseValue, DynamicVars["Army"].BaseValue);
 
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await ArmyCmd.Summon(choiceContext, Owner, amount, this);
         }
 

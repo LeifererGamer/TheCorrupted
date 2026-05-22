@@ -22,10 +22,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
-    internal class SongOfDamnation() : CardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
+    internal class SongOfDamnation() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
         protected override bool HasEnergyCostX => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -42,18 +41,15 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
             new PowerVar<DoomPower>(4),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             int xValue = ResolveEnergyXValue();
             for (int i = 0; i < xValue; i++)
             {
                 await ArmyCmd.Summon(choiceContext, base.Owner, base.DynamicVars["Army"].BaseValue, this);
-                await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
             }
-            
         }
 
         protected override void OnUpgrade()

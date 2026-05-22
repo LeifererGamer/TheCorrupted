@@ -18,10 +18,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic
 {
-    public sealed class CorruptingStrike() : CardModel(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+    public sealed class CorruptingStrike() : TheCorruptedCardModel(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
         public override bool GainsBlock => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
@@ -32,9 +31,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic
             new BlockVar(5m, ValueProp.Move)
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_flying_slash")

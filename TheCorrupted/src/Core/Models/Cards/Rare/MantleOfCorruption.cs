@@ -28,10 +28,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class MantleOfCorruption() : CardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
+internal class MantleOfCorruption() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -47,15 +45,13 @@ internal class MantleOfCorruption() : CardModel(1, CardType.Power, CardRarity.Ra
             new CleansingVar(),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             NPowerUpVfx.CreateGhostly(base.Owner.Creature);
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            await PowerCmd.Apply<MantleOfCorruptionPower>(Owner.Creature, DynamicVars.Block.IntValue, Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
+            await PowerCmd.Apply<MantleOfCorruptionPower>(choiceContext, Owner.Creature, DynamicVars.Block.IntValue, Owner.Creature, this);
         }
 
 

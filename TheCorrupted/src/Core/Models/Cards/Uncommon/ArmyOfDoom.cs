@@ -21,10 +21,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class ArmyOfDoom() : CardModel(2, CardType.Power, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class ArmyOfDoom() : TheCorruptedCardModel(2, CardType.Power, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<DoomPower>()
@@ -36,11 +34,9 @@ internal class ArmyOfDoom() : CardModel(2, CardType.Power, CardRarity.Uncommon, 
             new ArmyVar(3),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<ArmyOfDoomPower>(base.Owner.Creature, base.DynamicVars["ArmyOfDoomPower"].IntValue, base.Owner.Creature, this);
+            await PowerCmd.Apply<ArmyOfDoomPower>(choiceContext, base.Owner.Creature, base.DynamicVars["ArmyOfDoomPower"].IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

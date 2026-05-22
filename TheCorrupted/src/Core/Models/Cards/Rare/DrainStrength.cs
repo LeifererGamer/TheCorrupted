@@ -14,10 +14,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
-internal class DrainStrength() : CardModel(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
+internal class DrainStrength() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DynamicVar("StrengthLoss", 1m),
         ];
@@ -32,7 +30,7 @@ internal class DrainStrength() : CardModel(1, CardType.Skill, CardRarity.Rare, T
             HoverTipFactory.FromPower<StrengthPower>()
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.AttackAnimDelay);
             CardPile hand = PileType.Hand.GetPile(Owner);
@@ -51,14 +49,13 @@ internal class DrainStrength() : CardModel(1, CardType.Skill, CardRarity.Rare, T
             {
                 NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
             }
-            await PowerCmd.Apply<CrushUnderPower>(enemies, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<CrushUnderPower>(choiceContext, enemies, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()
         {
             EnergyCost.UpgradeBy(-1);
         }
-
     }
 
 }

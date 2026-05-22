@@ -21,14 +21,12 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class CorruptedDelivery() : CardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+internal class CorruptedDelivery() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<CorruptedDeliveryPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<CorruptedDeliveryPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

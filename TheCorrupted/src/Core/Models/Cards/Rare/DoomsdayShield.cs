@@ -23,8 +23,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 
 internal class DoomsdayShield() : DoomedCardModel(1, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         public override bool GainsBlock => true;
 
         decimal cleansingAmount = 0m;
@@ -40,8 +38,6 @@ internal class DoomsdayShield() : DoomedCardModel(1, CardType.Skill, CardRarity.
             new DoomedVar(10)
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
@@ -49,7 +45,7 @@ internal class DoomsdayShield() : DoomedCardModel(1, CardType.Skill, CardRarity.
 
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            cleansingAmount = await Cleansing.PerformCleansing(DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+            cleansingAmount = await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
             if (cleansingAmount > 0)
                 await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(cleansingAmount, ValueProp.Move), cardPlay);
         }

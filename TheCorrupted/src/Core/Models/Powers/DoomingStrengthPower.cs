@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -38,21 +39,21 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
         ];
 
         public int amount = 0;
-        public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+        public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
         {
-            if (side == Owner.Side)
+            if (participants.ToList().Contains(Owner))
             {
                 Flash();
                 amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
-                await PowerCmd.Apply<StrengthPower>(Owner, amount, Owner, null);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, amount, Owner, null);                                        
             }
         }
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+        public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
         {
-            if (side == Owner.Side)
+            if (participants.ToList().Contains(Owner))
             {
                 Flash();
-                await PowerCmd.Apply<StrengthPower>(Owner, -amount, Owner, null);
+                await PowerCmd.Apply<StrengthPower>(choiceContext,Owner, -amount, Owner, null);
             }
         }
     }

@@ -16,10 +16,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
-internal class EnergyCirculation() : CardModel(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+internal class EnergyCirculation() : TheCorruptedCardModel(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
         new EnergyVar(1),
         ];
@@ -29,20 +27,18 @@ internal class EnergyCirculation() : CardModel(3, CardType.Power, CardRarity.Rar
         ];
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-        EnergyHoverTip,
+            EnergyHoverTip,
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<EnergyCirculationPower>(Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<EnergyCirculationPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
         }
-
 
         protected override void OnUpgrade()
         {
             RemoveKeyword(CardKeyword.Ethereal);
         }
-
     }
 }
 

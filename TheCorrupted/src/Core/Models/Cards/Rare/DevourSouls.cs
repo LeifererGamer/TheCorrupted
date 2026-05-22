@@ -18,23 +18,19 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
-internal class DevourSouls() : CardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
+internal class DevourSouls() : TheCorruptedCardModel(2, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars =>
         [
             new MaxHpVar(2),
             new HpLossVar(6),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
-            await PowerCmd.Apply<DevourSoulsPower>(Owner.Creature, DynamicVars.MaxHp.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DevourSoulsPower>(choiceContext, Owner.Creature, DynamicVars.MaxHp.BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

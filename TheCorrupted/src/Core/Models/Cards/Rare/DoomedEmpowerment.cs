@@ -25,8 +25,6 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>(),
@@ -38,8 +36,6 @@ internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRari
             new CorruptedVar(),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override void OnUpgrade()
         {
             EnergyCost.UpgradeBy(-1);
@@ -48,7 +44,7 @@ internal class DoomedEmpowerment() : DoomedCardModel(1, CardType.Power, CardRari
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomedEmpowermentPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+            await PowerCmd.Apply<DoomedEmpowermentPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
         }
     }
 }

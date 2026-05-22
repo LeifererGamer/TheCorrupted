@@ -17,19 +17,16 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-    internal class HellfireBreathing() : CardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    internal class HellfireBreathing() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
            new PowerVar<HellfireBreathingPower>(4m)
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<HellfireBreathingPower>(Owner.Creature, DynamicVars["HellfireBreathingPower"].IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<HellfireBreathingPower>(choiceContext, Owner.Creature, DynamicVars["HellfireBreathingPower"].IntValue, Owner.Creature, this);
         }
-
 
         protected override void OnUpgrade()
         {

@@ -23,18 +23,14 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class HellfireShockwave() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
+    internal class HellfireShockwave() : TheCorruptedCardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DamageVar(10m, ValueProp.Move),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-
             var repeat = 1;
             CardPile hand = PileType.Hand.GetPile(Owner);
             if (hand.Cards.Any((c) => c.Type == CardType.Curse || (c.Type == CardType.Status && c.Owner.Creature.HasPower<StatusQuoPower>())))
@@ -49,7 +45,6 @@ internal class HellfireShockwave() : CardModel(1, CardType.Attack, CardRarity.Un
                 }
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState).Execute(choiceContext);
             }
-
         }
 
         protected override void OnUpgrade()

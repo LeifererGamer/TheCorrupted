@@ -20,11 +20,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
 
-internal class SurpriseAttack() : CardModel(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+internal class SurpriseAttack() : TheCorruptedCardModel(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
-
         public override IEnumerable<CardKeyword> CanonicalKeywords =>
         [
             CardKeyword.Innate,
@@ -37,13 +34,11 @@ internal class SurpriseAttack() : CardModel(0, CardType.Attack, CardRarity.Commo
             new CardsVar(1),
         ];
 
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         }
 

@@ -17,22 +17,20 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Curse;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class CorruptedBlade() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+    internal class CorruptedBlade() : TheCorruptedCardModel(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CorruptionCorrupted>()];
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new DamageVar(9m, ValueProp.Move),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
-                .WithHitFx("vfx/vfx_giant_horizontal_slash")
-                .SpawningHitVfxOnEachCreature()
-                .Execute(choiceContext);
+            .WithHitFx("vfx/vfx_giant_horizontal_slash")
+            .SpawningHitVfxOnEachCreature()
+            .Execute(choiceContext);
             await CorruptionCorrupted.CreateInHand(Owner, CombatState);
         }
 

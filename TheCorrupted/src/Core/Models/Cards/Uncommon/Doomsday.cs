@@ -22,10 +22,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class Doomsday() : CardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self), ICustomModel
+internal class Doomsday() : TheCorruptedCardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [
             HoverTipFactory.FromPower<DoomPower>()
@@ -35,13 +33,12 @@ internal class Doomsday() : CardModel(1, CardType.Power, CardRarity.Uncommon, Ta
             new DamageVar(4m, ValueProp.Move),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<DoomsdayPower>(base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
+            await PowerCmd.Apply<DoomsdayPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Damage.IntValue, base.Owner.Creature, this);
         }
+
 
         protected override void OnUpgrade()
         {

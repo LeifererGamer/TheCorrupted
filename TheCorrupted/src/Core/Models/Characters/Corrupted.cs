@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Basic;
+using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 using TheCorrupted.TheCorrupted.src.Core.Models.PotionPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.RelicPools;
 using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
@@ -25,9 +26,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Characters;
 
 
-public sealed class Corrupted : CharacterModel
-    {
-        public const string energyColorName = "corrupted";
+public sealed class Corrupted : CustomCharacterModel
+{
+    public const string energyColorName = "corrupted";
 
         public override CharacterGender Gender => CharacterGender.Masculine;
 
@@ -97,7 +98,51 @@ public sealed class Corrupted : CharacterModel
             span[num2] = "vfx/vfx_rock_shatter";
             return list;
         }
-    }
+
+    public override string CustomIconTexturePath => "res://images/ui/top_panel/character_icon_corrupted.png";
+    public override string CustomCharacterSelectIconPath => "res://images/packed/char_select_corrupted.png";
+
+
+    public override string CustomEnergyCounterPath => "res://scenes/combat/energy_counters/corrupted_energy_counter.tscn";
+
+    public override string CustomCharacterSelectLockedIconPath =>
+        "res://images/packed/char_select_corrupted_locked.png";
+
+    public override string CustomVisualPath => "res://scenes/creature_visuals/corrupted.tscn";
+    public override string CustomTrailPath => "res://scenes/vfx/card_trail_corrupted.tscn";
+    public override string CustomIconPath => "res://scenes/ui/character_icons/corrupted_icon.tscn";
+    public override string CustomRestSiteAnimPath => "res://scenes/rest_site/characters/corrupted_rest_site.tscn";
+    public override string CustomMerchantAnimPath => "res://scenes/merchant/characters/corrupted_merchant.tscn";
+
+    public override string CustomArmPointingTexturePath =>
+        "res://images/ui/hands/multiplayer_hand_corrupted_point.png";
+
+    public override string CustomArmRockTexturePath =>
+        "res://images/ui/hands/multiplayer_hand_corrupted_rock.png";
+
+    public override string CustomArmPaperTexturePath =>
+        "res://images/ui/hands/multiplayer_hand_corrupted_paper.png";
+
+    public override string CustomArmScissorsTexturePath =>
+        "res://images/ui/hands/multiplayer_hand_corrupted_scissors.png";
+
+    public override string CustomCharacterSelectBg => "res://scenes/screens/char_select/char_select_bg_corrupted.tscn";
+
+    public override string CustomCharacterSelectTransitionPath =>
+        "res://materials/transitions/corrupted_transition_mat.tres";
+
+    public override string CustomMapMarkerPath => "res://images/packed/map/icons/map_marker_corrupted.png";
+
+    public override string CustomAttackSfx => "event:/sfx/characters/ironclad/ironclad_attack";
+
+    //public override string CustomCastSfx => "res://";
+    //public override string CustomDeathSfx => "res://";
+
+   // public string CustomYummyCookieBigIconPath => "corrupted_cookie.png".BigRelicImagePath();
+   // public string CustomYummyCookiePackedIconPath => "corrupted_cookie.tres".TresRelicImagePath();
+   // public string CustomYummyCookiePackedIconOutlinePath => "corrupted_cookie_outline.tres".TresRelicImagePath();
+
+}
 #if false // Decompilation log
 '167' items in cache
 ------------------

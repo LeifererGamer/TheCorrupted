@@ -20,10 +20,8 @@ using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 {
 
-internal class DoomsdayDoor() : CardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+internal class DoomsdayDoor() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new EnergyVar(1),
              new PowerVar<DoomPower>(5m),
@@ -36,12 +34,12 @@ internal class DoomsdayDoor() : CardModel(0, CardType.Skill, CardRarity.Uncommon
         EnergyHoverTip
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-                await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-                await PowerCmd.Apply<DoomPower>(Owner.Creature, DynamicVars.Doom.BaseValue, Owner.Creature, this);
-                await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
-                await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+            await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+            await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+            await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         }
 
         protected override void OnUpgrade()

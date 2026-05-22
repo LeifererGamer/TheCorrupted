@@ -24,10 +24,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Rare
 {
 
 
-internal class UltimateCorruption() : CardModel(0, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
+internal class UltimateCorruption() : TheCorruptedCardModel(0, CardType.Skill, CardRarity.Rare, TargetType.Self), ICustomModel
     {
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
-
         public override IEnumerable<CardKeyword> CanonicalKeywords =>
         [
             CardKeyword.Exhaust,
@@ -48,14 +46,13 @@ internal class UltimateCorruption() : CardModel(0, CardType.Skill, CardRarity.Ra
             new PowerVar<DoomPower>(5),
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
             await ArmyCmd.Summon(choiceContext, Owner, DynamicVars["Army"].BaseValue, cardPlay.Card);
-            await PowerCmd.Apply<DoomPower>([Owner.Creature], DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, DynamicVars["DoomPower"].BaseValue, Owner.Creature, this);
             await SpreadingCorruption.CreateInHand(Owner, cardPlay.Card.CombatState);
         }
 

@@ -21,10 +21,9 @@ using TheCorrupted.TheCorrupted.src.Core.Models.Relics;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 {
-    internal class CorruptedAmulet() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    internal class CorruptedAmulet() : TheCorruptedCardModel(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
         public override bool GainsBlock => true;
-        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<CorruptionCorrupted>()];
 
@@ -33,12 +32,11 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             new CardsVar(1),
         ];
 
-        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await CorruptionCorrupted.CreateInDrawPile(Owner, CombatState, true);
             await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-
         }
 
         protected override void OnUpgrade()

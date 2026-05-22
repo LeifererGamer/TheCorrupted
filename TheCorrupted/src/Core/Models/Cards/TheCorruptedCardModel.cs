@@ -8,14 +8,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheCorrupted.TheCorrupted.src.Core.Models.CardPools;
+using TheCorrupted.TheCorrupted.src.Core.Models.Extensions;
 using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards
 {
-    internal abstract class TheCorruptedCardModel(int cost, CardType type, CardRarity rarity, TargetType target)
+    public abstract class TheCorruptedCardModel(int cost, CardType type, CardRarity rarity, TargetType target)
            : CardModel(cost, type, rarity, target)
     {
-         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+        public override CardPoolModel Pool => ModelDb.CardPool<CorruptedCardPool>();
+
+        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+
+        protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             if (Type == CardType.Attack && cardPlay.Target != null)
                 ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");

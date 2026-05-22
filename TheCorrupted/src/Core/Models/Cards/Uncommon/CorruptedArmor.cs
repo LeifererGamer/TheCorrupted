@@ -40,8 +40,6 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
             HoverTipFactory.FromPower<FrailPower>()
         ];
 
-        public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-
         protected override IEnumerable<DynamicVar> CanonicalVars => [
             new CorruptedVar(2),
             new BlockVar("DamageDiff", 11m , ValueProp.Move),
@@ -64,7 +62,7 @@ internal class CorruptedArmor() : CorruptedCardModel<FrailPower>(2, CardType.Ski
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 }
