@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw1a7yy16nphf"
-path="res://.godot/imported/corrupted5_epoch.png-1da37c018d94d385a63cddc545505e00.ctex"
+uid="uid://bqgv1njpn57r4"
+path="res://.godot/imported/thecorrupted-corrupted4_epoch.png-78c5f47fa267b58f251e8e9d783acd5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/timeline/epoch_portraits/corrupted5_epoch.png"
-dest_files=["res://.godot/imported/corrupted5_epoch.png-1da37c018d94d385a63cddc545505e00.ctex"]
+source_file="res://images/timeline/epoch_portraits/thecorrupted-corrupted4_epoch.png"
+dest_files=["res://.godot/imported/thecorrupted-corrupted4_epoch.png-78c5f47fa267b58f251e8e9d783acd5b.ctex"]
 
 [params]
 
