@@ -20,11 +20,6 @@ internal class DrainStrength() : TheCorruptedCardModel(1, CardType.Skill, CardRa
             new DynamicVar("StrengthLoss", 1m),
         ];
 
-        public override IEnumerable<CardKeyword> CanonicalKeywords =>
-        [
-            CardKeyword.Exhaust,
-        ];
-
         protected override IEnumerable<IHoverTip> ExtraHoverTips => 
         [
             HoverTipFactory.FromPower<StrengthPower>()

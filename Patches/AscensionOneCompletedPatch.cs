@@ -12,11 +12,11 @@ public class AscensionOneCompletedPatch
 {
     static bool Prefix(ProgressSaveManager __instance, SerializablePlayer serializablePlayer, SerializableRun serializableRun)
     {
-        if (serializablePlayer.CharacterId.Entry == "CORRUPTED")
+        if (serializablePlayer.CharacterId.Entry == "THECORRUPTED-CORRUPTED")
         {
             if (serializableRun.Ascension == 1)
             {
-                string correctEpochId = "CORRUPTED7_EPOCH";
+                string correctEpochId = "THECORRUPTED-CORRUPTED7_EPOCH";
                 EpochModel customEpoch = EpochModel.Get(correctEpochId);
 
                 if (customEpoch != null)

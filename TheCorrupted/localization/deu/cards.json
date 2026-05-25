@@ -80,7 +80,7 @@
   "THECORRUPTED-NEOWS_MIGHT.title": "Neows Macht",
   "THECORRUPTED-NEOWS_MIGHT.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nZiehe 2 Karten.\nEntscheide ob du [gold]Ritual Durchführen[/gold] willst oder nicht:\nVerringere die Kosten aller Karten in deiner [gold]Hand[/gold] für diese Runde um 1\nFalls das [gold]Ritual Durchführen[/gold] fehlschlägt: Füge ALLEN Gegner {InCombat:{CalculatedDamage:diff()} Schaden|Schaden in Höhe der [jitter][pink]Verderben[/pink][/jitter] Stapel auf dir} zu.",
   "DRAIN_STRENGTH.title": "Kraftentzug",
-  "DRAIN_STRENGTH.description": "[gold]Erschöpfe[/gold] alle [jitter][purple]Fluch[/purple][/jitter] Karten in deiner [gold]Hand[/gold].\nAlle Gegner verlieren [red]Stärke[/red] in Höhe von 1 plus die Nummer an [gold]Erschöpften[/gold] [jitter][purple]Flüche[/purple][/jitter].",
+  "DRAIN_STRENGTH.description": "[gold]Erschöpfe[/gold] alle [jitter][purple]Fluch[/purple][/jitter] Karten in deiner [gold]Hand[/gold].\nAlle Gegner verlieren diese Runde [red]Stärke[/red] in Höhe von 1 plus die Nummer an [gold]Erschöpften[/gold] [jitter][purple]Flüche[/purple][/jitter].",
   "GRUDGE.title": "Groll",
   "GRUDGE.description": "Erhalte eine zufällige [gold]Ritual Durchführen[/gold] Karte auf deine [gold]Hand[/gold].\nSie kostet diese Runde 0.",
   "THECORRUPTED-RITUAL_OF_GREATER_DEFENCE.title": "Ritual der verstärkten Verteidigung",
