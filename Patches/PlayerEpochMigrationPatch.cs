@@ -39,7 +39,7 @@ public static class PlayerEpochMigrationPatch
 
                         if (savedEpoch.State == EpochState.Revealed)
                         {
-                            __instance.Progress.RevealEpoch(newFixedId, isDebug: true);
+                            __instance.Progress.RevealEpoch(newFixedId);
                         }
 
                         saveNeedsUpdating = true;
