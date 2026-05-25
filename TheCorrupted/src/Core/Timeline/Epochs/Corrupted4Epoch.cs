@@ -15,7 +15,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Timeline.Epochs
 {
     public class Corrupted4Epoch : EpochModel
     {
-        public override string Id => "CORRUPTED4_EPOCH";
+        public override string Id => "THECORRUPTED-CORRUPTED4_EPOCH";
 
         public override EpochEra Era => EpochEra.Seeds2;
 
