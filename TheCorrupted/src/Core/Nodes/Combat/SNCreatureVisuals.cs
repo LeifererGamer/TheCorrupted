@@ -19,5 +19,18 @@ public partial class SNCreatureVisuals : NCreatureVisuals
 
         _anim = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         _visuals = GetNodeOrNull<Node2D>("Visuals");
+        if (_anim != null)
+        {
+            _anim.AnimationFinished += _on_animation_player_animation_finished;
+        }
+    }
+
+    public void _on_animation_player_animation_finished(StringName anim_name)
+    {
+        ModEntry.Logger.Info($"Animation finished: {anim_name}");
+        if (anim_name != "idle")
+        {
+            _anim?.Play("idle");
+        }
     }
 }
