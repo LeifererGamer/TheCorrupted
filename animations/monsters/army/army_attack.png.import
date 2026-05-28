@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ces53ga25wkbf"
-path="res://.godot/imported/army.png-f62f9915f30e3710eefd2bf4f91421bd.ctex"
+uid="uid://rwcunfmeji67"
+path="res://.godot/imported/army_attack.png-9bd059d485d9f73116d988218db0b8b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animations/monsters/army/army.png"
-dest_files=["res://.godot/imported/army.png-f62f9915f30e3710eefd2bf4f91421bd.ctex"]
+source_file="res://animations/monsters/army/army_attack.png"
+dest_files=["res://.godot/imported/army_attack.png-9bd059d485d9f73116d988218db0b8b3.ctex"]
 
 [params]
 

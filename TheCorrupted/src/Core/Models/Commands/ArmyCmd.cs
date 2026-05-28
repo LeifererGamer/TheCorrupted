@@ -13,17 +13,22 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.TestSupport;
 using TheCorrupted.TheCorrupted.src.Core.Models.Cards.Token;
+using TheCorrupted.TheCorrupted.src.Core.Models.Powers;
+using TheCorrupted.TheCorrupted.src.Core.Nodes.Combat;
 
 namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
 {
     public static class ArmyCmd
     {
 
+        public static readonly AsyncLocal<bool> IsSummoningArmy = new AsyncLocal<bool>();
+
         public static async Task<SummonResult> Summon(PlayerChoiceContext choiceContext, Player summoner, decimal amount, AbstractModel? source)
         {
             Player summoner2 = summoner;
             ICombatState combatState = summoner2.Creature.CombatState;
             amount = Hook.ModifySummonAmount(combatState, summoner2, amount, source);
+
             if (amount == 0m)
             {
                 return new SummonResult(summoner2.Osty, 0m);
@@ -52,16 +57,27 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
 
                     summoner2.PlayerCombatState.AddPetInternal(osty);
                 }
-                else
+                else 
                 {
-                    osty = await PlayerCmd.AddPet<Osty>(summoner2);
+                    ArmyCmd.IsSummoningArmy.Value = true;
+                    try
+                    {
+                        osty = await PlayerCmd.AddPet<Osty>(summoner2);
+                    }
+                    finally
+                    {
+                        ArmyCmd.IsSummoningArmy.Value = false;
+                    }
+
                     NCreature ostyNode = NCombatRoom.Instance?.GetCreatureNode(osty);
                     if (ostyNode != null && source is CardModel)
                     {
                         ostyNode.Modulate = Colors.Transparent;
                         Tween tween = ostyNode.CreateTween();
-                        tween.TweenProperty(ostyNode, "modulate", Colors.White, 0.34999999403953552).SetDelay(0.10000000149011612);
+                        tween.TweenProperty(ostyNode, "modulate", Colors.White, 0.35f).SetDelay(0.1f);
                         ostyNode.StartReviveAnim();
+
+                        SNCreatureVisuals.Instance?.PlayRevive();
                     }
 
                     await PowerCmd.Apply<DieForYouPower>(choiceContext, osty, 1m, null, null);
@@ -70,16 +86,19 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
 
                 await CreatureCmd.SetMaxHp(osty, amount);
                 await CreatureCmd.Heal(osty, amount, isReviving);
+
                 if (isReviving)
                 {
                     await Hook.AfterOstyRevived(combatState, osty);
+
+                    SNCreatureVisuals.Instance?.PlayRevive();
                 }
             }
 
             if (TestMode.IsOff)
             {
                 NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(osty);
-                nCreature.OstyScaleToSize(osty.MaxHp, 0.75f);
+                nCreature?.OstyScaleToSize(osty.MaxHp, 0.75f);
             }
 
             CombatManager.Instance.History.Summoned(combatState, (int)amount, summoner2);

@@ -3,15 +3,15 @@
   "name": "Corrupted",
   "author": "LeifererGamer",
   "description": "This mod adds a new Character called The Corrupted (Inspired by The Cursed Mod from Slay the Spire)",
-  "version": "v1.1.3",
+  "version": "v1.1.5",
   "has_pck": true,
   "has_dll": true,
-  "min_game_version": "0.106.0",
+  "min_game_version": "0.106.1",
   "dependencies": 
   [
     {
       "id": "BaseLib",
-      "min_version": "3.1.4"
+      "min_version": "3.1.7"
     }
   ],
   "affects_gameplay": true

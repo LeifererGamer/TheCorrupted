@@ -79,6 +79,8 @@
   "NORMALITY_POWER.smartDescription": "The next {Amount} {Amount:plural:[gold]Card[/gold]|[gold]Cards[/gold]} you play cost 1 less.",
   "CLEANSING_POWER.title": "Cleansing",
   "CLEANSING_POWER.description": "Remove up to X [jitter][pink]Doom[/pink][/jitter] from yourself.",
-  "CLEANSING_POWER.smartDescription": "Remove up to X [jitter][pink]Doom[/pink][/jitter] from yourself."
-
+  "CLEANSING_POWER.smartDescription": "Remove up to X [jitter][pink]Doom[/pink][/jitter] from yourself.",
+  "ARMY_DIE_FOR_YOU_POWER.title": "Die for You",
+  "ARMY_DIE_FOR_YOU_POWER.description": "Your [gold]Army[/gold] absorbs all unblocked attack damage.",
+  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Your [gold]Army[/gold] absorbs all unblocked attack damage."
 }
