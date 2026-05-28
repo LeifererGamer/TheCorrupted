@@ -30,25 +30,25 @@ public sealed class Corrupted : CustomCharacterModel
 {
     public const string energyColorName = "corrupted";
 
-    public override CharacterGender Gender => CharacterGender.Masculine;
+        public override CharacterGender Gender => CharacterGender.Masculine;
 
-    protected override CharacterModel? UnlocksAfterRunAs => null;
+        protected override CharacterModel? UnlocksAfterRunAs => null;
 
-    public override Color NameColor => StsColors.purple;
+        public override Color NameColor => StsColors.purple;
 
-    public override int StartingHp => 80;
+        public override int StartingHp => 80;
 
-    public override int StartingGold => 99;
+        public override int StartingGold => 99;
 
-    public override CardPoolModel CardPool => ModelDb.CardPool<CorruptedCardPool>();
+        public override CardPoolModel CardPool => ModelDb.CardPool<CorruptedCardPool>();
 
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<CorruptedPotionPool>();
+        public override PotionPoolModel PotionPool => ModelDb.PotionPool<CorruptedPotionPool>();
 
-    public override RelicPoolModel RelicPool => ModelDb.RelicPool<CorruptedRelicPool>();
+        public override RelicPoolModel RelicPool => ModelDb.RelicPool<CorruptedRelicPool>();
 
-    public override IEnumerable<CardModel> StartingDeck =>
-    [
-    ModelDb.Card<StrikeCorrupted>(),
+        public override IEnumerable<CardModel> StartingDeck =>
+        [
+        ModelDb.Card<StrikeCorrupted>(),
         ModelDb.Card<StrikeCorrupted>(),
         ModelDb.Card<StrikeCorrupted>(),
         ModelDb.Card<StrikeCorrupted>(),
@@ -58,46 +58,46 @@ public sealed class Corrupted : CustomCharacterModel
         ModelDb.Card<DefendCorrupted>(),
         ModelDb.Card<DefendCorrupted>(),
         ModelDb.Card<CorruptingStrike>()
-    ];
+        ];
 
-    public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<CorruptedBladeRelic>()];
-    protected override string CharacterSelectIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted.png");
+        public override IReadOnlyList<RelicModel> StartingRelics =>[ModelDb.Relic<CorruptedBladeRelic>()];
+        protected override string CharacterSelectIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted.png");
 
-    protected override string CharacterSelectLockedIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted_locked.png");
-    public override float AttackAnimDelay => 0.15f;
+        protected override string CharacterSelectLockedIconPath => ImageHelper.GetImagePath("packed/character_select/char_select_corrupted_locked.png");
+        public override float AttackAnimDelay => 0.15f;
 
-    public override float CastAnimDelay => 0.25f;
+        public override float CastAnimDelay => 0.25f;
 
-    public override Color EnergyLabelOutlineColor => new Color("551FC9FF");
+        public override Color EnergyLabelOutlineColor => new Color("551FC9FF");
 
-    public override Color DialogueColor => new Color("11035E");
+        public override Color DialogueColor => new Color("11035E");
 
-    public override Color MapDrawingColor => new Color("A329CC");
+        public override Color MapDrawingColor => new Color("A329CC");
 
-    public override Color RemoteTargetingLineColor => new Color("7348E0FF");
+        public override Color RemoteTargetingLineColor => new Color("7348E0FF");
 
-    public override Color RemoteTargetingLineOutline => new Color("351280FF");
+        public override Color RemoteTargetingLineOutline => new Color("351280FF");
 
-    public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
+        public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 
-    public override List<string> GetArchitectAttackVfx()
-    {
-        int num = 5;
-        List<string> list = new List<string>(num);
-        CollectionsMarshal.SetCount(list, num);
-        Span<string> span = CollectionsMarshal.AsSpan(list);
-        int num2 = 0;
-        span[num2] = "vfx/vfx_attack_blunt";
-        num2++;
-        span[num2] = "vfx/vfx_heavy_blunt";
-        num2++;
-        span[num2] = "vfx/vfx_attack_slash";
-        num2++;
-        span[num2] = "vfx/vfx_bloody_impact";
-        num2++;
-        span[num2] = "vfx/vfx_rock_shatter";
-        return list;
-    }
+        public override List<string> GetArchitectAttackVfx()
+        {
+            int num = 5;
+            List<string> list = new List<string>(num);
+            CollectionsMarshal.SetCount(list, num);
+            Span<string> span = CollectionsMarshal.AsSpan(list);
+            int num2 = 0;
+            span[num2] = "vfx/vfx_attack_blunt";
+            num2++;
+            span[num2] = "vfx/vfx_heavy_blunt";
+            num2++;
+            span[num2] = "vfx/vfx_attack_slash";
+            num2++;
+            span[num2] = "vfx/vfx_bloody_impact";
+            num2++;
+            span[num2] = "vfx/vfx_rock_shatter";
+            return list;
+        }
 
     public override string CustomIconTexturePath => "res://images/ui/top_panel/character_icon_corrupted.png";
 

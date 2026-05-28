@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ces53ga25wkbf"
-path="res://.godot/imported/army.png-f62f9915f30e3710eefd2bf4f91421bd.ctex"
+uid="uid://c7bcmcm7sqjce"
+path="res://.godot/imported/army_die_for_you_power.png-789b67451fc0b90136c94af612281330.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animations/monsters/army/army.png"
-dest_files=["res://.godot/imported/army.png-f62f9915f30e3710eefd2bf4f91421bd.ctex"]
+source_file="res://images/powers/army_die_for_you_power.png"
+dest_files=["res://.godot/imported/army_die_for_you_power.png-789b67451fc0b90136c94af612281330.ctex"]
 
 [params]
 

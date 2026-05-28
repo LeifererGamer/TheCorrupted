@@ -79,6 +79,8 @@
   "NORMALITY_POWER.smartDescription": "Die nächsten {Amount} {Amount:plural:[gold]Karte[/gold]|[gold]Karten[/gold]} die du spielst, kosten 1 weniger.",
   "CLEANSING_POWER.title": "Reinigung",
   "CLEANSING_POWER.description": "Entferne bis zu X [jitter][pink]Verderben[/pink][/jitter] von dir selbst.",
-  "CLEANSING_POWER.smartDescription": "Entferne bis zu X [jitter][pink]Verderben[/pink][/jitter] von dir selbst."
-
+  "CLEANSING_POWER.smartDescription": "Entferne bis zu X [jitter][pink]Verderben[/pink][/jitter] von dir selbst.",
+  "ARMY_DIE_FOR_YOU_POWER.title": "Für dich sterben",
+  "ARMY_DIE_FOR_YOU_POWER.description": "Deine [gold]Armee[/gold] fängt allen ungeblockten Angriffsschaden auf.",
+  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Deine [gold]Armee[/gold] fängt allen ungeblockten Angriffsschaden auf."
 }
