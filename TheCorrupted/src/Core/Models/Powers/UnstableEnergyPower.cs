@@ -30,7 +30,7 @@ internal class UnstableEnergyPower : PowerModel
 
         public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
         {
-            if (player.Creature.HasPower<DoomPower>())
+            if (player == Owner.Player && player.Creature.HasPower<DoomPower>())
             {
                 Flash();
                 int amount = (player.Creature.GetPower<DoomPower>().Amount / (int) DynamicVars["DoomPower"].BaseValue) * Amount;
