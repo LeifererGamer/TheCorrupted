@@ -9,7 +9,7 @@ This mod adds a new Character called The Corrupted (Inspired by The Cursed Mod f
 
 Requirements:
 
-Requires BaseLib 3.1.4, found here: https://github.com/Alchyr/BaseLib-StS2.
+Requires BaseLib 3.1.7, found here: https://github.com/Alchyr/BaseLib-StS2.
 
 Thanks to:
 Shuyou114 for ZHS translation (its outdated, since i added new cards)
