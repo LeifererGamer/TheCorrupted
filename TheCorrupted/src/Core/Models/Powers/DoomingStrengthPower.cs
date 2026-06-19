@@ -44,7 +44,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
             if (participants.ToList().Contains(Owner))
             {
                 Flash();
-                amount = combatState.Creatures.First().HasPower<DoomPower>() ? combatState.Creatures.First().GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
+                amount = Owner.HasPower<DoomPower>() ? Owner.GetPower<DoomPower>().Amount / DynamicVars["Divider"].IntValue * Amount : 0;
                 await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, amount, Owner, null);                                        
             }
         }

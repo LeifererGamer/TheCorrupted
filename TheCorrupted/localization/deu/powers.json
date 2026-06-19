@@ -82,5 +82,8 @@
   "CLEANSING_POWER.smartDescription": "Entferne bis zu X [jitter][pink]Verderben[/pink][/jitter] von dir selbst.",
   "ARMY_DIE_FOR_YOU_POWER.title": "Für dich sterben",
   "ARMY_DIE_FOR_YOU_POWER.description": "Deine [gold]Armee[/gold] fängt allen ungeblockten Angriffsschaden auf.",
-  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Deine [gold]Armee[/gold] fängt allen ungeblockten Angriffsschaden auf."
+  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Deine [gold]Armee[/gold] fängt allen ungeblockten Angriffsschaden auf.",
+  "GROUP_SUMMONING_DONE_POWER.description": "",
+  "GROUP_SUMMONING_DONE_POWER.smartDescription": "",
+  "GROUP_SUMMONING_DONE_POWER.title": ""
 }

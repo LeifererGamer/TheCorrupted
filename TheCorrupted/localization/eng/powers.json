@@ -82,5 +82,8 @@
   "CLEANSING_POWER.smartDescription": "Remove up to X [jitter][pink]Doom[/pink][/jitter] from yourself.",
   "ARMY_DIE_FOR_YOU_POWER.title": "Die for You",
   "ARMY_DIE_FOR_YOU_POWER.description": "Your [gold]Army[/gold] absorbs all unblocked attack damage.",
-  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Your [gold]Army[/gold] absorbs all unblocked attack damage."
+  "ARMY_DIE_FOR_YOU_POWER.smartDescription": "Your [gold]Army[/gold] absorbs all unblocked attack damage.",
+  "GROUP_SUMMONING_DONE_POWER.description": "",
+  "GROUP_SUMMONING_DONE_POWER.smartDescription": "",
+  "GROUP_SUMMONING_DONE_POWER.title": ""
 }
