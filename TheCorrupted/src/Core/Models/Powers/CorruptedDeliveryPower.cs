@@ -32,7 +32,7 @@ internal class CorruptedDeliveryPower : PowerModel
                                                                                         where c.Rarity == CardRarity.Rare || c.Rarity == CardRarity.Uncommon
                                                                                         select c, base.Amount, base.Owner.Player.RunState.Rng.CombatCardGeneration).ToList();
                 foreach (CardModel newCard in newCards)
-                    await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, true);
+                    await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, Owner.Player);
             }
 
         }

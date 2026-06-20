@@ -31,7 +31,7 @@ internal class DoomStone : RelicModel
         new PowerVar<StrengthPower>(1)
         ];
 
-        public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+        public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
         {
             if (Owner.Creature != power.Owner || applier != Owner.Creature || power is not DoomPower)
             {
@@ -42,7 +42,7 @@ internal class DoomStone : RelicModel
                 return;
             }
             Flash();
-            await PowerCmd.Apply<StrengthPower>([Owner.Creature], DynamicVars["StrengthPower"].BaseValue, Owner.Creature, cardSource);
+            await PowerCmd.Apply<StrengthPower>(choiceContext, [Owner.Creature], DynamicVars["StrengthPower"].BaseValue, Owner.Creature, cardSource);
         }
     }
 }

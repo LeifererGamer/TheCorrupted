@@ -26,7 +26,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
         public static async Task<SummonResult> Summon(PlayerChoiceContext choiceContext, Player summoner, decimal amount, AbstractModel? source)
         {
             Player summoner2 = summoner;
-            CombatState combatState = summoner2.Creature.CombatState;
+            ICombatState combatState = summoner2.Creature.CombatState;
             amount = Hook.ModifySummonAmount(combatState, summoner2, amount, source);
 
             if (amount == 0m)
@@ -80,7 +80,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
                         SNCreatureVisuals.Instance?.PlayRevive();
                     }
 
-                    await PowerCmd.Apply<DieForYouPower>(osty, 1m, null, null);
+                    await PowerCmd.Apply<DieForYouPower>(choiceContext, osty, 1m, null, null);
                     ostyNode?.TrackBlockStatus(summoner2.Creature);
                 }
 
@@ -118,7 +118,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Commands
             if (commandArmies.Count == 0)
             {
                 CommandArmy commandCard = player.Creature.CombatState.CreateCard<CommandArmy>(player);
-                await CardPileCmd.AddGeneratedCardToCombat(commandCard, PileType.Hand, true);
+                await CardPileCmd.AddGeneratedCardToCombat(commandCard, PileType.Hand, player);
                 commandArmies.Add(commandCard);
             }
             return commandArmies;

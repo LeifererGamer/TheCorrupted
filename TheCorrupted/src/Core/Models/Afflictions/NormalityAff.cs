@@ -17,7 +17,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
     {
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await PowerCmd.Apply<NormalityPower>([Card.Owner.Creature], 3m, Card.Owner.Creature, Card);
+            await PowerCmd.Apply<NormalityPower>(choiceContext, [Card.Owner.Creature], 3m, Card.Owner.Creature, Card);
         }
     }
 }

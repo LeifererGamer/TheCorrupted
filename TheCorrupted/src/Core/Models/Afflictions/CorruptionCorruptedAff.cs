@@ -16,7 +16,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await Cleansing.PerformCleansing(5m, Card.Owner.Creature, Card);
+            await Cleansing.PerformCleansing(choiceContext, 5m, Card.Owner.Creature, Card);
         }
     }
 }

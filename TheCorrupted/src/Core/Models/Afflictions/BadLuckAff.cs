@@ -21,7 +21,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await PowerCmd.Apply<DoomPower>([Card.Owner.Creature], 13, Card.Owner.Creature, null);
+            await PowerCmd.Apply<DoomPower>(choiceContext, [Card.Owner.Creature], 13, Card.Owner.Creature, null);
         }
     }
 }

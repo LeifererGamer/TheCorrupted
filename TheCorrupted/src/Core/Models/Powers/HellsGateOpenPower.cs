@@ -19,7 +19,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
 
         public override PowerStackType StackType => PowerStackType.Counter;
 
-        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
         {
             if (player != Owner.Player)
                 return;
@@ -27,7 +27,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
             Flash();
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(player, 2);
 
-            await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Hand, true);
+            await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Hand, player);
         }
     }
 }

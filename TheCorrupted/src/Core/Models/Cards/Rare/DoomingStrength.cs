@@ -27,7 +27,7 @@ internal class DoomingStrength() : TheCorruptedCardModel(2, CardType.Power, Card
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<DoomingStrengthPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<DoomingStrengthPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }
 
 

@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dowa3dd4g1dvm"
+<<<<<<<< HEAD:animations/characters/corrupted/corrupted_hurt.png.import
+uid="uid://h3m2xvh6rftr"
+path="res://.godot/imported/corrupted_hurt.png-61c389a4dec555009344d1f3b4591e9a.ctex"
+========
+uid="uid://b73qgfxu52r5u"
 path="res://.godot/imported/corrupted_dying.png-8451db949376eed21e6b85ffe52cc0b1.ctex"
+>>>>>>>> Beta-Branch:animations/characters/corrupted/corrupted_dying.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:animations/characters/corrupted/corrupted_hurt.png.import
+source_file="res://animations/characters/corrupted/corrupted_hurt.png"
+dest_files=["res://.godot/imported/corrupted_hurt.png-61c389a4dec555009344d1f3b4591e9a.ctex"]
+========
 source_file="res://animations/characters/corrupted/corrupted_dying.png"
 dest_files=["res://.godot/imported/corrupted_dying.png-8451db949376eed21e6b85ffe52cc0b1.ctex"]
+>>>>>>>> Beta-Branch:animations/characters/corrupted/corrupted_dying.png.import
 
 [params]
 

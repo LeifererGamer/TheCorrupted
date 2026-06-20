@@ -181,4 +181,7 @@ dotnet/embed_build_outputs=false
 		<Copy SourceFiles="TheCorrupted.json" DestinationFolder="$(ModsOutputDir)" Condition="Exists('TheCorrupted.json')" />
 		<Exec Command="&quot;$(GodotExePath)&quot; --headless --path &quot;$(GodotProject)&quot; --export-pack &quot;Windows Desktop&quot; &quot;$(ModsOutputDir)\$(ModName).pck&quot;" ContinueOnError="true" />
 	</Target>
+
+
+	<ProjectExtensions><VisualStudio><UserProperties thecorrupted_4localization_4eng_4cards_1json__JsonSchema="https://acp-protocol.dev/schemas/v1/cache.schema.json" /></VisualStudio></ProjectExtensions>
 </Project>

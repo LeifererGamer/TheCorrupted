@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://kq7dmrg0ygyf"]
 
 [ext_resource type="Script" uid="uid://bhrkamq1j6u3t" path="res://TheCorrupted/src/Core/Nodes/Combat/SNCreatureVisuals.cs" id="1_53lm8"]
-[ext_resource type="Texture2D" uid="uid://dfifncec1aug1" path="res://animations/characters/corrupted/corrupted_idle.png" id="2_53lm8"]
-[ext_resource type="Texture2D" uid="uid://cib67sfw6haci" path="res://animations/characters/corrupted/corrupted_attack.png" id="3_avkv0"]
-[ext_resource type="Texture2D" uid="uid://ds02042iocdck" path="res://animations/characters/corrupted/corrupted_cast.png" id="4_dr5ov"]
-[ext_resource type="Texture2D" uid="uid://h3m2xvh6rftr" path="res://animations/characters/corrupted/corrupted_hurt.png" id="5_nfnh1"]
-[ext_resource type="Texture2D" uid="uid://dowa3dd4g1dvm" path="res://animations/characters/corrupted/corrupted_dying.png" id="6_srmtq"]
+[ext_resource type="Texture2D" uid="uid://wykxwvs12pqy" path="res://animations/characters/corrupted/corrupted_idle.png" id="2_53lm8"]
+[ext_resource type="Texture2D" uid="uid://i3d7hyuncw7v" path="res://animations/characters/corrupted/corrupted_attack.png" id="3_avkv0"]
+[ext_resource type="Texture2D" uid="uid://bhlk6fk3m4as5" path="res://animations/characters/corrupted/corrupted_cast.png" id="4_dr5ov"]
+[ext_resource type="Texture2D" uid="uid://dtkp23wwl0k1d" path="res://animations/characters/corrupted/corrupted_hurt.png" id="5_nfnh1"]
+[ext_resource type="Texture2D" uid="uid://b73qgfxu52r5u" path="res://animations/characters/corrupted/corrupted_dying.png" id="6_srmtq"]
 
 [sub_resource type="Animation" id="Animation_dr5ov"]
 length = 0.001

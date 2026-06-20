@@ -50,8 +50,8 @@ internal class MantleOfCorruption() : TheCorruptedCardModel(1, CardType.Power, C
             NPowerUpVfx.CreateGhostly(base.Owner.Creature);
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            await PowerCmd.Apply<MantleOfCorruptionPower>(Owner.Creature, DynamicVars.Block.IntValue, Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
+            await PowerCmd.Apply<MantleOfCorruptionPower>(choiceContext, Owner.Creature, DynamicVars.Block.IntValue, Owner.Creature, this);
         }
 
 

@@ -23,13 +23,13 @@ internal class DuVuDoll : RelicModel
     {
         public override RelicRarity Rarity => RelicRarity.Uncommon;
 
-        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
         {
             if (player == Owner && combatState.RoundNumber == 1)
             {
                 Flash();
                 var amount = player.Piles.Where(p => p.Type == PileType.Deck).SingleOrDefault()?.Cards.Where(c => c.Type == CardType.Curse).Count() ?? 0;
-                await PowerCmd.Apply<StrengthPower>([player.Creature], amount, player.Creature, null);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, [player.Creature], amount, player.Creature, null);
             }
         }
     }

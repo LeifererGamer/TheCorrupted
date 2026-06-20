@@ -19,7 +19,7 @@ internal class StatusQuo() : TheCorruptedCardModel(2, CardType.Power, CardRarity
     {
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<StatusQuoPower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<StatusQuoPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

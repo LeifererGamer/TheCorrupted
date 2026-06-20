@@ -28,13 +28,13 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Relics
             new PowerVar<DoomPower>(5)
         ];
 
-        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+        public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
         {
             if (player == Owner && combatState.RoundNumber == 1)
             {
                 Flash();
                 await CorruptionCorrupted.CreateInDrawPile(player, 2, combatState, false);
-                await PowerCmd.Apply<DoomPower>([Owner.Creature], DynamicVars["DoomPower"].BaseValue, Owner.Creature, null);
+                await PowerCmd.Apply<DoomPower>(choiceContext, [Owner.Creature], DynamicVars["DoomPower"].BaseValue, Owner.Creature, null);
             }
         }
     }

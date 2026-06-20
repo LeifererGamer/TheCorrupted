@@ -25,13 +25,13 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
                 return;
             }
             await CreatureCmd.TriggerAnim(summoner.Creature, "Cast", summoner.Character.CastAnimDelay);
-            await PowerCmd.Apply<GroupSummoningDonePower>(summoner.Creature, 1, summoner.Creature, null, silent: true);
+            await PowerCmd.Apply<GroupSummoningDonePower>(choiceContext, summoner.Creature, 1, summoner.Creature, null, silent: true);
             IEnumerable<Creature> enumerable = base.CombatState.PlayerCreatures.Where((Creature c) => (c?.IsAlive ?? false) && (c.Player != summoner)).ToList();
             foreach (Creature item in enumerable)
             {
                 if (!item.Player.Creature.HasPower<GroupSummoningDonePower>())
                 {
-                    await PowerCmd.Apply<GroupSummoningDonePower>([item.Player.Creature], 1, summoner.Creature, null, silent: true);
+                    await PowerCmd.Apply<GroupSummoningDonePower>(choiceContext, [item.Player.Creature], 1, summoner.Creature, null, silent: true);
                     await ArmyCmd.Summon(choiceContext, item.Player, amount, this);
                 }
             }
@@ -39,10 +39,10 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
             {
                 if (item.Player.Creature.HasPower<GroupSummoningDonePower>())
                 {
-                    await PowerCmd.Apply<GroupSummoningDonePower>([item.Player.Creature], -1, summoner.Creature, null, silent: true);
+                    await PowerCmd.Apply<GroupSummoningDonePower>(choiceContext, [item.Player.Creature], -1, summoner.Creature, null, silent: true);
                 }
             }
-            await PowerCmd.Apply<GroupSummoningDonePower>(summoner.Creature, -1, summoner.Creature, null, silent: true);
+            await PowerCmd.Apply<GroupSummoningDonePower>(choiceContext, summoner.Creature, -1, summoner.Creature, null, silent: true);
         }
     }
 }

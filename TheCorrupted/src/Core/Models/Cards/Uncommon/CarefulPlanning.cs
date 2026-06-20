@@ -21,7 +21,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Uncommon
 
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<CarefulPlanningPower>(Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<CarefulPlanningPower>(choiceContext, Owner.Creature, DynamicVars.Cards.IntValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

@@ -27,8 +27,8 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<SummonArmyNextTurnPower>(Owner.Creature, DynamicVars["Army"].BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<SummonArmyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars["Army"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
         }
         protected override void OnUpgrade()
         {

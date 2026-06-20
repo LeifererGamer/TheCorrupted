@@ -55,7 +55,7 @@ internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRari
 
         protected override async Task OnNormalPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            cleansingAmount = await Cleansing.PerformCleansing( DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+            cleansingAmount = await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
             if (cleansingAmount > 0)
             {
                 DamageVar damage = new DamageVar("CleansingAmount", cleansingAmount, ValueProp.Move);
@@ -68,7 +68,7 @@ internal class DoomedSoulStrike() : DoomedCardModel(1, CardType.Attack, CardRari
 
         protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

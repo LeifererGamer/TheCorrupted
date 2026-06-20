@@ -34,7 +34,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
                 {
                     if (card.Owner.Creature.GetPower<DoomPower>().Amount <= DynamicVars["Cleansing"].BaseValue)
                         amount = card.Owner.Creature.GetPower<DoomPower>().Amount;
-                    await PowerCmd.Apply<DoomPower>(Owner.Creature, -amount, Owner.Creature, this);
+                    await PowerCmd.Apply<DoomPower>(choiceContext, Owner.Creature, -amount, Owner.Creature, this);
                 }
             });
         }

@@ -28,7 +28,7 @@ internal class DoubleShield() : TheCorruptedCardModel(1, CardType.Skill, CardRar
             decimal amount = await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await Ritual.PerformRitual(choiceContext, Owner, this, async (card) =>
             {
-                await PowerCmd.Apply<BlockNextTurnPower>(Owner.Creature, amount, Owner.Creature, this);
+                await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
             });
         }
 

@@ -45,7 +45,15 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
 
         protected override async Task OnAutoPlayExtra(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        }
+
+        protected override void OnUpgrade()
+        {
+            DynamicVars.Damage.UpgradeValueBy(2m);
+            DynamicVars["Doomed"].UpgradeValueBy(2);
+            DynamicVars["DamageDiff"].UpgradeValueBy(1);
+            DynamicVars.Weak.UpgradeValueBy(1m);
         }
 
         protected override void OnUpgrade()

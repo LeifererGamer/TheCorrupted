@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cib67sfw6haci"
+<<<<<<<< HEAD:animations/characters/corrupted/corrupted_cast.png.import
+uid="uid://ds02042iocdck"
+path="res://.godot/imported/corrupted_cast.png-e17d18c1c2cfb4037b4f040273e25630.ctex"
+========
+uid="uid://i3d7hyuncw7v"
 path="res://.godot/imported/corrupted_attack.png-3faf12cad1a953fc606c77048c56f227.ctex"
+>>>>>>>> Beta-Branch:animations/characters/corrupted/corrupted_attack.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:animations/characters/corrupted/corrupted_cast.png.import
+source_file="res://animations/characters/corrupted/corrupted_cast.png"
+dest_files=["res://.godot/imported/corrupted_cast.png-e17d18c1c2cfb4037b4f040273e25630.ctex"]
+========
 source_file="res://animations/characters/corrupted/corrupted_attack.png"
 dest_files=["res://.godot/imported/corrupted_attack.png-3faf12cad1a953fc606c77048c56f227.ctex"]
+>>>>>>>> Beta-Branch:animations/characters/corrupted/corrupted_attack.png.import
 
 [params]
 

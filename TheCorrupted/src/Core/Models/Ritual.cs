@@ -49,7 +49,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                     }
                     if (player.Creature.HasPower<DoomingCorruptionPower>())
                     {
-                        await PowerCmd.Apply<DoomPower>([player.Creature], player.Creature.GetPower<DoomingCorruptionPower>().Amount, player.Creature, cardModel);
+                        await PowerCmd.Apply<DoomPower>(choiceContext, [player.Creature], player.Creature.GetPower<DoomingCorruptionPower>().Amount, player.Creature, cardModel);
                     }
                     if (player.Creature.HasPower<RitualisticSummonsPower>())
                     {
@@ -57,7 +57,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models
                     }
                     if (player.Creature.HasPower<CleanseWithRitualsPower>())
                     {
-                        await Cleansing.PerformCleansing(player.Creature.GetPower<CleanseWithRitualsPower>().Amount, player.Creature, cardModel);
+                        await Cleansing.PerformCleansing(choiceContext, player.Creature.GetPower<CleanseWithRitualsPower>().Amount, player.Creature, cardModel);
                     }
                     return true;
                 }

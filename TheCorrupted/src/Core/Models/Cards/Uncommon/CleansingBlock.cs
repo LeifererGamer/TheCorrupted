@@ -40,7 +40,7 @@ internal class CleansingBlock() : TheCorruptedCardModel(1, CardType.Skill, CardR
         protected override async Task DoOnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-            await Cleansing.PerformCleansing( DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
+            await Cleansing.PerformCleansing(choiceContext, DynamicVars["Cleansing"].BaseValue, Owner.Creature, this);
             await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
         }
 

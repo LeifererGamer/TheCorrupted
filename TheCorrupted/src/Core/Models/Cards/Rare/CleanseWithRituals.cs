@@ -33,8 +33,8 @@ internal class CleanseWithRituals() : TheCorruptedCardModel(2, CardType.Power, C
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
             IEnumerable<CardModel> curses = CorruptedCardPool.GetRandomCurses(Owner, 2);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, true, CardPilePosition.Random));
-            await PowerCmd.Apply<CleanseWithRitualsPower>(base.Owner.Creature, DynamicVars["Cleansing"].IntValue, base.Owner.Creature, this);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(curses, PileType.Draw, Owner, CardPilePosition.Random));
+            await PowerCmd.Apply<CleanseWithRitualsPower>(choiceContext, base.Owner.Creature, DynamicVars["Cleansing"].IntValue, base.Owner.Creature, this);
         }
 
         protected override void OnUpgrade()

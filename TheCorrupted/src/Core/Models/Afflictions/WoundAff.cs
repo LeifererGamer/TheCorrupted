@@ -21,7 +21,7 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Afflictions
 
         public override async Task OnPlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await PowerCmd.Apply<VulnerablePower>(Card.Owner.Creature.CombatState.HittableEnemies, 2m, Card.Owner.Creature, Card);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, Card.Owner.Creature.CombatState.HittableEnemies, 2m, Card.Owner.Creature, Card);
         }
     }
 }

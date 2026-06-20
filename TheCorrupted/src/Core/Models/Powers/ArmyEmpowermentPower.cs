@@ -43,9 +43,9 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Powers
             return 2m;
         }
 
-        public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+        public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
         {
-            if (side != Owner.Side) return;
+            if (!participants.ToList().Contains(Owner)) return;
             
             await PowerCmd.TickDownDuration(this);
         }
