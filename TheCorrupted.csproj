@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<Reference Include="Sts2">
-			<HintPath>D:\Program Files (x86)\Megadot\sts2.dll</HintPath>
+			<HintPath>$(GameDataDir)\sts2.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="0Harmony">

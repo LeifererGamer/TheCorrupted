@@ -55,13 +55,5 @@ namespace TheCorrupted.TheCorrupted.src.Core.Models.Cards.Common
             DynamicVars["DamageDiff"].UpgradeValueBy(1);
             DynamicVars.Weak.UpgradeValueBy(1m);
         }
-
-        protected override void OnUpgrade()
-        {
-            DynamicVars.Damage.UpgradeValueBy(2m);
-            DynamicVars["Doomed"].UpgradeValueBy(2);
-            DynamicVars["DamageDiff"].UpgradeValueBy(1);
-            DynamicVars.Weak.UpgradeValueBy(1m);
-        }
     }
 }
